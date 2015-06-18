@@ -2,5 +2,5 @@
 from __future__ import absolute_import
 
 def teardown_module(module=None):
-    from nltk.corpus import wordnet
+    from cnltk.corpus import wordnet
     wordnet._unload()

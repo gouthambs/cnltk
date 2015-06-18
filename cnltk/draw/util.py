@@ -18,11 +18,11 @@ well as a number of simpler widgets.  These canvas widgets make it
 easier to build new graphical tools and demos.  See the class
 documentation for ``CanvasWidget`` for more information.
 
-The ``nltk.draw`` module defines the abstract ``CanvasWidget`` base
+The ``cnltk.draw`` module defines the abstract ``CanvasWidget`` base
 class, and a number of simple canvas widgets.  The remaining canvas
-widgets are defined by submodules, such as ``nltk.draw.tree``.
+widgets are defined by submodules, such as ``cnltk.draw.tree``.
 
-The ``nltk.draw`` module also defines ``CanvasFrame``, which
+The ``cnltk.draw`` module also defines ``CanvasFrame``, which
 encapsulates a ``Canvas`` and its scrollbars.  It uses a
 ``ScrollWatcherWidget`` to ensure that all canvas widgets contained on
 its canvas are within the scroll region.
@@ -35,13 +35,13 @@ homepage (http://www.ags.uni-sb.de/~konrad/clig.html).
 """
 
 
-import nltk.compat
+import cnltk.compat
 from tkinter import (Button, Canvas, Entry, Frame, Label, Menu, Menubutton,
                      RAISED, Scrollbar, StringVar, Text, Tk, Toplevel, Widget)
 
 import tkinter.font, tkinter.messagebox, tkinter.filedialog
 
-from nltk.util import in_idle
+from cnltk.util import in_idle
 
 ##//////////////////////////////////////////////////////
 ##  CanvasWidget
@@ -67,7 +67,7 @@ class CanvasWidget(object):
     value can be overridden in the constructor, using keyword
     arguments of the form ``attribute=value``:
 
-        >>> from nltk.draw.util import TextWidget
+        >>> from cnltk.draw.util import TextWidget
         >>> cn = TextWidget(c, 'test', color='red')
 
     Attribute values can also be changed after a canvas widget has

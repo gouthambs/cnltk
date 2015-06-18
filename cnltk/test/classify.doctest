@@ -10,8 +10,8 @@ Typically, labels are represented with strings (such as ``"health"``
 or ``"sports"``.  In NLTK, classifiers are defined using classes that
 implement the `ClassifyI` interface:
 
-    >>> import nltk
-    >>> nltk.usage(nltk.classify.ClassifierI)
+    >>> import cnltk
+    >>> cnltk.usage(nltk.classify.ClassifierI)
     ClassifierI supports the following operations:
       - self.classify(featureset)
       - self.classify_many(featuresets)
@@ -59,7 +59,7 @@ haven't done this yet for all tests).
 
 Test the Naive Bayes classifier:
 
-    >>> classifier = nltk.classify.NaiveBayesClassifier.train(train)
+    >>> classifier = cnltk.classify.NaiveBayesClassifier.train(train)
     >>> sorted(classifier.labels())
     ['x', 'y']
     >>> classifier.classify_many(test)
@@ -81,7 +81,7 @@ Test the Naive Bayes classifier:
 
 Test the Decision Tree classifier:
 
-    >>> classifier = nltk.classify.DecisionTreeClassifier.train(
+    >>> classifier = cnltk.classify.DecisionTreeClassifier.train(
     ...     train, entropy_cutoff=0,
     ...                                                support_cutoff=0)
     >>> sorted(classifier.labels())
@@ -102,7 +102,7 @@ Test the Decision Tree classifier:
 
 Test SklearnClassifier, which requires the scikit-learn package.
 
-    >>> from nltk.classify import SklearnClassifier
+    >>> from cnltk.classify import SklearnClassifier
     >>> from sklearn.naive_bayes import BernoulliNB
     >>> from sklearn.svm import SVC
     >>> train_data = [({"a": 4, "b": 1, "c": 0}, "ham"),
@@ -131,7 +131,7 @@ generate the same results.
     >>> def test_maxent(algorithm):
     ...     print('%11s' % algorithm, end=' ')
     ...     try:
-    ...         classifier = nltk.classify.MaxentClassifier.train(
+    ...         classifier = cnltk.classify.MaxentClassifier.train(
     ...                         train, algorithm, trace=0, max_iter=1000)
     ...     except Exception as e:
     ...         print('Error: %r' % e)
@@ -158,7 +158,7 @@ generate the same results.
 Regression tests for TypedMaxentFeatureEncoding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    >>> from nltk.classify import maxent
+    >>> from cnltk.classify import maxent
     >>> train = [
     ...     ({'a': 1, 'b': 1, 'c': 1}, 'y'),
     ...     ({'a': 5, 'b': 5, 'c': 5}, 'x'),

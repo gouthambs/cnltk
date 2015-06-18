@@ -5,9 +5,9 @@
 Logical Inference and Model Building
 ====================================
 
-    >>> from nltk import *
-    >>> from nltk.sem.drt import DrtParser
-    >>> from nltk.sem import logic
+    >>> from cnltk import *
+    >>> from cnltk.sem.drt import DrtParser
+    >>> from cnltk.sem import logic
     >>> logic._counter._value = 0
 
 ------------
@@ -18,7 +18,7 @@ Within the area of automated reasoning, first order theorem proving
 and model building (or model generation) have both received much
 attention, and have given rise to highly sophisticated techniques. We
 focus therefore on providing an NLTK interface to third party tools
-for these tasks.  In particular, the module ``nltk.inference`` can be
+for these tasks.  In particular, the module ``cnltk.inference`` can be
 used to access both theorem provers and model builders.
 
 ---------------------------------
@@ -26,16 +26,16 @@ NLTK Interface to Theorem Provers
 ---------------------------------
 
 The main class used to interface with a theorem prover is the ``Prover``
-class, found in ``nltk.api``.  The ``prove()`` method takes three optional
+class, found in ``cnltk.api``.  The ``prove()`` method takes three optional
 arguments: a goal, a list of assumptions, and a ``verbose`` boolean to
 indicate whether the proof should be printed to the console.  The proof goal
 and any assumptions need to be instances of the ``Expression`` class
-specified by ``nltk.sem.logic``.  There are currently three theorem provers
+specified by ``cnltk.sem.logic``.  There are currently three theorem provers
 included with NLTK: ``Prover9``, ``TableauProver``, and
 ``ResolutionProver``.  The first is an off-the-shelf prover, while the other
-two are written in Python and included in the ``nltk.inference`` package.
+two are written in Python and included in the ``cnltk.inference`` package.
 
-    >>> from nltk.sem import Expression
+    >>> from cnltk.sem import Expression
     >>> read_expr = Expression.fromstring
     >>> p1 = read_expr('man(socrates)')
     >>> p2 = read_expr('all x.(man(x) -> mortal(x))')
@@ -195,7 +195,7 @@ holds, where ``S`` is a possibly empty set of assumptions, and ``g``
 is a proof goal.
 
 As mentioned earlier, NLTK input to ``Prover9`` must be
-``Expression``\ s of ``nltk.sem.logic``. A ``Prover9`` instance is
+``Expression``\ s of ``cnltk.sem.logic``. A ``Prover9`` instance is
 initialized with a proof goal and, possibly, some assumptions. The
 ``prove()`` method attempts to find a proof of the goal, given the
 list of assumptions (in this case, none).
@@ -284,8 +284,8 @@ statements as new assumptions.
     >>> prover = Prover9Command(g)
     >>> prover.prove()
     False
-    >>> import nltk.data
-    >>> new = nltk.data.load('grammars/sample_grammars/background0.fol')
+    >>> import cnltk.data
+    >>> new = cnltk.data.load('grammars/sample_grammars/background0.fol')
     >>> for a in new:
     ...     print(a)
     all x.(boxerdog(x) -> dog(x))
@@ -363,7 +363,7 @@ NLTK Interface to Model Builders
 
 The top-level to model builders is parallel to that for
 theorem-provers. The ``ModelBuilder`` interface is located
-in ``nltk.inference.api``.  It is currently only implemented by
+in ``cnltk.inference.api``.  It is currently only implemented by
 ``Mace``, which interfaces with the Mace4 model builder.
 
 Typically we use a model builder to show that some set of formulas has

@@ -9,7 +9,7 @@
 
 import itertools
 
-from nltk.internals import overridden
+from cnltk.internals import overridden
 
 class ParserI(object):
     """

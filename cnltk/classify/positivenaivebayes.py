@@ -31,7 +31,7 @@ and then express the conditional probability as:
 
 Example:
 
-    >>> from nltk.classify import PositiveNaiveBayesClassifier
+    >>> from cnltk.classify import PositiveNaiveBayesClassifier
 
 Some sentences about sports:
 
@@ -77,9 +77,9 @@ What about this one?
 
 from collections import defaultdict
 
-from nltk.probability import FreqDist, DictionaryProbDist, ELEProbDist
+from cnltk.probability import FreqDist, DictionaryProbDist, ELEProbDist
 
-from nltk.classify.naivebayes import NaiveBayesClassifier
+from cnltk.classify.naivebayes import NaiveBayesClassifier
 
 ##//////////////////////////////////////////////////////
 ##  Positive Naive Bayes Classifier
@@ -164,7 +164,7 @@ class PositiveNaiveBayesClassifier(NaiveBayesClassifier):
 ##//////////////////////////////////////////////////////
 
 def demo():
-    from nltk.classify.util import partial_names_demo
+    from cnltk.classify.util import partial_names_demo
     classifier = partial_names_demo(PositiveNaiveBayesClassifier.train)
     classifier.show_most_informative_features()
 

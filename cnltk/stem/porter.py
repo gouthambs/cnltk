@@ -92,8 +92,8 @@ __docformat__ = 'plaintext'
 
 import re
 
-from nltk.stem.api import StemmerI
-from nltk.compat import python_2_unicode_compatible
+from cnltk.stem.api import StemmerI
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class PorterStemmer(StemmerI):
@@ -660,8 +660,8 @@ def demo():
     the Penn Treebank corpus.
     """
 
-    from nltk.corpus import treebank
-    from nltk import stem
+    from cnltk.corpus import treebank
+    from cnltk import stem
 
     stemmer = stem.PorterStemmer()
 

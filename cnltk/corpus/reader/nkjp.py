@@ -8,10 +8,10 @@
 import functools
 import os
 import tempfile
-from nltk import compat
+from cnltk import compat
 
-from nltk.corpus.reader.util import concat
-from nltk.corpus.reader.xmldocs import XMLCorpusReader, XMLCorpusView
+from cnltk.corpus.reader.util import concat
+from cnltk.corpus.reader.xmldocs import XMLCorpusReader, XMLCorpusView
 import re
 
 
@@ -40,7 +40,7 @@ class NKJPCorpusReader(XMLCorpusReader):
         Corpus reader designed to work with National Corpus of Polish.
         See http://nkjp.pl/ for more details about NKJP.
         use example:
-        import nltk
+        import cnltk
         import nkjp
         from nkjp import NKJPCorpusReader
         x = NKJPCorpusReader(root='/home/USER/nltk_data/corpora/nkjp/', fileids='') # obtain the whole corpus

@@ -17,7 +17,7 @@ Available Corpora
 =================
 
 Please see http://www.nltk.org/nltk_data/ for a complete list.
-Install corpora using nltk.download().
+Install corpora using cnltk.download().
 
 Corpus Reader Functions
 =======================
@@ -51,9 +51,9 @@ they return.  Some common examples, and their return types, are:
 - raw(): unprocessed corpus contents
 
 For example, to read a list of the words in the Brown Corpus, use
-``nltk.corpus.brown.words()``:
+``cnltk.corpus.brown.words()``:
 
-    >>> from nltk.corpus import brown
+    >>> from cnltk.corpus import brown
     >>> print(", ".join(brown.words()))
     The, Fulton, County, Grand, Jury, said, ...
 
@@ -61,9 +61,9 @@ For example, to read a list of the words in the Brown Corpus, use
 
 import re
 
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus.util import LazyCorpusLoader
-from nltk.corpus.reader import *
+from cnltk.tokenize import RegexpTokenizer
+from cnltk.corpus.util import LazyCorpusLoader
+from cnltk.corpus.reader import *
 
 abc = LazyCorpusLoader(
     'abc', PlaintextCorpusReader, r'(?!\.).*\.txt', encoding=[
@@ -288,8 +288,8 @@ if __name__ == '__main__':
 # ** this is for nose **
 # unload all corpus after tests
 def teardown_module(module=None):
-    import nltk.corpus
-    for name in dir(nltk.corpus):
-        obj = getattr(nltk.corpus, name, None)
+    import cnltk.corpus
+    for name in dir(cnltk.corpus):
+        obj = getattr(cnltk.corpus, name, None)
         if isinstance(obj, CorpusReader) and hasattr(obj, '_unload'):
             obj._unload()

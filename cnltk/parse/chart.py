@@ -41,15 +41,15 @@ import itertools
 import re
 import warnings
 
-from nltk import compat
-from nltk.tree import Tree
-from nltk.grammar import PCFG, is_nonterminal, is_terminal
-from nltk.util import OrderedDict
-from nltk.internals import raise_unorderable_types
-from nltk.compat import (total_ordering, python_2_unicode_compatible,
+from cnltk import compat
+from cnltk.tree import Tree
+from cnltk.grammar import PCFG, is_nonterminal, is_terminal
+from cnltk.util import OrderedDict
+from cnltk.internals import raise_unorderable_types
+from cnltk.compat import (total_ordering, python_2_unicode_compatible,
                          unicode_repr)
 
-from nltk.parse.api import ParserI
+from cnltk.parse.api import ParserI
 
 
 ########################################################################
@@ -1548,7 +1548,7 @@ class SteppingChartParser(ChartParser):
 ########################################################################
 
 def demo_grammar():
-    from nltk.grammar import CFG
+    from cnltk.grammar import CFG
     return CFG.fromstring("""
 S  -> NP VP
 PP -> "with" NP
@@ -1578,7 +1578,7 @@ def demo(choice=None,
     A demonstration of the chart parsers.
     """
     import sys, time
-    from nltk import nonterminals, Production, CFG
+    from cnltk import nonterminals, Production, CFG
 
     # The grammar for ChartParser and SteppingChartParser:
     grammar = demo_grammar()

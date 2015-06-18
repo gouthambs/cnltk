@@ -33,8 +33,8 @@ from __future__ import print_function, unicode_literals
 
 from collections import defaultdict
 
-from nltk.probability import FreqDist, DictionaryProbDist, ELEProbDist, sum_logs
-from nltk.classify.api import ClassifierI
+from cnltk.probability import FreqDist, DictionaryProbDist, ELEProbDist, sum_logs
+from cnltk.classify.api import ClassifierI
 
 ##//////////////////////////////////////////////////////
 ##  Naive Bayes Classifier
@@ -232,7 +232,7 @@ class NaiveBayesClassifier(ClassifierI):
 ##//////////////////////////////////////////////////////
 
 def demo():
-    from nltk.classify.util import names_demo
+    from cnltk.classify.util import names_demo
     classifier = names_demo(NaiveBayesClassifier.train)
     classifier.show_most_informative_features()
 

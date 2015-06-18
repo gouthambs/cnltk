@@ -18,10 +18,10 @@ import re
 import textwrap
 from collections import defaultdict
 from pprint import pprint, pformat
-from nltk.internals import ElementWrapper
-from nltk.corpus.reader import XMLCorpusReader, XMLCorpusView
-from nltk.compat import text_type, string_types, python_2_unicode_compatible
-from nltk.util import AbstractLazySequence, LazyMap
+from cnltk.internals import ElementWrapper
+from cnltk.corpus.reader import XMLCorpusReader, XMLCorpusView
+from cnltk.compat import text_type, string_types, python_2_unicode_compatible
+from cnltk.util import AbstractLazySequence, LazyMap
 
 
 def _pretty_longstring(defstr, prefix='', wrap_at=65):
@@ -404,7 +404,7 @@ class PrettyList(list):
     """
     Displays an abbreviated repr of only the first several elements, not the whole list.
     """
-    # from nltk.util
+    # from cnltk.util
     def __init__(self, *args, **kwargs):
         self._MAX_REPR_SIZE = kwargs.pop('maxReprSize', 60)
         self._BREAK_LINES = kwargs.pop('breakLines', False)
@@ -430,7 +430,7 @@ class PrettyLazyMap(LazyMap):
     """
     Displays an abbreviated repr of only the first several elements, not the whole list.
     """
-    # from nltk.util
+    # from cnltk.util
     _MAX_REPR_SIZE = 60
     def __repr__(self):
         """
@@ -451,7 +451,7 @@ class PrettyLazyMap(LazyMap):
 class FramenetCorpusReader(XMLCorpusReader):
     """A corpus reader for the Framenet Corpus.
 
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> fn.lu(3238).frame.lexUnit['glint.v'] is fn.lu(3238)
     True
     >>> fn.frame_by_name('Replacing') is fn.lus('replace.v')[0].frame
@@ -639,7 +639,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 
         Usage examples:
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> f = fn.frame_by_id(256)
         >>> f.ID
         256
@@ -680,7 +680,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 
         Usage examples:
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> f = fn.frame_by_name('Medical_specialties')
         >>> f.ID
         256
@@ -744,7 +744,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 
         Usage examples:
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> f = fn.frame(256)
         >>> f.name
         'Medical_specialties'
@@ -826,7 +826,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         frames because each time frames_by_lemma() is called, it has to
         search through ALL of the frame XML files in the db.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> fn.frames_by_lemma(r'(?i)a little')
         [<frame ID=189 name=Quantity>, <frame ID=2001 name=Degree>]
 
@@ -841,7 +841,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         ``fn_luid``. This is basically just a wrapper around the
         ``lu()`` function with "subCorpus" info excluded.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> PrettyDict(fn.lu_basic(256), breakLines=True)
         {'ID': 256,
          'POS': 'V',
@@ -872,7 +872,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 
         Usage examples:
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> fn.lu(256).name
         'foresee.v'
         >>> fn.lu(256).definition
@@ -1033,7 +1033,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         which takes several seconds. If this needed to be fast, it could be rewritten
         to traverse the neighboring relations on demand for each FE semtype.)
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> sum(1 for f in fn.frames() for fe in f.FE.values() if fe.semType)
         4241
         >>> fn.propagate_semtypes()
@@ -1077,7 +1077,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 
     def semtype(self, key):
         """
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> fn.semtype(233).name
         'Temperature'
         >>> fn.semtype(233).abbrev
@@ -1123,7 +1123,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         """
         Obtain details for a specific frame.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> len(fn.frames())
         1019
         >>> PrettyList(fn.frames(r'(?i)medical'), maxReprSize=0, breakLines=True)
@@ -1205,7 +1205,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         (Case-insensitivity is because casing of frame element names is not always 
         consistent across frames.)
         
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> fn.fes('Noise_maker')
         [<fe ID=6043 name=Noise_maker>]
         >>> sorted([(fe.frame.name,fe.name) for fe in fn.fes('sound')])
@@ -1233,7 +1233,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         """
         Obtain details for a specific lexical unit.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> len(fn.lus())
         11829
         >>> PrettyList(fn.lus(r'(?i)a little'), maxReprSize=0, breakLines=True)
@@ -1356,7 +1356,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         Details for a specific annotated document can be obtained using this
         class's annotated_document() function and pass it the value of the 'ID' field.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> len(fn.documents())
         78
         >>> set([x.corpname for x in fn.documents()])==set(['ANC', 'C-4', 'KBEval', \
@@ -1398,7 +1398,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         """
         Obtain a list of frame relation types.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> frts = list(fn.frame_relation_types())
         >>> isinstance(frts, list)
         True
@@ -1431,7 +1431,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         :return: A list of all of the frame relations in framenet
         :rtype: list(dict)
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> frels = fn.frame_relations()
         >>> isinstance(frels, list)
         True
@@ -1506,7 +1506,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         """
         Obtain a list of frame element relations.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> ferels = fn.fe_relations()
         >>> isinstance(ferels, list)
         True
@@ -1539,7 +1539,7 @@ class FramenetCorpusReader(XMLCorpusReader):
         """
         Obtain a list of semantic types.
 
-        >>> from nltk.corpus import framenet as fn
+        >>> from cnltk.corpus import framenet as fn
         >>> stypes = fn.semtypes()
         >>> len(stypes)
         73
@@ -1979,7 +1979,7 @@ class FramenetCorpusReader(XMLCorpusReader):
 # Demo
 #
 def demo():
-    from nltk.corpus import framenet as fn
+    from cnltk.corpus import framenet as fn
 
     #
     # It is not necessary to explicitly build the indexes by calling

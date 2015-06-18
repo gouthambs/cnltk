@@ -10,8 +10,8 @@
 Tokenizer Interface
 """
 
-from nltk.internals import overridden
-from nltk.tokenize.util import string_span_tokenize
+from cnltk.internals import overridden
+from cnltk.tokenize.util import string_span_tokenize
 
 class TokenizerI(object):
     """

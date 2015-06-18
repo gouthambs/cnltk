@@ -10,8 +10,8 @@
 Grammars can be parsed from strings.
 
     >>> from __future__ import print_function
-    >>> import nltk
-    >>> from nltk import grammar, parse
+    >>> import cnltk
+    >>> from cnltk import grammar, parse
     >>> g = """
     ... % start DP
     ... DP[AGR=?a] -> D[AGR=?a] N[AGR=?a]
@@ -43,7 +43,7 @@ inspect it as follows:
 
 .. _feat0cfg: http://nltk.svn.sourceforge.net/svnroot/nltk/trunk/nltk/data/grammars/feat0.fcfg
 
-    >>> nltk.data.show_cfg('grammars/book_grammars/feat0.fcfg')
+    >>> cnltk.data.show_cfg('grammars/book_grammars/feat0.fcfg')
     % start S
     # ###################
     # Grammar Productions
@@ -133,7 +133,7 @@ in Example 9.2, where the feature `num`:feat: has been assigned the value `sg`:f
 Feature structures in NLTK are ... Atomic feature values can be strings or
 integers.
 
-    >>> fs1 = nltk.FeatStruct(TENSE='past', NUM='sg')
+    >>> fs1 = cnltk.FeatStruct(TENSE='past', NUM='sg')
     >>> print(fs1)
     [ NUM   = 'sg'   ]
     [ TENSE = 'past' ]
@@ -141,14 +141,14 @@ integers.
 We can think of a feature structure as being like a Python dictionary,
 and access its values by indexing in the usual way.
 
-    >>> fs1 = nltk.FeatStruct(PER=3, NUM='pl', GND='fem')
+    >>> fs1 = cnltk.FeatStruct(PER=3, NUM='pl', GND='fem')
     >>> print(fs1['GND'])
     fem
 
 We can also define feature structures which have complex values, as
 discussed earlier.
 
-    >>> fs2 = nltk.FeatStruct(POS='N', AGR=fs1)
+    >>> fs2 = cnltk.FeatStruct(POS='N', AGR=fs1)
     >>> print(fs2)
     [       [ GND = 'fem' ] ]
     [ AGR = [ NUM = 'pl'  ] ]
@@ -163,17 +163,17 @@ discussed earlier.
     3
 
 Feature structures can also be constructed using the ``parse()``
-method of the ``nltk.FeatStruct`` class. Note that in this case, atomic
+method of the ``cnltk.FeatStruct`` class. Note that in this case, atomic
 feature values do not need to be enclosed in quotes.
 
-    >>> f1 = nltk.FeatStruct("[NUMBER = sg]")
-    >>> f2 = nltk.FeatStruct("[PERSON = 3]")
+    >>> f1 = cnltk.FeatStruct("[NUMBER = sg]")
+    >>> f2 = cnltk.FeatStruct("[PERSON = 3]")
     >>> print(nltk.unify(f1, f2))
     [ NUMBER = 'sg' ]
     [ PERSON = 3    ]
 
-    >>> f1 = nltk.FeatStruct("[A = [B = b, D = d]]")
-    >>> f2 = nltk.FeatStruct("[A = [C = c, D = d]]")
+    >>> f1 = cnltk.FeatStruct("[A = [B = b, D = d]]")
+    >>> f2 = cnltk.FeatStruct("[A = [C = c, D = d]]")
     >>> print(nltk.unify(f1, f2))
     [     [ B = 'b' ] ]
     [ A = [ C = 'c' ] ]
@@ -187,7 +187,7 @@ Feature structures are not inherently tied to linguistic objects; they are
 general purpose structures for representing knowledge. For example, we
 could encode information about a person in a feature structure:
 
-    >>> person01 = nltk.FeatStruct("[NAME=Lee, TELNO='01 27 86 42 96',AGE=33]")
+    >>> person01 = cnltk.FeatStruct("[NAME=Lee, TELNO='01 27 86 42 96',AGE=33]")
     >>> print(person01)
     [ AGE   = 33               ]
     [ NAME  = 'Lee'            ]
@@ -201,7 +201,7 @@ subsequent reference to that structure uses the notation
 ``->(1)``, as shown below.
 
 
-    >>> fs = nltk.FeatStruct("""[NAME=Lee, ADDRESS=(1)[NUMBER=74, STREET='rue Pascal'],
+    >>> fs = cnltk.FeatStruct("""[NAME=Lee, ADDRESS=(1)[NUMBER=74, STREET='rue Pascal'],
     ...                               SPOUSE=[NAME=Kim, ADDRESS->(1)]]""")
     >>> print(fs)
     [ ADDRESS = (1) [ NUMBER = 74           ] ]
@@ -214,7 +214,7 @@ subsequent reference to that structure uses the notation
 
 There can be any number of tags within a single feature structure.
 
-    >>> fs3 = nltk.FeatStruct("[A=(1)[B=b], C=(2)[], D->(1), E->(2)]")
+    >>> fs3 = cnltk.FeatStruct("[A=(1)[B=b], C=(2)[], D->(1), E->(2)]")
     >>> print(fs3)
     [ A = (1) [ B = 'b' ] ]
     [                     ]
@@ -222,8 +222,8 @@ There can be any number of tags within a single feature structure.
     [                     ]
     [ D -> (1)            ]
     [ E -> (2)            ]
-    >>> fs1 = nltk.FeatStruct(NUMBER=74, STREET='rue Pascal')
-    >>> fs2 = nltk.FeatStruct(CITY='Paris')
+    >>> fs1 = cnltk.FeatStruct(NUMBER=74, STREET='rue Pascal')
+    >>> fs2 = cnltk.FeatStruct(CITY='Paris')
     >>> print(nltk.unify(fs1, fs2))
     [ CITY   = 'Paris'      ]
     [ NUMBER = 74           ]
@@ -231,13 +231,13 @@ There can be any number of tags within a single feature structure.
 
 Unification is symmetric:
 
-    >>> nltk.unify(fs1, fs2) == nltk.unify(fs2, fs1)
+    >>> cnltk.unify(fs1, fs2) == cnltk.unify(fs2, fs1)
     True
 
 Unification is commutative:
 
-    >>> fs3 = nltk.FeatStruct(TELNO='01 27 86 42 96')
-    >>> nltk.unify(nltk.unify(fs1, fs2), fs3) == nltk.unify(fs1, nltk.unify(fs2, fs3))
+    >>> fs3 = cnltk.FeatStruct(TELNO='01 27 86 42 96')
+    >>> cnltk.unify(nltk.unify(fs1, fs2), fs3) == cnltk.unify(fs1, cnltk.unify(fs2, fs3))
     True
 
 Unification between `FS`:math:\ :subscript:`0` and `FS`:math:\
@@ -247,8 +247,8 @@ atom from the value of |pi| in `FS`:math:\ :subscript:`1`. In NLTK,
 this is implemented by setting the result of unification to be
 ``None``.
 
-    >>> fs0 = nltk.FeatStruct(A='a')
-    >>> fs1 = nltk.FeatStruct(A='b')
+    >>> fs0 = cnltk.FeatStruct(A='a')
+    >>> fs1 = cnltk.FeatStruct(A='b')
     >>> print(nltk.unify(fs0, fs1))
     None
 
@@ -257,7 +257,7 @@ things become really interesting.
 
 
 
-    >>> fs0 = nltk.FeatStruct("""[NAME=Lee,
+    >>> fs0 = cnltk.FeatStruct("""[NAME=Lee,
     ...                                ADDRESS=[NUMBER=74,
     ...                                         STREET='rue Pascal'],
     ...                                SPOUSE= [NAME=Kim,
@@ -275,7 +275,7 @@ things become really interesting.
     [           [ NAME    = 'Kim'                     ] ]
 
 
-    >>> fs1 = nltk.FeatStruct("[SPOUSE=[ADDRESS=[CITY=Paris]]]")
+    >>> fs1 = cnltk.FeatStruct("[SPOUSE=[ADDRESS=[CITY=Paris]]]")
     >>> print(nltk.unify(fs0, fs1))
     [ ADDRESS = [ NUMBER = 74           ]               ]
     [           [ STREET = 'rue Pascal' ]               ]
@@ -288,7 +288,7 @@ things become really interesting.
     [           [                                     ] ]
     [           [ NAME    = 'Kim'                     ] ]
 
-    >>> fs2 = nltk.FeatStruct("""[NAME=Lee, ADDRESS=(1)[NUMBER=74, STREET='rue Pascal'],
+    >>> fs2 = cnltk.FeatStruct("""[NAME=Lee, ADDRESS=(1)[NUMBER=74, STREET='rue Pascal'],
     ...                                SPOUSE=[NAME=Kim, ADDRESS->(1)]]""")
 
 
@@ -313,8 +313,8 @@ things become really interesting.
     [           [ NAME    = 'Kim' ]           ]
 
 
-    >>> fs1 = nltk.FeatStruct("[ADDRESS1=[NUMBER=74, STREET='rue Pascal']]")
-    >>> fs2 = nltk.FeatStruct("[ADDRESS1=?x, ADDRESS2=?x]")
+    >>> fs1 = cnltk.FeatStruct("[ADDRESS1=[NUMBER=74, STREET='rue Pascal']]")
+    >>> fs2 = cnltk.FeatStruct("[ADDRESS1=?x, ADDRESS2=?x]")
     >>> print(fs2)
     [ ADDRESS1 = ?x ]
     [ ADDRESS2 = ?x ]
@@ -509,7 +509,7 @@ instantiate their bound variable every time they are added to the
 chart.  To do this, we use a special subclass of `Chart`, called
 `InstantiateVarsChart`.
 
-    >>> from nltk.parse.featurechart import InstantiateVarsChart
+    >>> from cnltk.parse.featurechart import InstantiateVarsChart
     >>> cp = parse.load_parser('grammars/sample_grammars/bindop.fcfg', trace=1,
     ...                        chart_class=InstantiateVarsChart)
     >>> print(cp.grammar())
@@ -532,7 +532,7 @@ chart.  To do this, we use a special subclass of `Chart`, called
 
 A simple intransitive sentence:
 
-    >>> from nltk.sem import logic
+    >>> from cnltk.sem import logic
     >>> logic._counter._value = 100
 
     >>> trees = cp.parse('john barks'.split())

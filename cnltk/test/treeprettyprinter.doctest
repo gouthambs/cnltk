@@ -2,13 +2,13 @@
 .. For license information, see LICENSE.TXT
 
 ========================================================
- Unit tests for nltk.treeprettyprinter.TreePrettyPrinter
+ Unit tests for cnltk.treeprettyprinter.TreePrettyPrinter
 ========================================================
 
-    >>> from nltk.tree import Tree
-    >>> from nltk.treeprettyprinter import TreePrettyPrinter
+    >>> from cnltk.tree import Tree
+    >>> from cnltk.treeprettyprinter import TreePrettyPrinter
 
-Tree nr 2170 from nltk.corpus.treebank:
+Tree nr 2170 from cnltk.corpus.treebank:
 
     >>> tree = Tree.fromstring(
     ...     '(S (NP-SBJ (PRP I)) (VP (VBP feel) (ADJP-PRD (RB pretty) '

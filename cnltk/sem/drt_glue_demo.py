@@ -8,24 +8,24 @@
 # For license information, see LICENSE.TXT
 
 
-from nltk import compat  # this fixes tkinter imports for Python 2.x
+from cnltk import compat  # this fixes tkinter imports for Python 2.x
 
 try:
     from tkinter.font import Font
 
     from tkinter import (Button, Frame, IntVar, Label,
                          Listbox, Menu, Scrollbar, Tk)
-    from nltk.draw.util import CanvasFrame, ShowText
+    from cnltk.draw.util import CanvasFrame, ShowText
 
 except ImportError:
     """Ignore ImportError because tkinter might not be available."""
 
-from nltk.util import in_idle
-from nltk.tag import RegexpTagger
-from nltk.parse import MaltParser
-from nltk.sem.logic import Variable
-from nltk.sem.drt import DrsDrawer, DrtVariableExpression
-from nltk.sem.glue import DrtGlue
+from cnltk.util import in_idle
+from cnltk.tag import RegexpTagger
+from cnltk.parse import MaltParser
+from cnltk.sem.logic import Variable
+from cnltk.sem.drt import DrsDrawer, DrtVariableExpression
+from cnltk.sem.glue import DrtGlue
 
 
 class DrtGlueDemo(object):

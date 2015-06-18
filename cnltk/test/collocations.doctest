@@ -12,12 +12,12 @@ Collocations are expressions of multiple words which commonly co-occur. For
 example, the top ten bigram collocations in Genesis are listed below, as
 measured using Pointwise Mutual Information.
 
-    >>> import nltk
-    >>> from nltk.collocations import *
-    >>> bigram_measures = nltk.collocations.BigramAssocMeasures()
-    >>> trigram_measures = nltk.collocations.TrigramAssocMeasures()
+    >>> import cnltk
+    >>> from cnltk.collocations import *
+    >>> bigram_measures = cnltk.collocations.BigramAssocMeasures()
+    >>> trigram_measures = cnltk.collocations.TrigramAssocMeasures()
     >>> finder = BigramCollocationFinder.from_words(
-    ...     nltk.corpus.genesis.words('english-web.txt'))
+    ...     cnltk.corpus.genesis.words('english-web.txt'))
     >>> finder.nbest(bigram_measures.pmi, 10)  # doctest: +NORMALIZE_WHITESPACE
     [(u'Allon', u'Bacuth'), (u'Ashteroth', u'Karnaim'), (u'Ben', u'Ammi'),
      (u'En', u'Mishpat'), (u'Jegar', u'Sahadutha'), (u'Salt', u'Sea'),
@@ -38,7 +38,7 @@ bigrams which occur less than three times in the corpus:
 We may similarly find collocations among tagged words:
 
     >>> finder = BigramCollocationFinder.from_words(
-    ...     nltk.corpus.brown.tagged_words('ca01', tagset='universal'))
+    ...     cnltk.corpus.brown.tagged_words('ca01', tagset='universal'))
     >>> finder.nbest(bigram_measures.pmi, 5)  # doctest: +NORMALIZE_WHITESPACE
     [(('1,119', 'NUM'), ('votes', 'NOUN')),
      (('1962', 'NUM'), ("governor's", 'NOUN')),
@@ -49,7 +49,7 @@ We may similarly find collocations among tagged words:
 Or tags alone:
 
     >>> finder = BigramCollocationFinder.from_words(t for w, t in
-    ...     nltk.corpus.brown.tagged_words('ca01', tagset='universal'))
+    ...     cnltk.corpus.brown.tagged_words('ca01', tagset='universal'))
     >>> finder.nbest(bigram_measures.pmi, 10)  # doctest: +NORMALIZE_WHITESPACE
     [('PRT', 'VERB'), ('PRON', 'VERB'), ('ADP', 'DET'), ('.', 'PRON'), ('DET', 'ADJ'),
      ('CONJ', 'PRON'), ('ADP', 'NUM'), ('NUM', '.'), ('ADV', 'ADV'), ('VERB', 'ADV')]
@@ -57,10 +57,10 @@ Or tags alone:
 Or spanning intervening words:
 
     >>> finder = BigramCollocationFinder.from_words(
-    ...     nltk.corpus.genesis.words('english-web.txt'),
+    ...     cnltk.corpus.genesis.words('english-web.txt'),
     ...     window_size = 20)
     >>> finder.apply_freq_filter(2)
-    >>> ignored_words = nltk.corpus.stopwords.words('english')
+    >>> ignored_words = cnltk.corpus.stopwords.words('english')
     >>> finder.apply_word_filter(lambda w: len(w) < 3 or w.lower() in ignored_words)
     >>> finder.nbest(bigram_measures.likelihood_ratio, 10) # doctest: +NORMALIZE_WHITESPACE
     [(u'chief', u'chief'), (u'became', u'father'), (u'years', u'became'),
@@ -75,7 +75,7 @@ The collocations package provides collocation finders which by default
 consider all ngrams in a text as candidate collocations:
 
     >>> text = "I do not like green eggs and ham, I do not like them Sam I am!"
-    >>> tokens = nltk.wordpunct_tokenize(text)
+    >>> tokens = cnltk.wordpunct_tokenize(text)
     >>> finder = BigramCollocationFinder.from_words(tokens)
     >>> scored = finder.score_ngrams(bigram_measures.raw_freq)
     >>> sorted(bigram for bigram, score in scored)  # doctest: +NORMALIZE_WHITESPACE
@@ -87,8 +87,8 @@ consider all ngrams in a text as candidate collocations:
 We could otherwise construct the collocation finder from manually-derived
 FreqDists:
 
-    >>> word_fd = nltk.FreqDist(tokens)
-    >>> bigram_fd = nltk.FreqDist(nltk.bigrams(tokens))
+    >>> word_fd = cnltk.FreqDist(tokens)
+    >>> bigram_fd = cnltk.FreqDist(nltk.bigrams(tokens))
     >>> finder = BigramCollocationFinder(word_fd, bigram_fd)
     >>> scored == finder.score_ngrams(bigram_measures.raw_freq)
     True
@@ -221,7 +221,7 @@ wraps an association measures class, providing association measures which
 take contingency values as arguments, (n_ii, n_io, n_oi, n_oo) in the
 bigram case.
 
-   >>> from nltk.metrics import ContingencyMeasures
+   >>> from cnltk.metrics import ContingencyMeasures
    >>> cont_bigram_measures = ContingencyMeasures(bigram_measures)
    >>> print('%0.2f' % cont_bigram_measures.likelihood_ratio(8, 5, 24, 31740))
    95.29
@@ -238,7 +238,7 @@ the Spearman correlation coefficient.
 Ranks can be assigned to a sorted list of results trivially by assigning
 strictly increasing ranks to each result:
 
-    >>> from nltk.metrics.spearman import *
+    >>> from cnltk.metrics.spearman import *
     >>> results_list = ['item1', 'item2', 'item3', 'item4', 'item5']
     >>> print(list(ranks_from_sequence(results_list)))
     [('item1', 0), ('item2', 1), ('item3', 2), ('item4', 3), ('item5', 4)]

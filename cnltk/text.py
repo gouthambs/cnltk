@@ -21,12 +21,12 @@ from functools import reduce
 from itertools import islice
 import re
 
-from nltk.probability import FreqDist, LidstoneProbDist
-from nltk.probability import ConditionalFreqDist as CFD
-from nltk.util import tokenwrap, LazyConcatenation
-from nltk.metrics import f_measure, BigramAssocMeasures
-from nltk.collocations import BigramCollocationFinder
-from nltk.compat import python_2_unicode_compatible, text_type, Counter
+from cnltk.probability import FreqDist, LidstoneProbDist
+from cnltk.probability import ConditionalFreqDist as CFD
+from cnltk.util import tokenwrap, LazyConcatenation
+from cnltk.metrics import f_measure, BigramAssocMeasures
+from cnltk.collocations import BigramCollocationFinder
+from cnltk.compat import python_2_unicode_compatible, text_type, Counter
 
 
 class ContextIndex(object):
@@ -221,8 +221,8 @@ class TokenSearcher(object):
         The text is a list of tokens, and a regexp pattern to match
         a single token must be surrounded by angle brackets.  E.g.
 
-        >>> from nltk.text import TokenSearcher
-        >>> print('hack'); from nltk.book import text1, text5, text9
+        >>> from cnltk.text import TokenSearcher
+        >>> print('hack'); from cnltk.book import text1, text5, text9
         hack...
         >>> text5.findall("<.*><.*><bro>")
         you rule bro; telling you bro; u twizted bro
@@ -273,8 +273,8 @@ class Text(object):
     A ``Text`` is typically initialized from a given document or
     corpus.  E.g.:
 
-    >>> import nltk.corpus
-    >>> from nltk.text import Text
+    >>> import cnltk.corpus
+    >>> from cnltk.text import Text
     >>> moby = Text(nltk.corpus.gutenberg.words('melville-moby_dick.txt'))
 
     """
@@ -348,7 +348,7 @@ class Text(object):
             self._window_size = window_size
 
             #print("Building collocations list")
-            from nltk.corpus import stopwords
+            from cnltk.corpus import stopwords
             ignored_words = stopwords.words('english')
             finder = BigramCollocationFinder.from_words(self.tokens, window_size)
             finder.apply_freq_filter(2)
@@ -439,21 +439,21 @@ class Text(object):
 
         :param words: The words to be plotted
         :type words: list(str)
-        :seealso: nltk.draw.dispersion_plot()
+        :seealso: cnltk.draw.dispersion_plot()
         """
-        from nltk.draw import dispersion_plot
+        from cnltk.draw import dispersion_plot
         dispersion_plot(self, words)
 
     def plot(self, *args):
         """
         See documentation for FreqDist.plot()
-        :seealso: nltk.prob.FreqDist.plot()
+        :seealso: cnltk.prob.FreqDist.plot()
         """
         self.vocab().plot(*args)
 
     def vocab(self):
         """
-        :seealso: nltk.prob.FreqDist
+        :seealso: cnltk.prob.FreqDist
         """
         if "_vocab" not in self.__dict__:
             #print("Building vocabulary index...")
@@ -466,7 +466,7 @@ class Text(object):
         The text is a list of tokens, and a regexp pattern to match
         a single token must be surrounded by angle brackets.  E.g.
 
-        >>> print('hack'); from nltk.book import text1, text5, text9
+        >>> print('hack'); from cnltk.book import text1, text5, text9
         hack...
         >>> text5.findall("<.*><.*><bro>")
         you rule bro; telling you bro; u twizted bro
@@ -534,9 +534,9 @@ class TextCollection(Text):
     counting, concordancing, collocation discovery, etc.  Initialize a
     TextCollection as follows:
 
-    >>> import nltk.corpus
-    >>> from nltk.text import TextCollection
-    >>> print('hack'); from nltk.book import text1, text2, text3
+    >>> import cnltk.corpus
+    >>> from cnltk.text import TextCollection
+    >>> print('hack'); from cnltk.book import text1, text2, text3
     hack...
     >>> gutenberg = TextCollection(nltk.corpus.gutenberg)
     >>> mytexts = TextCollection([text1, text2, text3])
@@ -573,7 +573,7 @@ class TextCollection(Text):
         return self.tf(term, text) * self.idf(term)
 
 def demo():
-    from nltk.corpus import brown
+    from cnltk.corpus import brown
     text = Text(brown.words(categories='news'))
     print(text)
     print()

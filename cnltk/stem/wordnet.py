@@ -7,9 +7,9 @@
 # For license information, see LICENSE.TXT
 from __future__ import unicode_literals
 
-from nltk.corpus.reader.wordnet import NOUN
-from nltk.corpus import wordnet
-from nltk.compat import python_2_unicode_compatible
+from cnltk.corpus.reader.wordnet import NOUN
+from cnltk.corpus import wordnet
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class WordNetLemmatizer(object):
@@ -19,7 +19,7 @@ class WordNetLemmatizer(object):
     Lemmatize using WordNet's built-in morphy function.
     Returns the input word unchanged if it cannot be found in WordNet.
 
-        >>> from nltk.stem import WordNetLemmatizer
+        >>> from cnltk.stem import WordNetLemmatizer
         >>> wnl = WordNetLemmatizer()
         >>> print(wnl.lemmatize('dogs'))
         dog
@@ -46,7 +46,7 @@ class WordNetLemmatizer(object):
 
 # unload wordnet
 def teardown_module(module=None):
-    from nltk.corpus import wordnet
+    from cnltk.corpus import wordnet
     wordnet._unload()
 
 if __name__ == "__main__":

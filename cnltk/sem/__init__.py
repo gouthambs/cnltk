@@ -12,7 +12,7 @@ This package contains classes for representing semantic structure in
 formulas of first-order logic and for evaluating such formulas in
 set-theoretic models.
 
-    >>> from nltk.sem import logic
+    >>> from cnltk.sem import logic
     >>> logic._counter._value = 0
 
 The package has two main components:
@@ -31,7 +31,7 @@ of entities.
 The domain of discourse can be inferred from the valuation, and model
 is then created with domain and valuation as parameters.
 
-    >>> from nltk.sem import Valuation, Model
+    >>> from cnltk.sem import Valuation, Model
     >>> v = [('adam', 'b1'), ('betty', 'g1'), ('fido', 'd1'),
     ... ('girl', set(['g1', 'g2'])), ('boy', set(['b1', 'b2'])),
     ... ('dog', set(['d1'])),
@@ -41,21 +41,21 @@ is then created with domain and valuation as parameters.
     >>> m = Model(dom, val)
 """
 
-from nltk.sem.util import (parse_sents, interpret_sents, evaluate_sents,
+from cnltk.sem.util import (parse_sents, interpret_sents, evaluate_sents,
                            root_semrep)
-from nltk.sem.evaluate import (Valuation, Assignment, Model, Undefined,
+from cnltk.sem.evaluate import (Valuation, Assignment, Model, Undefined,
                                is_rel, set2rel, arity, read_valuation)
-from nltk.sem.logic import (boolean_ops, binding_ops, equality_preds,
+from cnltk.sem.logic import (boolean_ops, binding_ops, equality_preds,
                            read_logic, Variable, Expression,
                            ApplicationExpression, LogicalExpressionException)
-from nltk.sem.skolemize import skolemize
-from nltk.sem.lfg import FStructure
-from nltk.sem.relextract import (extract_rels, rtuple, clause)
-from nltk.sem.boxer import Boxer
-from nltk.sem.drt import DrtExpression, DRS
+from cnltk.sem.skolemize import skolemize
+from cnltk.sem.lfg import FStructure
+from cnltk.sem.relextract import (extract_rels, rtuple, clause)
+from cnltk.sem.boxer import Boxer
+from cnltk.sem.drt import DrtExpression, DRS
 
-# from nltk.sem.glue import Glue
-# from nltk.sem.hole import HoleSemantics
-# from nltk.sem.cooper_storage import CooperStore
+# from cnltk.sem.glue import Glue
+# from cnltk.sem.hole import HoleSemantics
+# from cnltk.sem.cooper_storage import CooperStore
 
 # don't import chat80 as its names are too generic

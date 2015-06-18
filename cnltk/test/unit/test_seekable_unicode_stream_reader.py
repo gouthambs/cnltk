@@ -7,7 +7,7 @@ from __future__ import absolute_import, unicode_literals
 import random
 import functools
 from io import BytesIO
-from nltk.corpus.reader import SeekableUnicodeStreamReader
+from cnltk.corpus.reader import SeekableUnicodeStreamReader
 
 def check_reader(unicode_string, encoding, n=1000):
     bytestr = unicode_string.encode(encoding)

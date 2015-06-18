@@ -19,11 +19,11 @@ from __future__ import print_function, unicode_literals
 
 import re
 
-from nltk.grammar import Production, Nonterminal
-from nltk.probability import ProbabilisticMixIn
-from nltk.util import slice_bounds
-from nltk.compat import string_types, python_2_unicode_compatible, unicode_repr
-from nltk.internals import raise_unorderable_types
+from cnltk.grammar import Production, Nonterminal
+from cnltk.probability import ProbabilisticMixIn
+from cnltk.util import slice_bounds
+from cnltk.compat import string_types, python_2_unicode_compatible, unicode_repr
+from cnltk.internals import raise_unorderable_types
 
 ######################################################################
 ## Trees
@@ -39,7 +39,7 @@ class Tree(list):
     where a leaf is a basic (non-tree) value; and a subtree is a
     nested Tree.
 
-        >>> from nltk.tree import Tree
+        >>> from cnltk.tree import Tree
         >>> print(Tree(1, [2, Tree(3, [4]), 5]))
         (1 2 (3 4) 5)
         >>> vp = Tree('VP', [Tree('V', ['saw']),
@@ -450,7 +450,7 @@ class Tree(list):
         :param parentChar: A string used to separate the node representation from its vertical annotation
         :type  parentChar: str
         """
-        from nltk.treetransforms import chomsky_normal_form
+        from cnltk.treetransforms import chomsky_normal_form
         chomsky_normal_form(self, factor, horzMarkov, vertMarkov, childChar, parentChar)
 
     def un_chomsky_normal_form(self, expandUnary = True, childChar = "|", parentChar = "^", unaryChar = "+"):
@@ -472,7 +472,7 @@ class Tree(list):
         :param unaryChar: A string joining two non-terminals in a unary production (default = "+")
         :type  unaryChar: str
         """
-        from nltk.treetransforms import un_chomsky_normal_form
+        from cnltk.treetransforms import un_chomsky_normal_form
         un_chomsky_normal_form(self, expandUnary, childChar, parentChar, unaryChar)
 
     def collapse_unary(self, collapsePOS = False, collapseRoot = False, joinChar = "+"):
@@ -494,7 +494,7 @@ class Tree(list):
         :param joinChar: A string used to connect collapsed node values (default = "+")
         :type  joinChar: str
         """
-        from nltk.treetransforms import collapse_unary
+        from cnltk.treetransforms import collapse_unary
         collapse_unary(self, collapsePOS, collapseRoot, joinChar)
 
     #////////////////////////////////////////////////////////////
@@ -682,16 +682,16 @@ class Tree(list):
         """
         Open a new window containing a graphical diagram of this tree.
         """
-        from nltk.draw.tree import draw_trees
+        from cnltk.draw.tree import draw_trees
         draw_trees(self)
 
     def pretty_print(self, sentence=None, highlight=(), stream=None, **kwargs):
         """
         Pretty-print this tree as ASCII or Unicode art.
         For explanation of the arguments, see the documentation for
-        `nltk.treeprettyprinter.TreePrettyPrinter`.
+        `cnltk.treeprettyprinter.TreePrettyPrinter`.
         """
-        from nltk.treeprettyprinter import TreePrettyPrinter
+        from cnltk.treeprettyprinter import TreePrettyPrinter
         print(TreePrettyPrinter(self, sentence, highlight).text(**kwargs),
               file=stream)
         
@@ -709,9 +709,9 @@ class Tree(list):
         import base64
         import subprocess
         import tempfile
-        from nltk.draw.tree import tree_to_treesegment
-        from nltk.draw.util import CanvasFrame
-        from nltk.internals import find_binary
+        from cnltk.draw.tree import tree_to_treesegment
+        from cnltk.draw.util import CanvasFrame
+        from cnltk.internals import find_binary
         _canvas_frame = CanvasFrame()
         widget = tree_to_treesegment(_canvas_frame.canvas(), self)
         _canvas_frame.add_widget(widget)
@@ -1533,7 +1533,7 @@ def demo():
     and shows the results of calling several of their methods.
     """
 
-    from nltk import Tree, ProbabilisticTree
+    from cnltk import Tree, ProbabilisticTree
 
     # Demonstrate tree parsing.
     s = '(S (NP (DT the) (NN cat)) (VP (VBD ate) (NP (DT a) (NN cookie))))'

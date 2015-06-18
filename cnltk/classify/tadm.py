@@ -9,8 +9,8 @@ from __future__ import print_function, unicode_literals
 import sys
 import subprocess
 
-from nltk import compat
-from nltk.internals import find_binary
+from cnltk import compat
+from cnltk.internals import find_binary
 try:
     import numpy
 except ImportError:
@@ -90,13 +90,13 @@ def call_tadm(args):
         raise OSError('tadm command failed!')
 
 def names_demo():
-    from nltk.classify.util import names_demo
-    from nltk.classify.maxent import TadmMaxentClassifier
+    from cnltk.classify.util import names_demo
+    from cnltk.classify.maxent import TadmMaxentClassifier
     classifier = names_demo(TadmMaxentClassifier.train)
 
 def encoding_demo():
     import sys
-    from nltk.classify.maxent import TadmEventMaxentFeatureEncoding
+    from cnltk.classify.maxent import TadmEventMaxentFeatureEncoding
     tokens = [({'f0':1, 'f1':1, 'f3':1}, 'A'),
               ({'f0':1, 'f2':1, 'f4':1}, 'B'),
               ({'f0':2, 'f2':1, 'f3':1, 'f4':1}, 'A')]

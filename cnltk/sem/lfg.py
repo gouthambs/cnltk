@@ -7,8 +7,8 @@
 # For license information, see LICENSE.TXT
 from __future__ import print_function, division, unicode_literals
 
-from nltk.internals import Counter
-from nltk.compat import python_2_unicode_compatible
+from cnltk.internals import Counter
+from cnltk.compat import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
@@ -36,7 +36,7 @@ class FStructure(dict):
         return glue_dict.to_glueformula_list(depgraph)
 
     def to_depgraph(self, rel=None):
-        from nltk.parse.dependencygraph import DependencyGraph
+        from cnltk.parse.dependencygraph import DependencyGraph
         depgraph = DependencyGraph()
         nodes = depgraph.nodes
 
@@ -171,7 +171,7 @@ class FStructure(dict):
 
 
 def demo_read_depgraph():
-    from nltk.parse.dependencygraph import DependencyGraph
+    from cnltk.parse.dependencygraph import DependencyGraph
     dg1 = DependencyGraph("""\
 Esso       NNP     2       SUB
 said       VBD     0       ROOT

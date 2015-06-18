@@ -39,7 +39,7 @@ structures.  In the feature structure resulting from unification, any
 modifications to a reentrant feature value will be visible using any
 of its feature paths.
 
-Feature structure variables are encoded using the ``nltk.sem.Variable``
+Feature structure variables are encoded using the ``cnltk.sem.Variable``
 class.  The variables' values are tracked using a bindings
 dictionary, which maps variables to their values.  When two feature
 structures are unified, a fresh bindings dictionary is created to
@@ -55,13 +55,13 @@ aliased.  This is encoded by binding one variable to the other.
 
 Lightweight Feature Structures
 ==============================
-Many of the functions defined by ``nltk.featstruct`` can be applied
+Many of the functions defined by ``cnltk.featstruct`` can be applied
 directly to simple Python dictionaries and lists, rather than to
 full-fledged ``FeatDict`` and ``FeatList`` objects.  In other words,
 Python ``dicts`` and ``lists`` can be used as "light-weight" feature
 structures.
 
-    >>> from nltk.featstruct import unify
+    >>> from cnltk.featstruct import unify
     >>> unify(dict(x=1, y=dict()), dict(a='a', y=dict(b='b')))  # doctest: +SKIP
     {'y': {'b': 'b'}, 'x': 1, 'a': 'a'}
 
@@ -93,10 +93,10 @@ from __future__ import print_function, unicode_literals, division
 import re
 import copy
 
-from nltk.internals import read_str, raise_unorderable_types
-from nltk.sem.logic import (Variable, Expression, SubstituteBindingsI,
+from cnltk.internals import read_str, raise_unorderable_types
+from cnltk.sem.logic import (Variable, Expression, SubstituteBindingsI,
                             LogicParser, LogicalExpressionException)
-from nltk.compat import (string_types, integer_types, total_ordering,
+from cnltk.compat import (string_types, integer_types, total_ordering,
                          python_2_unicode_compatible, unicode_repr)
 
 ######################################################################
@@ -482,19 +482,19 @@ class FeatStruct(SubstituteBindingsI):
     ##////////////////////////////////////////////////////////////
 
     def substitute_bindings(self, bindings):
-        """:see: ``nltk.featstruct.substitute_bindings()``"""
+        """:see: ``cnltk.featstruct.substitute_bindings()``"""
         return substitute_bindings(self, bindings)
 
     def retract_bindings(self, bindings):
-        """:see: ``nltk.featstruct.retract_bindings()``"""
+        """:see: ``cnltk.featstruct.retract_bindings()``"""
         return retract_bindings(self, bindings)
 
     def variables(self):
-        """:see: ``nltk.featstruct.find_variables()``"""
+        """:see: ``cnltk.featstruct.find_variables()``"""
         return find_variables(self)
 
     def rename_variables(self, vars=None, used_vars=(), new_vars=None):
-        """:see: ``nltk.featstruct.rename_variables()``"""
+        """:see: ``cnltk.featstruct.rename_variables()``"""
         return rename_variables(self, vars, used_vars, new_vars)
 
     def remove_variables(self):
@@ -1146,7 +1146,7 @@ def rename_variables(fstruct, vars=None, used_vars=(), new_vars=None,
     structures, simply apply rename_variables to each one, using
     the same dictionary:
 
-        >>> from nltk.featstruct import FeatStruct
+        >>> from cnltk.featstruct import FeatStruct
         >>> fstruct1 = FeatStruct('[subj=[agr=[gender=?y]], obj=[agr=[gender=?y]]]')
         >>> fstruct2 = FeatStruct('[subj=[agr=[number=?z,gender=?y]], obj=[agr=[number=?z,gender=?y]]]')
         >>> new_vars = {}  # Maps old vars to alpha-renamed vars
@@ -1242,7 +1242,7 @@ def _remove_variables(fstruct, fs_class, visited):
 @python_2_unicode_compatible
 class _UnificationFailure(object):
     def __repr__(self):
-        return 'nltk.featstruct.UnificationFailure'
+        return 'cnltk.featstruct.UnificationFailure'
 
 UnificationFailure = _UnificationFailure()
 """A unique value used to indicate unification failure.  It can be
@@ -1284,7 +1284,7 @@ def unify(fstruct1, fstruct2, bindings=None, trace=False,
     assumed to be unbound.  I.e., ``bindings`` defaults to an
     empty dict.
 
-        >>> from nltk.featstruct import FeatStruct
+        >>> from cnltk.featstruct import FeatStruct
         >>> FeatStruct('[a=?x]').unify(FeatStruct('[b=?x]'))
         [a=?x, b=?x2]
 

@@ -11,7 +11,7 @@ from nose.plugins import builtin
 NLTK_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, NLTK_ROOT)
 
-NLTK_TEST_DIR = os.path.join(NLTK_ROOT, 'nltk')
+NLTK_TEST_DIR = os.path.join(NLTK_ROOT, 'cnltk')
 
 if __name__ == '__main__':
     # there shouldn't be import from NLTK for coverage to work properly
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #
     #    python runtests.py semantics.doctest
     #    python runtests.py --with-id -v
-    #    python runtests.py --with-id -v nltk.featstruct
+    #    python runtests.py --with-id -v cnltk.featstruct
 
     args = sys.argv[1:]
     if not args:

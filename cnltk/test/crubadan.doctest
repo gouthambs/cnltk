@@ -7,7 +7,7 @@ Crubadan Corpus Reader
 Crubadan is an NLTK corpus reader for ngram files provided
 by the Crubadan project. It supports several languages.
 
-    >>> from nltk.corpus import crubadan
+    >>> from cnltk.corpus import crubadan
     >>> crubadan.langs() # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
     ['abk', 'abn',..., 'zpa', 'zul']
 

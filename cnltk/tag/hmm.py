@@ -78,15 +78,15 @@ try:
 except ImportError:
     pass
 
-from nltk.probability import (FreqDist, ConditionalFreqDist,
+from cnltk.probability import (FreqDist, ConditionalFreqDist,
                               ConditionalProbDist, DictionaryProbDist,
                               DictionaryConditionalProbDist,
                               LidstoneProbDist, MutableProbDist,
                               MLEProbDist, RandomProbDist)
-from nltk.metrics import accuracy
-from nltk.util import LazyMap, unique_list
-from nltk.compat import python_2_unicode_compatible, izip, imap
-from nltk.tag.api import TaggerI
+from cnltk.metrics import accuracy
+from cnltk.util import LazyMap, unique_list
+from cnltk.compat import python_2_unicode_compatible, izip, imap
+from cnltk.tag.api import TaggerI
 
 
 _TEXT = 0  # index of text in a tuple
@@ -1174,7 +1174,7 @@ def demo():
         print()
 
 def load_pos(num_sents):
-    from nltk.corpus import brown
+    from cnltk.corpus import brown
 
     sentences = brown.tagged_sents(categories='news')[:num_sents]
 

@@ -5,8 +5,8 @@
 # URL: <http://nltk.org/>
 # For license information, see LICENSE.TXT
 from __future__ import unicode_literals
-from nltk.internals import raise_unorderable_types
-from nltk.compat import (total_ordering, python_2_unicode_compatible,
+from cnltk.internals import raise_unorderable_types
+from cnltk.compat import (total_ordering, python_2_unicode_compatible,
                          unicode_repr)
 
 @total_ordering

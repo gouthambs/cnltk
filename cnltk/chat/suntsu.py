@@ -15,7 +15,7 @@ http://www.gutenberg.org/
 """
 from __future__ import print_function
 
-from nltk.chat.util import Chat, reflections
+from cnltk.chat.util import Chat, reflections
 
 pairs = (
 

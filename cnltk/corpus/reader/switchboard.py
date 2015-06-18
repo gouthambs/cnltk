@@ -7,11 +7,11 @@
 from __future__ import unicode_literals
 import re
 
-from nltk.tag import str2tuple, map_tag
-from nltk import compat
+from cnltk.tag import str2tuple, map_tag
+from cnltk import compat
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 
 @compat.python_2_unicode_compatible

@@ -6,7 +6,7 @@
 # URL: <http://nltk.org/>
 # For license information, see LICENSE.TXT
 
-from nltk.sem.logic import (AllExpression, AndExpression, ApplicationExpression,
+from cnltk.sem.logic import (AllExpression, AndExpression, ApplicationExpression,
                             EqualityExpression, ExistsExpression, IffExpression,
                             ImpExpression, NegatedExpression, OrExpression,
                             VariableExpression, skolem_function, unique_variable)

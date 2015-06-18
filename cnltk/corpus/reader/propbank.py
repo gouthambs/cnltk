@@ -9,13 +9,13 @@ from __future__ import unicode_literals
 import re
 from xml.etree import ElementTree
 
-from nltk import compat
-from nltk.tree import Tree
-from nltk.internals import raise_unorderable_types
-from nltk.compat import total_ordering
+from cnltk import compat
+from cnltk.tree import Tree
+from cnltk.internals import raise_unorderable_types
+from cnltk.compat import total_ordering
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class PropbankCorpusReader(CorpusReader):
     """

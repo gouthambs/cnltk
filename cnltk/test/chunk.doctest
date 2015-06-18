@@ -5,10 +5,10 @@
  Chunking
 ==========
 
-    >>> from nltk.chunk import *
-    >>> from nltk.chunk.util import *
-    >>> from nltk.chunk.regexp import *
-    >>> from nltk import Tree
+    >>> from cnltk.chunk import *
+    >>> from cnltk.chunk.util import *
+    >>> from cnltk.chunk.regexp import *
+    >>> from cnltk import Tree
 
     >>> tagged_text = "[ The/DT cat/NN ] sat/VBD on/IN [ the/DT mat/NN ] [ the/DT dog/NN ] chewed/VBD ./."
     >>> gold_chunked_text = tagstr2tree(tagged_text)

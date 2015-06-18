@@ -18,13 +18,13 @@ import codecs
 try: from xml.etree import cElementTree as ElementTree
 except ImportError: from xml.etree import ElementTree
 
-from nltk import compat
-from nltk.data import SeekableUnicodeStreamReader
-from nltk.tokenize import WordPunctTokenizer
-from nltk.internals import ElementWrapper
+from cnltk import compat
+from cnltk.data import SeekableUnicodeStreamReader
+from cnltk.tokenize import WordPunctTokenizer
+from cnltk.internals import ElementWrapper
 
-from nltk.corpus.reader.api import CorpusReader
-from nltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import CorpusReader
+from cnltk.corpus.reader.util import *
 
 class XMLCorpusReader(CorpusReader):
     """

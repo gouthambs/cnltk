@@ -34,16 +34,16 @@ from optparse import OptionParser
 import tempfile
 from functools import reduce
 
-from nltk.internals import Counter, find_binary
+from cnltk.internals import Counter, find_binary
 
-from nltk.sem.logic import (ExpectedMoreTokensException, LogicalExpressionException,
+from cnltk.sem.logic import (ExpectedMoreTokensException, LogicalExpressionException,
                             UnexpectedTokenException, Variable)
 
-from nltk.sem.drt import (DRS, DrtApplicationExpression, DrtEqualityExpression,
+from cnltk.sem.drt import (DRS, DrtApplicationExpression, DrtEqualityExpression,
                           DrtNegatedExpression, DrtOrExpression, DrtParser,
                           DrtProposition, DrtTokens, DrtVariableExpression)
 
-from nltk.compat import python_2_unicode_compatible
+from cnltk.compat import python_2_unicode_compatible
 
 class Boxer(object):
     """

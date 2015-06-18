@@ -91,7 +91,7 @@ def binary_distance(label1, label2):
 
     0.0 if the labels are identical, 1.0 if they are different.
 
-    >>> from nltk.metrics import binary_distance
+    >>> from cnltk.metrics import binary_distance
     >>> binary_distance(1,1)
     0.0
 
@@ -113,7 +113,7 @@ def masi_distance(label1, label2):
     """Distance metric that takes into account partial agreement when multiple
     labels are assigned.
 
-    >>> from nltk.metrics import masi_distance
+    >>> from cnltk.metrics import masi_distance
     >>> masi_distance(set([1, 2]), set([1, 2, 3, 4]))
     0.665...
 
@@ -140,7 +140,7 @@ def masi_distance(label1, label2):
 def interval_distance(label1,label2):
     """Krippendorff's interval distance metric
 
-    >>> from nltk.metrics import interval_distance
+    >>> from cnltk.metrics import interval_distance
     >>> interval_distance(1,10)
     81
 

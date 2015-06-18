@@ -54,7 +54,7 @@ Feature detectors are typically applied to each token before it is fed
 to the classifier:
 
     >>> # Classify each Gutenberg document.
-    >>> from nltk.corpus import gutenberg
+    >>> from cnltk.corpus import gutenberg
     >>> for fileid in gutenberg.fileids(): # doctest: +SKIP
     ...     doc = gutenberg.words(fileid) # doctest: +SKIP
     ...     print fileid, classifier.classify(document_features(doc)) # doctest: +SKIP
@@ -82,17 +82,17 @@ examples, known as the "training set".  Training sets are represented
 as lists of ``(featuredict, label)`` tuples.
 """
 
-from nltk.classify.api import ClassifierI, MultiClassifierI
-from nltk.classify.megam import config_megam, call_megam
-from nltk.classify.weka import WekaClassifier, config_weka
-from nltk.classify.naivebayes import NaiveBayesClassifier
-from nltk.classify.positivenaivebayes import PositiveNaiveBayesClassifier
-from nltk.classify.decisiontree import DecisionTreeClassifier
-from nltk.classify.rte_classify import rte_classifier, rte_features, RTEFeatureExtractor
-from nltk.classify.util import accuracy, apply_features, log_likelihood
-from nltk.classify.scikitlearn import SklearnClassifier
-from nltk.classify.maxent import (MaxentClassifier, BinaryMaxentFeatureEncoding,
+from cnltk.classify.api import ClassifierI, MultiClassifierI
+from cnltk.classify.megam import config_megam, call_megam
+from cnltk.classify.weka import WekaClassifier, config_weka
+from cnltk.classify.naivebayes import NaiveBayesClassifier
+from cnltk.classify.positivenaivebayes import PositiveNaiveBayesClassifier
+from cnltk.classify.decisiontree import DecisionTreeClassifier
+from cnltk.classify.rte_classify import rte_classifier, rte_features, RTEFeatureExtractor
+from cnltk.classify.util import accuracy, apply_features, log_likelihood
+from cnltk.classify.scikitlearn import SklearnClassifier
+from cnltk.classify.maxent import (MaxentClassifier, BinaryMaxentFeatureEncoding,
                                   TypedMaxentFeatureEncoding,
                                   ConditionalExponentialClassifier)
-from nltk.classify.senna import Senna
-from nltk.classify.textcat import TextCat
+from cnltk.classify.senna import Senna
+from cnltk.classify.textcat import TextCat

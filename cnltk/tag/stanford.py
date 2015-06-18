@@ -22,9 +22,9 @@ import tempfile
 from subprocess import PIPE
 import warnings
 
-from nltk.internals import find_file, find_jar, config_java, java, _java_options
-from nltk.tag.api import TaggerI
-from nltk import compat
+from cnltk.internals import find_file, find_jar, config_java, java, _java_options
+from cnltk.tag.api import TaggerI
+from cnltk import compat
 
 _stanford_url = 'http://nlp.stanford.edu/software'
 
@@ -117,7 +117,7 @@ class StanfordPOSTagger(StanfordTagger):
 
     Example:
 
-        >>> from nltk.tag import StanfordPOSTagger
+        >>> from cnltk.tag import StanfordPOSTagger
         >>> st = StanfordPOSTagger('english-bidirectional-distsim.tagger') # doctest: +SKIP
         >>> st.tag('What is the airspeed of an unladen swallow ?'.split()) # doctest: +SKIP
         [('What', 'WP'), ('is', 'VBZ'), ('the', 'DT'), ('airspeed', 'NN'), ('of', 'IN'), ('an', 'DT'), ('unladen', 'JJ'), ('swallow', 'VB'), ('?', '.')]
@@ -146,7 +146,7 @@ class StanfordNERTagger(StanfordTagger):
 
     Example:
 
-        >>> from nltk.tag import StanfordNERTagger
+        >>> from cnltk.tag import StanfordNERTagger
         >>> st = StanfordNERTagger('english.all.3class.distsim.crf.ser.gz') # doctest: +SKIP
         >>> st.tag('Rami Eid is studying at Stony Brook University in NY'.split()) # doctest: +SKIP
         [('Rami', 'PERSON'), ('Eid', 'PERSON'), ('is', 'O'), ('studying', 'O'),

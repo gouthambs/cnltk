@@ -17,12 +17,12 @@ windows IDLE GUI.
 """
 from __future__ import print_function
 
-from nltk.chat.util import Chat
-from nltk.chat.eliza import eliza_chat
-from nltk.chat.iesha import iesha_chat
-from nltk.chat.rude import rude_chat
-from nltk.chat.suntsu import suntsu_chat
-from nltk.chat.zen import zen_chat
+from cnltk.chat.util import Chat
+from cnltk.chat.eliza import eliza_chat
+from cnltk.chat.iesha import iesha_chat
+from cnltk.chat.rude import rude_chat
+from cnltk.chat.suntsu import suntsu_chat
+from cnltk.chat.zen import zen_chat
 
 bots = [
     (eliza_chat,  'Eliza (psycho-babble)'),

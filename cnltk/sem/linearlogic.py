@@ -7,9 +7,9 @@
 # For license information, see LICENSE.TXT
 from __future__ import print_function, unicode_literals
 
-from nltk.internals import Counter
-from nltk.compat import string_types, python_2_unicode_compatible
-from nltk.sem.logic import LogicParser, APP
+from cnltk.internals import Counter
+from cnltk.compat import string_types, python_2_unicode_compatible
+from cnltk.sem.logic import LogicParser, APP
 
 _counter = Counter()
 

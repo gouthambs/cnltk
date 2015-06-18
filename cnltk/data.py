@@ -20,7 +20,7 @@ supported:
 
   - ``nltk:path``: Specifies the file stored in the NLTK data
     package at *path*.  NLTK will search for these files in the
-    directories specified by ``nltk.data.path``.
+    directories specified by ``cnltk.data.path``.
 
 If no protocol is specified, then the default protocol ``nltk:`` will
 be used.
@@ -54,10 +54,10 @@ except ImportError:
     import pickle
 
 # this import should be more specific:
-import nltk
+import cnltk
 
-from nltk.compat import py3_data, add_py3_data
-from nltk.compat import text_type, string_types, BytesIO, urlopen, url2pathname
+from cnltk.compat import py3_data, add_py3_data
+from cnltk.compat import text_type, string_types, BytesIO, urlopen, url2pathname
 
 
 ######################################################################
@@ -539,7 +539,7 @@ def find(resource_name, paths=None):
         extension, then it is assumed to be a zipfile; and the
         remaining path components are used to look inside the zipfile.
 
-      - If any element of ``nltk.data.path`` has a ``.zip`` extension,
+      - If any element of ``cnltk.data.path`` has a ``.zip`` extension,
         then it is assumed to be a zipfile.
 
       - If a given resource name that does not contain any zipfile
@@ -564,7 +564,7 @@ def find(resource_name, paths=None):
     """
     resource_name = normalize_resource_name(resource_name, True)
 
-    # Resolve default paths at runtime in-case the user overrides nltk.data.path
+    # Resolve default paths at runtime in-case the user overrides cnltk.data.path
     if paths is None:
         paths = path
 
@@ -615,7 +615,7 @@ def find(resource_name, paths=None):
     # Display a friendly error message if the resource wasn't found:
     msg = textwrap.fill(
         'Resource %r not found.  Please use the NLTK Downloader to '
-        'obtain the resource:  >>> nltk.download()' %
+        'obtain the resource:  >>> cnltk.download()' %
         (resource_name,), initial_indent='  ', subsequent_indent='  ',
         width=66)
     msg += '\n  Searched in:' + ''.join('\n    - %r' % d for d in paths)
@@ -670,11 +670,11 @@ FORMATS = {
     'pcfg': "A probabilistic CFG.",
     'fcfg': "A feature CFG.",
     'fol': "A list of first order logic expressions, parsed with "
-            "nltk.sem.logic.Expression.fromstring.",
+            "cnltk.sem.logic.Expression.fromstring.",
     'logic': "A list of first order logic expressions, parsed with "
-            "nltk.sem.logic.LogicParser.  Requires an additional logic_parser "
+            "cnltk.sem.logic.LogicParser.  Requires an additional logic_parser "
             "parameter",
-    'val': "A semantic valuation, parsed by nltk.sem.Valuation.fromstring.",
+    'val': "A semantic valuation, parsed by cnltk.sem.Valuation.fromstring.",
     'raw': "The raw (byte string) contents of a file.",
     'text': "The raw (unicode string) contents of a file. "
 }
@@ -786,7 +786,7 @@ def load(resource_url, format='auto', cache=True, verbose=False,
         resource_val = pickle.load(opened_resource)
     elif format == 'json':
         import json
-        from nltk.jsontags import json_tags
+        from cnltk.jsontags import json_tags
         resource_val = json.load(opened_resource)
         tag = None
         if len(resource_val) != 1:
@@ -809,28 +809,28 @@ def load(resource_url, format='auto', cache=True, verbose=False,
         if format == 'text':
             resource_val = string_data
         elif format == 'cfg':
-            resource_val = nltk.grammar.CFG.fromstring(
+            resource_val = cnltk.grammar.CFG.fromstring(
                 string_data, encoding=encoding)
         elif format == 'pcfg':
-            resource_val = nltk.grammar.PCFG.fromstring(
+            resource_val = cnltk.grammar.PCFG.fromstring(
                 string_data, encoding=encoding)
         elif format == 'fcfg':
-            resource_val = nltk.grammar.FeatureGrammar.fromstring(
+            resource_val = cnltk.grammar.FeatureGrammar.fromstring(
                 string_data, logic_parser=logic_parser,
                 fstruct_reader=fstruct_reader, encoding=encoding)
         elif format == 'fol':
-            resource_val = nltk.sem.read_logic(
-                string_data, logic_parser=nltk.sem.logic.LogicParser(),
+            resource_val = cnltk.sem.read_logic(
+                string_data, logic_parser=cnltk.sem.logic.LogicParser(),
                 encoding=encoding)
         elif format == 'logic':
-            resource_val = nltk.sem.read_logic(
+            resource_val = cnltk.sem.read_logic(
                 string_data, logic_parser=logic_parser, encoding=encoding)
         elif format == 'val':
-            resource_val = nltk.sem.read_valuation(
+            resource_val = cnltk.sem.read_valuation(
                 string_data, encoding=encoding)
         else:
             raise AssertionError("Internal NLTK error: Format %s isn't "
-                                 "handled by nltk.data.load()" % (format,))
+                                 "handled by cnltk.data.load()" % (format,))
 
     opened_resource.close()
 
@@ -878,7 +878,7 @@ def _open(resource_url):
     """
     Helper function that returns an open file object for a resource,
     given its resource URL.  If the given resource URL uses the "nltk:"
-    protocol, or uses no protocol, then use ``nltk.data.find`` to find
+    protocol, or uses no protocol, then use ``cnltk.data.find`` to find
     its path, and open it with the given mode; if the resource URL
     uses the 'file' protocol, then open the file with the given mode;
     otherwise, delegate to ``urllib2.urlopen``.

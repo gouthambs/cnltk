@@ -7,7 +7,7 @@
 
 """
 A graphical tool for exploring the regular expression based chunk
-parser ``nltk.chunk.RegexpChunkParser``.
+parser ``cnltk.chunk.RegexpChunkParser``.
 """
 
 # Todo: Add a way to select the development set from the menubar.  This
@@ -15,7 +15,7 @@ parser ``nltk.chunk.RegexpChunkParser``.
 # configuration parameters to select what's being chunked (eg VP vs NP)
 # and what part of the data is being used as the development set.
 
-import nltk.compat
+import cnltk.compat
 import time
 import textwrap
 import re
@@ -26,17 +26,17 @@ from tkinter import (Button, Canvas, Checkbutton,
                      Frame, IntVar, Label, Menu,
                      Scrollbar, Text, Tk)
 
-from nltk.tree import Tree
-from nltk.util import in_idle
-from nltk.draw.util import ShowText
-from nltk.corpus import conll2000, treebank_chunk
-from nltk.chunk import ChunkScore, RegexpChunkParser
-from nltk.chunk.regexp import RegexpChunkRule
+from cnltk.tree import Tree
+from cnltk.util import in_idle
+from cnltk.draw.util import ShowText
+from cnltk.corpus import conll2000, treebank_chunk
+from cnltk.chunk import ChunkScore, RegexpChunkParser
+from cnltk.chunk.regexp import RegexpChunkRule
 
 class RegexpChunkApp(object):
     """
     A graphical tool for exploring the regular expression based chunk
-    parser ``nltk.chunk.RegexpChunkParser``.
+    parser ``cnltk.chunk.RegexpChunkParser``.
 
     See ``HELP`` for instructional text.
     """

@@ -10,9 +10,9 @@ How to use CHILDESCorpusReader
 Read the CHILDESCorpusReader class and read the CHILDES corpus saved in
 the nltk_data directory.
 
-    >>> import nltk
-    >>> from nltk.corpus.reader import CHILDESCorpusReader
-    >>> corpus_root = nltk.data.find('corpora/childes/data-xml/Eng-USA-MOR/')
+    >>> import cnltk
+    >>> from cnltk.corpus.reader import CHILDESCorpusReader
+    >>> corpus_root = cnltk.data.find('corpora/childes/data-xml/Eng-USA-MOR/')
 
 Reading files in the Valian corpus (Valian, 1991).
 

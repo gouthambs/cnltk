@@ -118,7 +118,7 @@ scope of a complex symbol.
 
 import textwrap, random
 from itertools import chain, islice
-from nltk.compat import izip
+from cnltk.compat import izip
 
 def generate_chomsky(times=5, line_length=72):
     parts = []

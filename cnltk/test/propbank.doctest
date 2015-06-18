@@ -10,7 +10,7 @@ entire Penn Treebank.  Each verb in the treebank is annotated by a single
 instance in PropBank, containing information about the location of
 the verb, and the location and identity of its arguments:
 
-    >>> from nltk.corpus import propbank
+    >>> from cnltk.corpus import propbank
     >>> pb_instances = propbank.instances()
     >>> print(pb_instances) # doctest: +NORMALIZE_WHITESPACE
     [<PropbankInstance: wsj_0001.mrg, sent 0, word 8>,
@@ -65,7 +65,7 @@ trees for 10% of the standard PropBank Corpus are contained in the
 
     >>> tree = inst.tree
 
-    >>> from nltk.corpus import treebank
+    >>> from cnltk.corpus import treebank
     >>> assert tree == treebank.parsed_sents(inst.fileid)[inst.sentnum]
 
     >>> inst.predicate.select(tree)
@@ -164,7 +164,7 @@ at 9353:
     ValueError: Parse tree not avaialable
 
 However, if you supply your own version of the treebank corpus (by
-putting it before the nltk-provided version on `nltk.data.path`, or
+putting it before the nltk-provided version on `cnltk.data.path`, or
 by creating a `ptb` directory as described above and using the
 `propbank_ptb` module), then you can access the trees for all
 instances.

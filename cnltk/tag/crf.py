@@ -13,7 +13,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 import unicodedata
 import re 
-from nltk.tag.api import TaggerI
+from cnltk.tag.api import TaggerI
 
 try:
     import pycrfsuite
@@ -24,7 +24,7 @@ class CRFTagger(TaggerI):
     """
     A module for POS tagging using CRFSuite https://pypi.python.org/pypi/python-crfsuite
     
-    >>> from nltk.tag import CRFTagger
+    >>> from cnltk.tag import CRFTagger
     >>> ct = CRFTagger()
  
     >>> train_data = [[('University','Noun'), ('is','Verb'), ('a','Det'), ('good','Adj'), ('place','Noun')],

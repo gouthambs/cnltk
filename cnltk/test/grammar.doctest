@@ -7,7 +7,7 @@ Grammar Parsing
 
 Grammars can be parsed from strings:
 
-    >>> from nltk import CFG
+    >>> from cnltk import CFG
     >>> grammar = CFG.fromstring("""
     ... S -> NP VP
     ... PP -> P NP
@@ -29,7 +29,7 @@ Grammars can be parsed from strings:
 
 Probabilistic CFGs:
    
-    >>> from nltk import PCFG
+    >>> from cnltk import PCFG
     >>> toy_pcfg1 = PCFG.fromstring("""
     ... S -> NP VP [1.0]
     ... NP -> Det N [0.5] | NP PP [0.25] | 'John' [0.1] | 'I' [0.15]

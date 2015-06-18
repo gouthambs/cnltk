@@ -17,8 +17,8 @@ import operator
 from collections import defaultdict
 from functools import reduce
 
-from nltk.internals import Counter
-from nltk.compat import (total_ordering, string_types,
+from cnltk.internals import Counter
+from cnltk.compat import (total_ordering, string_types,
                          python_2_unicode_compatible)
 
 APP = 'APP'
@@ -929,12 +929,12 @@ class Expression(SubstituteBindingsI):
         If the prover says it is valid, then the self and other are equal.
 
         :param other: an ``Expression`` to check equality against
-        :param prover: a ``nltk.inference.api.Prover``
+        :param prover: a ``cnltk.inference.api.Prover``
         """
         assert isinstance(other, Expression), "%s is not an Expression" % other
 
         if prover is None:
-            from nltk.inference import Prover9
+            from cnltk.inference import Prover9
             prover = Prover9()
         bicond = IffExpression(self.simplify(), other.simplify())
         return prover.prove(bicond)

@@ -2,8 +2,8 @@
 from __future__ import absolute_import, unicode_literals
 
 def test_basic():
-    from nltk.tag import pos_tag
-    from nltk.tokenize import word_tokenize
+    from cnltk.tag import pos_tag
+    from cnltk.tokenize import word_tokenize
 
     result = pos_tag(word_tokenize("John's big idea isn't all that bad."))
     assert result == [('John', 'NNP'), ("'s", 'POS'), ('big', 'JJ'),
@@ -17,4 +17,4 @@ def setup_module(module):
     try:
         import numpy
     except ImportError:
-        raise SkipTest("numpy is required for nltk.test.test_tag")
+        raise SkipTest("numpy is required for cnltk.test.test_tag")

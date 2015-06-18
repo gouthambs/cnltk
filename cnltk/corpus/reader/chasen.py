@@ -9,11 +9,11 @@ from __future__ import print_function
 
 import sys
 
-from nltk.corpus.reader import util
+from cnltk.corpus.reader import util
 
-from nltk import compat
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk import compat
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class ChasenCorpusReader(CorpusReader):
 
@@ -114,8 +114,8 @@ class ChasenCorpusView(StreamBackedCorpusView):
 
 def demo():
 
-    import nltk
-    from nltk.corpus.util import LazyCorpusLoader
+    import cnltk
+    from cnltk.corpus.util import LazyCorpusLoader
 
     jeita = LazyCorpusLoader(
         'jeita', ChasenCorpusReader, r'.*chasen', encoding='utf-8')
@@ -127,7 +127,7 @@ def demo():
 
 def test():
 
-    from nltk.corpus.util import LazyCorpusLoader
+    from cnltk.corpus.util import LazyCorpusLoader
 
     jeita = LazyCorpusLoader(
         'jeita', ChasenCorpusReader, r'.*chasen', encoding='utf-8')

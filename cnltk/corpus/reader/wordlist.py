@@ -6,11 +6,11 @@
 # URL: <http://nltk.org/>
 # For license information, see LICENSE.TXT
 
-from nltk import compat
-from nltk.tokenize import line_tokenize
+from cnltk import compat
+from cnltk.tokenize import line_tokenize
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class WordListCorpusReader(CorpusReader):
     """

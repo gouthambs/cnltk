@@ -12,7 +12,7 @@ All spelling mistakes and flawed grammar are intentional.
 """
 from __future__ import print_function
 
-from nltk.chat.util import Chat
+from cnltk.chat.util import Chat
 
 reflections = {
     "am"     : "r",

@@ -11,9 +11,9 @@ Module for a tableau-based First Order theorem prover.
 """
 from __future__ import print_function, unicode_literals
 
-from nltk.internals import Counter
+from cnltk.internals import Counter
 
-from nltk.sem.logic import (VariableExpression, EqualityExpression,
+from cnltk.sem.logic import (VariableExpression, EqualityExpression,
                             ApplicationExpression, Expression,
                             AbstractVariableExpression, AllExpression,
                             NegatedExpression,
@@ -22,7 +22,7 @@ from nltk.sem.logic import (VariableExpression, EqualityExpression,
                             LambdaExpression, IffExpression,
                             OrExpression, FunctionVariableExpression)
 
-from nltk.inference.api import Prover, BaseProverCommand
+from cnltk.inference.api import Prover, BaseProverCommand
 
 _counter = Counter()
 

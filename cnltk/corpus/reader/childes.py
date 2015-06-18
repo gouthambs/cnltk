@@ -16,11 +16,11 @@ __docformat__ = 'epytext en'
 import re
 from collections import defaultdict
 
-from nltk.util import flatten
-from nltk.compat import string_types
+from cnltk.util import flatten
+from cnltk.compat import string_types
 
-from nltk.corpus.reader.util import concat
-from nltk.corpus.reader.xmldocs import XMLCorpusReader, ElementTree
+from cnltk.corpus.reader.util import concat
+from cnltk.corpus.reader.xmldocs import XMLCorpusReader, ElementTree
 
 # to resolve the namespace issue
 NS = 'http://www.talkbank.org/ns/talkbank'
@@ -434,7 +434,7 @@ def demo(corpus_root=None):
     to ``[NLTK_Data_Dir]/corpora/childes/``
     """
     if not corpus_root:
-        from nltk.data import find
+        from cnltk.data import find
         corpus_root = find('corpora/childes/data-xml/Eng-USA/')
 
     try:

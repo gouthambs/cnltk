@@ -14,20 +14,20 @@ The input is:
    SennaTagger will automatically search for executable file specified in SENNA environment variable 
 - (optionally) the encoding of the input data (default:utf-8)
 
-    >>> from nltk.tag import SennaTagger
+    >>> from cnltk.tag import SennaTagger
     >>> tagger = SennaTagger('/usr/share/senna-v2.0')
     >>> tagger.tag('What is the airspeed of an unladen swallow ?'.split())
     [('What', 'WP'), ('is', 'VBZ'), ('the', 'DT'), ('airspeed', 'NN'),
     ('of', 'IN'), ('an', 'DT'), ('unladen', 'NN'), ('swallow', 'NN'), ('?', '.')]
 
-    >>> from nltk.tag import SennaChunkTagger
+    >>> from cnltk.tag import SennaChunkTagger
     >>> chktagger = SennaChunkTagger('/usr/share/senna-v2.0')
     >>> chktagger.tag('What is the airspeed of an unladen swallow ?'.split())
     [('What', 'B-NP'), ('is', 'B-VP'), ('the', 'B-NP'), ('airspeed', 'I-NP'),
     ('of', 'B-PP'), ('an', 'B-NP'), ('unladen', 'I-NP'), ('swallow', 'I-NP'),
     ('?', 'O')]
 
-    >>> from nltk.tag import SennaNERTagger
+    >>> from cnltk.tag import SennaNERTagger
     >>> nertagger = SennaNERTagger('/usr/share/senna-v2.0')
     >>> nertagger.tag('Shakespeare theatre was in London .'.split())
     [('Shakespeare', 'B-PER'), ('theatre', 'O'), ('was', 'O'), ('in', 'O'),
@@ -37,8 +37,8 @@ The input is:
     ('NY', 'B-LOC'), (',', 'O'), ('USA', 'B-LOC'), ('.', 'O')]
 """
 
-from nltk.compat import python_2_unicode_compatible
-from nltk.classify import Senna
+from cnltk.compat import python_2_unicode_compatible
+from cnltk.classify import Senna
 
 @python_2_unicode_compatible
 class SennaTagger(Senna):

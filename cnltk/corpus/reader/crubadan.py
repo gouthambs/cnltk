@@ -22,11 +22,11 @@ http://borel.slu.edu/crubadan/index.html
 from __future__ import print_function, unicode_literals
 
 import re
-from nltk.compat import PY3
+from cnltk.compat import PY3
 from os import path
-from nltk.corpus.reader import CorpusReader
-from nltk.probability import FreqDist
-from nltk.data import ZipFilePathPointer
+from cnltk.corpus.reader import CorpusReader
+from cnltk.probability import FreqDist
+from cnltk.data import ZipFilePathPointer
 
 class CrubadanCorpusReader(CorpusReader):
     """
@@ -69,7 +69,7 @@ class CrubadanCorpusReader(CorpusReader):
     def _load_lang_mapping_data(self):
         ''' Load language mappings between codes and description from table.txt '''
         if isinstance(self.root, ZipFilePathPointer):
-            raise RuntimeError("Please install the 'crubadan' corpus first, use nltk.download()")
+            raise RuntimeError("Please install the 'crubadan' corpus first, use cnltk.download()")
         
         mapper_file = path.join(self.root, self._LANG_MAPPER_FILE)
         if self._LANG_MAPPER_FILE not in self.fileids():

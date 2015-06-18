@@ -72,13 +72,13 @@ from __future__ import print_function, unicode_literals
 
 import re
 
-from nltk.util import transitive_closure, invert_graph
-from nltk.compat import (string_types, total_ordering, text_type,
+from cnltk.util import transitive_closure, invert_graph
+from cnltk.compat import (string_types, total_ordering, text_type,
                          python_2_unicode_compatible, unicode_repr)
-from nltk.internals import raise_unorderable_types
+from cnltk.internals import raise_unorderable_types
 
-from nltk.probability import ImmutableProbabilisticMixIn
-from nltk.featstruct import FeatStruct, FeatDict, FeatStructReader, SLASH, TYPE
+from cnltk.probability import ImmutableProbabilisticMixIn
+from cnltk.featstruct import FeatStruct, FeatDict, FeatStructReader, SLASH, TYPE
 
 #################################################################
 # Nonterminal
@@ -1328,7 +1328,7 @@ def cfg_demo():
     A demonstration showing how ``CFGs`` can be created and used.
     """
 
-    from nltk import nonterminals, Production, CFG
+    from cnltk import nonterminals, Production, CFG
 
     # Create some nonterminals
     S, NP, VP, PP = nonterminals('S, NP, VP, PP')
@@ -1402,10 +1402,10 @@ def pcfg_demo():
     A demonstration showing how a ``PCFG`` can be created and used.
     """
 
-    from nltk.corpus import treebank
-    from nltk import treetransforms
-    from nltk import induce_pcfg
-    from nltk.parse import pchart
+    from cnltk.corpus import treebank
+    from cnltk import treetransforms
+    from cnltk import induce_pcfg
+    from cnltk.parse import pchart
 
     pcfg_prods = toy_pcfg1.productions()
 
@@ -1455,8 +1455,8 @@ def pcfg_demo():
         print(parse)
 
 def fcfg_demo():
-    import nltk.data
-    g = nltk.data.load('grammars/book_grammars/feat0.fcfg')
+    import cnltk.data
+    g = cnltk.data.load('grammars/book_grammars/feat0.fcfg')
     print(g)
     print()
 
@@ -1477,7 +1477,7 @@ def sdg_demo():
     A demonstration of how to read a string representation of
     a CoNLL format dependency tree.
     """
-    from nltk.parse import DependencyGraph
+    from cnltk.parse import DependencyGraph
 
     dg = DependencyGraph("""
     1   Ze                ze                Pron  Pron  per|3|evofmv|nom                 2   su      _  _

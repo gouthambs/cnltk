@@ -15,8 +15,8 @@ try:
 except ImportError:
     pass
 
-from nltk.cluster.api import ClusterI
-from nltk.compat import python_2_unicode_compatible
+from cnltk.cluster.api import ClusterI
+from cnltk.compat import python_2_unicode_compatible
 
 class VectorSpaceClusterer(ClusterI):
     """

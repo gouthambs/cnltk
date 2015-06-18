@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 import unittest
-from nltk.corpus import (sinica_treebank, conll2007, indian, cess_cat, cess_esp,
+from cnltk.corpus import (sinica_treebank, conll2007, indian, cess_cat, cess_esp,
                          floresta, ptb, udhr)
-from nltk.tree import Tree
-from nltk.test.unit.utils import skipIf
+from cnltk.tree import Tree
+from cnltk.test.unit.utils import skipIf
 
 
 class TestUdhr(unittest.TestCase):
@@ -178,4 +178,4 @@ class TestPTB(unittest.TestCase):
         )
 
 # unload corpora
-from nltk.corpus import teardown_module
+from cnltk.corpus import teardown_module

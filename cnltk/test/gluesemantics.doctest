@@ -12,11 +12,11 @@
 Linear logic
 ======================
 
-    >>> from nltk.sem import logic
-    >>> from nltk.sem.glue import *
-    >>> from nltk.sem.linearlogic import *
+    >>> from cnltk.sem import logic
+    >>> from cnltk.sem.glue import *
+    >>> from cnltk.sem.linearlogic import *
 
-    >>> from nltk.sem.linearlogic import Expression
+    >>> from cnltk.sem.linearlogic import Expression
     >>> read_expr = Expression.fromstring
 
 Parser
@@ -335,7 +335,7 @@ Derivation:
 ---------------------------------
 Dependency Graph to Glue Formulas
 ---------------------------------
-    >>> from nltk.corpus.reader.dependency import DependencyGraph
+    >>> from cnltk.corpus.reader.dependency import DependencyGraph
 
     >>> depgraph = DependencyGraph("""1	John	_	NNP	NNP	_	2	SUBJ	_	_
     ... 2	sees	_	VB	VB	_	0	ROOT	_	_
@@ -359,7 +359,7 @@ Dependency Graph to Glue Formulas
 -----------------------------------
 Dependency Graph to LFG f-structure
 -----------------------------------
-    >>> from nltk.sem.lfg import FStructure
+    >>> from cnltk.sem.lfg import FStructure
 
     >>> fstruct = FStructure.read_depgraph(depgraph)
 

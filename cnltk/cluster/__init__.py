@@ -61,8 +61,8 @@ first d dimensions. Normalisation ensures that vectors fall in the unit
 hypersphere.
 
 Usage example (see also demo())::
-    from nltk import cluster
-    from nltk.cluster import euclidean_distance
+    from cnltk import cluster
+    from cnltk.cluster import euclidean_distance
     from numpy import array
 
     vectors = [array(f) for f in [[3, 3], [1, 2], [4, 2], [4, 0]]]
@@ -79,8 +79,8 @@ objects. nltk_contrib.unimelb.tacohn.SparseArrays may be used for
 efficiency when required.
 """
 
-from nltk.cluster.util import (VectorSpaceClusterer, Dendrogram,
+from cnltk.cluster.util import (VectorSpaceClusterer, Dendrogram,
                                euclidean_distance, cosine_distance)
-from nltk.cluster.kmeans import KMeansClusterer
-from nltk.cluster.gaac import GAAClusterer
-from nltk.cluster.em import EMClusterer
+from cnltk.cluster.kmeans import KMeansClusterer
+from cnltk.cluster.gaac import GAAClusterer
+from cnltk.cluster.em import EMClusterer

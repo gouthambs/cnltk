@@ -108,7 +108,7 @@ The following is a short tutorial on the available transformations.
 """
 from __future__ import print_function
 
-from nltk.tree import Tree
+from cnltk.tree import Tree
 
 def chomsky_normal_form(tree, factor="right", horzMarkov=None, vertMarkov=0, childChar="|", parentChar="^"):
     # assume all subtrees have homogeneous children
@@ -256,8 +256,8 @@ def demo():
     A demonstration showing how each tree transform can be used.
     """
 
-    from nltk.draw.tree import draw_trees
-    from nltk import tree, treetransforms
+    from cnltk.draw.tree import draw_trees
+    from cnltk import tree, treetransforms
     from copy import deepcopy
 
     # original tree from WSJ bracketed text

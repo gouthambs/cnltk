@@ -33,10 +33,10 @@ file, taking values 1, 2 or 3. The GID is formatted 'm-n', where 'm' is the
 challenge number and 'n' is the pair ID.
 """
 from __future__ import unicode_literals
-from nltk import compat
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.xmldocs import *
+from cnltk import compat
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.xmldocs import *
 
 
 def norm(value_string):

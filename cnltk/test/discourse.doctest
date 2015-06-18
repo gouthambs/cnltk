@@ -5,8 +5,8 @@
 Discourse Checking
 ==================
 
-    >>> from nltk import *
-    >>> from nltk.sem import logic
+    >>> from cnltk import *
+    >>> from cnltk.sem import logic
     >>> logic._counter._value = 0
 
 Introduction
@@ -14,7 +14,7 @@ Introduction
 
 The NLTK discourse module makes it possible to test consistency and
 redundancy of simple discourses, using theorem-proving and
-model-building from `nltk.inference`.
+model-building from `cnltk.inference`.
 
 The ``DiscourseTester`` constructor takes a list of sentences as a
 parameter.
@@ -357,8 +357,8 @@ This gives us a lot of threads:
 We can eliminate some of the readings, and hence some of the threads,
 by adding background information.
 
-    >>> import nltk.data
-    >>> bg = nltk.data.load('grammars/book_grammars/background.fol')
+    >>> import cnltk.data
+    >>> bg = cnltk.data.load('grammars/book_grammars/background.fol')
     >>> dt.add_background(bg)
     >>> dt.background()
     all x.(boxerdog(x) -> dog(x))
@@ -484,13 +484,13 @@ The ``models()`` method gives us more information about the surviving thread.
 In order to play around with your own version of background knowledge,
 you might want to start off with a local copy of ``background.fol``:
 
-    >>> nltk.data.retrieve('grammars/book_grammars/background.fol')
+    >>> cnltk.data.retrieve('grammars/book_grammars/background.fol')
     Retrieving 'nltk:grammars/book_grammars/background.fol', saving to 'background.fol'
 
 After you have modified the file, the ``load_fol()`` function will parse
-the strings in the file into expressions of ``nltk.sem.logic``.
+the strings in the file into expressions of ``cnltk.sem.logic``.
 
-    >>> from nltk.inference.discourse import load_fol
+    >>> from cnltk.inference.discourse import load_fol
     >>> mybg = load_fol(open('background.fol').read())
 
 The result can be loaded as an argument of ``add_background()`` in the
@@ -501,7 +501,7 @@ manner shown earlier.
     >>> for f in os.listdir(tempdir):
     ...     os.remove(os.path.join(tempdir, f))
     >>> os.rmdir(tempdir)
-    >>> nltk.data.clear_cache()
+    >>> cnltk.data.clear_cache()
 
 
 Regression Testing from book
@@ -509,7 +509,7 @@ Regression Testing from book
 
     >>> logic._counter._value = 0
 
-    >>> from nltk.tag import RegexpTagger
+    >>> from cnltk.tag import RegexpTagger
     >>> tagger = RegexpTagger(
     ...     [('^(chases|runs)$', 'VB'),
     ...      ('^(a)$', 'ex_quant'),
@@ -537,9 +537,9 @@ Regression Testing from book
 
     >>> logic._counter._value = 0
 
-    >>> from nltk.parse import FeatureEarleyChartParser
-    >>> from nltk.sem.drt import DrtParser
-    >>> grammar = nltk.data.load('grammars/book_grammars/drt.fcfg', logic_parser=DrtParser())
+    >>> from cnltk.parse import FeatureEarleyChartParser
+    >>> from cnltk.sem.drt import DrtParser
+    >>> grammar = cnltk.data.load('grammars/book_grammars/drt.fcfg', logic_parser=DrtParser())
     >>> parser = FeatureEarleyChartParser(grammar, trace=0)
     >>> trees = parser.parse('Angus owns a dog'.split())
     >>> print(list(trees)[0].label()['SEM'].simplify().normalize())

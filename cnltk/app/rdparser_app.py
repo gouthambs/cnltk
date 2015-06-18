@@ -64,16 +64,16 @@ Keyboard Shortcuts::
       [q]\t Quit
 """
 
-import nltk.compat
+import cnltk.compat
 import tkinter.font
 from tkinter import (Listbox, IntVar, Button,
                      Frame, Label, Menu, Scrollbar, Tk)
 
-from nltk.tree import Tree
-from nltk.util import in_idle
-from nltk.parse import SteppingRecursiveDescentParser
-from nltk.draw.util import TextWidget, ShowText, CanvasFrame, EntryDialog
-from nltk.draw import CFGEditor, TreeSegmentWidget, tree_to_treesegment
+from cnltk.tree import Tree
+from cnltk.util import in_idle
+from cnltk.parse import SteppingRecursiveDescentParser
+from cnltk.draw.util import TextWidget, ShowText, CanvasFrame, EntryDialog
+from cnltk.draw import CFGEditor, TreeSegmentWidget, tree_to_treesegment
 
 class RecursiveDescentApp(object):
     """
@@ -867,7 +867,7 @@ def app():
     Create a recursive descent parser demo, using a simple grammar and
     text.
     """
-    from nltk.grammar import CFG
+    from cnltk.grammar import CFG
     grammar = CFG.fromstring("""
     # Grammatical productions.
         S -> NP VP

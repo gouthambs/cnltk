@@ -6,8 +6,8 @@
 # For license information, see LICENSE.TXT
 from __future__ import unicode_literals
 
-from nltk.compat import python_2_unicode_compatible
-from nltk.ccg.api import FunctionalCategory
+from cnltk.compat import python_2_unicode_compatible
+from cnltk.ccg.api import FunctionalCategory
 
 class UndirectedBinaryCombinator(object):
     """

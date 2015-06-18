@@ -39,12 +39,12 @@ from __future__ import print_function, unicode_literals
 # to associate probabilities with child pointer lists.
 
 from functools import reduce
-from nltk.tree import Tree, ProbabilisticTree
-from nltk.grammar import Nonterminal, PCFG
+from cnltk.tree import Tree, ProbabilisticTree
+from cnltk.grammar import Nonterminal, PCFG
 
-from nltk.parse.api import ParserI
-from nltk.parse.chart import Chart, LeafEdge, TreeEdge, AbstractChartRule
-from nltk.compat import python_2_unicode_compatible
+from cnltk.parse.api import ParserI
+from cnltk.parse.chart import Chart, LeafEdge, TreeEdge, AbstractChartRule
+from cnltk.compat import python_2_unicode_compatible
 
 # Probabilistic edges
 class ProbabilisticLeafEdge(LeafEdge):
@@ -397,8 +397,8 @@ def demo(choice=None, draw_parses=None, print_parses=None):
     summary of the results are displayed.
     """
     import sys, time
-    from nltk import tokenize
-    from nltk.parse import pchart
+    from cnltk import tokenize
+    from cnltk.parse import pchart
 
     # Define two demos.  Each demo has a sentence and a grammar.
     toy_pcfg1 = PCFG.fromstring("""
@@ -505,7 +505,7 @@ def demo(choice=None, draw_parses=None, print_parses=None):
         print('Draw parses (y/n)? ', end=' ')
         draw_parses = sys.stdin.readline().strip().lower().startswith('y')
     if draw_parses:
-        from nltk.draw.tree import draw_trees
+        from cnltk.draw.tree import draw_trees
         print('  please wait...')
         draw_trees(*parses)
 

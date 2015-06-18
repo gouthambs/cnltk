@@ -5,14 +5,14 @@
  Corpus Readers
 ================
 
-The `nltk.corpus` package defines a collection of *corpus reader*
+The `cnltk.corpus` package defines a collection of *corpus reader*
 classes, which can be used to access the contents of a diverse set of
 corpora.  The list of available corpora is given at:
 
 http://www.nltk.org/nltk_data/
 
 Each corpus reader class is specialized to handle a specific
-corpus format.  In addition, the `nltk.corpus` package automatically
+corpus format.  In addition, the `cnltk.corpus` package automatically
 creates a set of corpus reader instances that can be used to access
 the corpora in the NLTK data package.
 Section `Corpus Reader Objects`_ ("Corpus Reader Objects") describes
@@ -36,10 +36,10 @@ Overview
 ========
 
 NLTK includes a diverse set of corpora which can be
-read using the ``nltk.corpus`` package.  Each corpus is accessed by
-means of a "corpus reader" object from ``nltk.corpus``:
+read using the ``cnltk.corpus`` package.  Each corpus is accessed by
+means of a "corpus reader" object from ``cnltk.corpus``:
 
-    >>> import nltk.corpus
+    >>> import cnltk.corpus
     >>> # The Brown corpus:
     >>> print(str(nltk.corpus.brown).replace('\\\\','/'))
     <CategorizedTaggedCorpusReader in '.../corpora/brown'...>
@@ -57,9 +57,9 @@ Most corpora consist of a set of files, each containing a document (or
 other pieces of text).  A list of identifiers for these files is
 accessed via the ``fileids()`` method of the corpus reader:
 
-    >>> nltk.corpus.treebank.fileids() # doctest: +ELLIPSIS
+    >>> cnltk.corpus.treebank.fileids() # doctest: +ELLIPSIS
     ['wsj_0001.mrg', 'wsj_0002.mrg', 'wsj_0003.mrg', 'wsj_0004.mrg', ...]
-    >>> nltk.corpus.inaugural.fileids() # doctest: +ELLIPSIS
+    >>> cnltk.corpus.inaugural.fileids() # doctest: +ELLIPSIS
     ['1789-Washington.txt', '1793-Washington.txt', '1797-Adams.txt', ...]
 
 Each corpus reader provides a variety of methods to read data from the
@@ -67,7 +67,7 @@ corpus, depending on the format of the corpus.  For example, plaintext
 corpora support methods to read the corpus as raw text, a list of
 words, a list of sentences, or a list of paragraphs.
 
-    >>> from nltk.corpus import inaugural
+    >>> from cnltk.corpus import inaugural
     >>> inaugural.raw('1789-Washington.txt') # doctest: +ELLIPSIS
     'Fellow-Citizens of the Senate ...'
     >>> inaugural.words('1789-Washington.txt')
@@ -106,17 +106,17 @@ Plaintext Corpora
 
 Here are the first few words from each of NLTK's plaintext corpora:
 
-    >>> nltk.corpus.abc.words()
+    >>> cnltk.corpus.abc.words()
     ['PM', 'denies', 'knowledge', 'of', 'AWB', ...]
-    >>> nltk.corpus.genesis.words()
+    >>> cnltk.corpus.genesis.words()
     [u'In', u'the', u'beginning', u'God', u'created', ...]
-    >>> nltk.corpus.gutenberg.words(fileids='austen-emma.txt')
+    >>> cnltk.corpus.gutenberg.words(fileids='austen-emma.txt')
     ['[', 'Emma', 'by', 'Jane', 'Austen', '1816', ...]
-    >>> nltk.corpus.inaugural.words()
+    >>> cnltk.corpus.inaugural.words()
     ['Fellow', '-', 'Citizens', 'of', 'the', ...]
-    >>> nltk.corpus.state_union.words()
+    >>> cnltk.corpus.state_union.words()
     ['PRESIDENT', 'HARRY', 'S', '.', 'TRUMAN', "'", ...]
-    >>> nltk.corpus.webtext.words()
+    >>> cnltk.corpus.webtext.words()
     ['Cookie', 'Manager', ':', '"', 'Don', "'", 't', ...]
 
 Tagged Corpora
@@ -128,7 +128,7 @@ Corpus is annotated with part-of-speech tags, and defines additional
 methods ``tagged_*()`` which words as `(word,tag)` tuples, rather
 than just bare word strings.
 
-    >>> from nltk.corpus import brown
+    >>> from cnltk.corpus import brown
     >>> print(brown.words())
     ['The', 'Fulton', 'County', 'Grand', 'Jury', ...]
     >>> print(brown.tagged_words())
@@ -152,7 +152,7 @@ than just bare word strings.
 Similarly, the Indian Language POS-Tagged Corpus includes samples of
 Indian text annotated with part-of-speech tags:
 
-    >>> from nltk.corpus import indian
+    >>> from cnltk.corpus import indian
     >>> print(indian.words()) # doctest: +SKIP
     ['\xe0\xa6\xae\xe0\xa6\xb9\xe0\xa6\xbf\...',
      '\xe0\xa6\xb8\xe0\xa6\xa8\xe0\xa7\x8d\xe0...', ...]
@@ -166,11 +166,11 @@ tags are collapsed to a single category ``NOUN``:
     >>> print(brown.tagged_sents(tagset='universal')) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     [[('The', 'DET'), ('Fulton', 'NOUN'), ('County', 'NOUN'), ('Grand', 'ADJ'), ('Jury', 'NOUN'), ...],
      [('The', 'DET'), ('jury', 'NOUN'), ('further', 'ADV'), ('said', 'VERB'), ('in', 'ADP'), ...]...]
-    >>> from nltk.corpus import conll2000, switchboard
+    >>> from cnltk.corpus import conll2000, switchboard
     >>> print(conll2000.tagged_words(tagset='universal')) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     [('Confidence', 'NOUN'), ('in', 'ADP'), ...]
 
-Use ``nltk.app.pos_concordance()`` to access a GUI for searching tagged corpora.
+Use ``cnltk.app.pos_concordance()`` to access a GUI for searching tagged corpora.
 
 Chunked Corpora
 ===============
@@ -179,7 +179,7 @@ The CoNLL corpora also provide chunk structures, which are encoded as
 flat trees.  The CoNLL 2000 Corpus includes phrasal chunks; and the
 CoNLL 2002 Corpus includes named entity chunks.
 
-    >>> from nltk.corpus import conll2000, conll2002
+    >>> from cnltk.corpus import conll2000, conll2002
     >>> print(conll2000.sents()) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     [['Confidence', 'in', 'the', 'pound', 'is', 'widely', ...],
      ['Chancellor', 'of', 'the', 'Exchequer', ...], ...]
@@ -222,7 +222,7 @@ named entities. Both kinds of lexical items include multiword units,
 which are encoded as chunks (senses and part-of-speech tags pertain
 to the entire chunk).
 
-    >>> from nltk.corpus import semcor
+    >>> from cnltk.corpus import semcor
     >>> semcor.words()
     ['The', 'Fulton', 'County', 'Grand', 'Jury', ...]
     >>> semcor.chunks()
@@ -246,7 +246,7 @@ fact that each corpus file contains multiple documents.)  The IEER
 corpus defines the `parsed_docs` method, which returns the documents
 in a given item as `IEERDocument` objects:
 
-    >>> from nltk.corpus import ieer
+    >>> from cnltk.corpus import ieer
     >>> ieer.fileids() # doctest: +NORMALIZE_WHITESPACE
     ['APW_19980314', 'APW_19980424', 'APW_19980429',
      'NYT_19980315', 'NYT_19980403', 'NYT_19980407']
@@ -287,7 +287,7 @@ NLTK data package includes a 10% sample of the Penn Treebank (in
 
 Reading the Penn Treebank (Wall Street Journal sample):
 
-    >>> from nltk.corpus import treebank
+    >>> from cnltk.corpus import treebank
     >>> print(treebank.fileids()) # doctest: +ELLIPSIS
     ['wsj_0001.mrg', 'wsj_0002.mrg', 'wsj_0003.mrg', 'wsj_0004.mrg', ...]
     >>> print(treebank.words('wsj_0003.mrg'))
@@ -310,7 +310,7 @@ and in the directory ``nltk_data/corpora/ptb`` place the ``BROWN``
 and ``WSJ`` directories of the Treebank installation (symlinks work
 as well). Then use the ``ptb`` module instead of ``treebank``:
 
-   >>> from nltk.corpus import ptb
+   >>> from cnltk.corpus import ptb
    >>> print(ptb.fileids()) # doctest: +SKIP
    ['BROWN/CF/CF01.MRG', 'BROWN/CF/CF02.MRG', 'BROWN/CF/CF03.MRG', 'BROWN/CF/CF04.MRG', ...]
    >>> print(ptb.words('WSJ/00/WSJ_0003.MRG')) # doctest: +SKIP
@@ -336,7 +336,7 @@ to a full PTB installation.
 
 Reading the Sinica Treebank:
 
-    >>> from nltk.corpus import sinica_treebank
+    >>> from cnltk.corpus import sinica_treebank
     >>> print(sinica_treebank.sents()) # doctest: +SKIP
     [['\xe4\xb8\x80'], ['\xe5\x8f\x8b\xe6\x83\x85'], ...]
     >>> sinica_treebank.parsed_sents()[25] # doctest: +SKIP
@@ -350,7 +350,7 @@ Reading the Sinica Treebank:
 
 Reading the CoNLL 2007 Dependency Treebanks:
 
-    >>> from nltk.corpus import conll2007
+    >>> from cnltk.corpus import conll2007
     >>> conll2007.sents('esp.train')[0] # doctest: +SKIP
     ['El', 'aumento', 'del', 'índice', 'de', 'desempleo', ...]
     >>> conll2007.parsed_sents('esp.train')[0] # doctest: +SKIP
@@ -377,7 +377,7 @@ Parsed Corpus of Old English Prose (YCOE); but the corpus itself is
 not included in the NLTK data package.  If you install it yourself,
 you can use NLTK to access it:
 
-    >>> from nltk.corpus import ycoe
+    >>> from cnltk.corpus import ycoe
     >>> for tree in ycoe.parsed_sents('cocuraC')[:4]:
     ...     print(tree) # doctest: +SKIP
     (CP-THT
@@ -405,7 +405,7 @@ you can use NLTK to access it:
 If the YCOE corpus is not available, you will get an error message
 when you try to access it:
 
-    >>> from nltk.corpus import ycoe
+    >>> from cnltk.corpus import ycoe
     >>> print(ycoe) # doctest: +SKIP
     Traceback (most recent call last):
     LookupError:
@@ -423,7 +423,7 @@ The NLTK data package also includes a number of lexicons and word
 lists.  These are accessed just like text corpora.  The following
 examples illustrate the use of the wordlist corpora:
 
-    >>> from nltk.corpus import names, stopwords, words
+    >>> from cnltk.corpus import names, stopwords, words
     >>> words.fileids()
     ['en', 'en-basic']
     >>> words.words('en') # doctest: +ELLIPSIS
@@ -447,7 +447,7 @@ transcription) or as a dictionary from words to lists of
 transcriptions.  Transcriptions are encoded as tuples of phoneme
 strings.
 
-    >>> from nltk.corpus import cmudict
+    >>> from cnltk.corpus import cmudict
     >>> print(cmudict.entries()[653:659]) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     [('acetate', ['AE1', 'S', 'AH0', 'T', 'EY2', 'T']),
     ('acetic', ['AH0', 'S', 'EH1', 'T', 'IH0', 'K']),
@@ -493,7 +493,7 @@ corpora provide access to the list of categories and the mapping between the doc
 and their categories (in both directions).  Access the categories using the ``categories()``
 method, e.g.:
 
-    >>> from nltk.corpus import brown, movie_reviews, reuters
+    >>> from cnltk.corpus import brown, movie_reviews, reuters
     >>> brown.categories() # doctest: +NORMALIZE_WHITESPACE
     ['adventure', 'belles_lettres', 'editorial', 'fiction', 'government', 'hobbies', 'humor',
     'learned', 'lore', 'mystery', 'news', 'religion', 'reviews', 'romance', 'science_fiction']
@@ -559,7 +559,7 @@ to occurrences of that word.  Each instance provides the word; a list
 of word senses that apply to the word occurrence; and the word's
 context.
 
-    >>> from nltk.corpus import senseval
+    >>> from cnltk.corpus import senseval
     >>> senseval.fileids()
     ['hard.pos', 'interest.pos', 'line.pos', 'serve.pos']
     >>> senseval.instances('hard.pos')
@@ -600,7 +600,7 @@ The Prepositional Phrase Attachment corpus is a corpus of
 prepositional phrase attachment decisions.  Each instance in the
 corpus is encoded as a ``PPAttachment`` object:
 
-    >>> from nltk.corpus import ppattach
+    >>> from cnltk.corpus import ppattach
     >>> ppattach.attachments('training') # doctest: +NORMALIZE_WHITESPACE
     [PPAttachment(sent='0', verb='join', noun1='board',
                   prep='as', noun2='director', attachment='V'),
@@ -617,7 +617,7 @@ semcor
 ------
 The Brown Corpus, annotated with WordNet senses.
 
-    >>> from nltk.corpus import semcor
+    >>> from cnltk.corpus import semcor
     >>> semcor.words('brown2/tagfiles/br-n12.xml')  # doctest: +ELLIPSIS
     ['When', 'several', 'minutes', 'had', 'passed', ...]
     >>> sent = semcor.xml('brown2/tagfiles/br-n12.xml').findall('context/p/s')[0]
@@ -658,7 +658,7 @@ shakespeare
 The Shakespeare corpus contains a set of Shakespeare plays, formatted
 as XML files.  These corpora are returned as ElementTree objects:
 
-    >>> from nltk.corpus import shakespeare
+    >>> from cnltk.corpus import shakespeare
     >>> from xml.etree import ElementTree
     >>> shakespeare.fileids() # doctest: +ELLIPSIS
     ['a_and_c.xml', 'dream.xml', 'hamlet.xml', 'j_caesar.xml', ...]
@@ -690,8 +690,8 @@ distribution of part-of-speech tags for reduplicated words.
 
 .. doctest: +SKIP
 
-    >>> from nltk.corpus import toolbox
-    >>> from nltk.probability import FreqDist
+    >>> from cnltk.corpus import toolbox
+    >>> from cnltk.probability import FreqDist
     >>> from xml.etree import ElementTree
     >>> import re
     >>> rotokas = toolbox.xml('rotokas.dic')
@@ -748,7 +748,7 @@ Acoustic-Phonetic Continuous Speech Corpus.  This corpus is broken
 down into small speech samples, each of which is available as a wave
 file, a phonetic transcription, and a tokenized word list.
 
-    >>> from nltk.corpus import timit
+    >>> from cnltk.corpus import timit
     >>> print(timit.utteranceids()) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     ['dr1-fvmh0/sa1', 'dr1-fvmh0/sa2', 'dr1-fvmh0/si1466',
     'dr1-fvmh0/si2096', 'dr1-fvmh0/si836', 'dr1-fvmh0/sx116',
@@ -823,7 +823,7 @@ The RTE (Recognizing Textual Entailment) corpus was derived from the
 RTE1, RTE2 and RTE3 datasets (dev and test data), and consists of a
 list of XML-formatted 'text'/'hypothesis' pairs.
 
-    >>> from nltk.corpus import rte
+    >>> from cnltk.corpus import rte
     >>> print(rte.fileids()) # doctest: +ELLIPSIS
     ['rte1_dev.xml', 'rte1_test.xml', 'rte2_dev.xml', ..., 'rte3_test.xml']
     >>> rtepairs = rte.pairs(['rte2_test.xml', 'rte3_test.xml'])
@@ -864,7 +864,7 @@ verb selected from the class, followed by a numerical identifier.  The
 list of verb lemmas, and the list of class identifiers, can be
 retrieved with the following methods:
 
-    >>> from nltk.corpus import verbnet
+    >>> from cnltk.corpus import verbnet
     >>> verbnet.lemmas()[20:25]
     ['accelerate', 'accept', 'acclaim', 'accompany', 'accrue']
     >>> verbnet.classids()[:5]
@@ -949,7 +949,7 @@ and ``p.attrib['user']``.  They also have text content, accessed using ``p.text`
 
     >>> print(nltk.corpus.nps_chat.xml_posts()) # doctest: +ELLIPSIS
     [<Element 'Post' at 0...>, <Element 'Post' at 0...>, ...]
-    >>> posts = nltk.corpus.nps_chat.xml_posts()
+    >>> posts = cnltk.corpus.nps_chat.xml_posts()
     >>> sorted(nltk.FreqDist(p.attrib['class'] for p in posts).keys())
     ['Accept', 'Bye', 'Clarify', 'Continuer', 'Emotion', 'Emphasis',
     'Greet', 'Other', 'Reject', 'Statement', 'System', 'nAnswer',
@@ -980,21 +980,21 @@ parenthesis-delineated parse trees.
 Automatically Created Corpus Reader Instances
 =============================================
 
-When the `nltk.corpus` module is imported, it automatically creates a
+When the `cnltk.corpus` module is imported, it automatically creates a
 set of corpus reader instances that can be used to access the corpora
 in the NLTK data distribution.  Here is a small sample of those
 corpus reader instances:
 
-    >>> import nltk
-    >>> nltk.corpus.brown # doctest: +ELLIPSIS
+    >>> import cnltk
+    >>> cnltk.corpus.brown # doctest: +ELLIPSIS
     <CategorizedTaggedCorpusReader ...>
-    >>> nltk.corpus.treebank # doctest: +ELLIPSIS
+    >>> cnltk.corpus.treebank # doctest: +ELLIPSIS
     <BracketParseCorpusReader ...>
-    >>> nltk.corpus.names # doctest: +ELLIPSIS
+    >>> cnltk.corpus.names # doctest: +ELLIPSIS
     <WordListCorpusReader ...>
-    >>> nltk.corpus.genesis # doctest: +ELLIPSIS
+    >>> cnltk.corpus.genesis # doctest: +ELLIPSIS
     <PlaintextCorpusReader ...>
-    >>> nltk.corpus.inaugural # doctest: +ELLIPSIS
+    >>> cnltk.corpus.inaugural # doctest: +ELLIPSIS
     <PlaintextCorpusReader ...>
 
 This sample illustrates that different corpus reader classes are used
@@ -1004,7 +1004,7 @@ be used for more than one corpus (e.g., ``genesis`` and ``inaugural``).
 Creating New Corpus Reader Instances
 ====================================
 
-Although the `nltk.corpus` module automatically creates corpus reader
+Although the `cnltk.corpus` module automatically creates corpus reader
 instances for the corpora in the NLTK data distribution, you may
 sometimes need to create your own corpus reader.  In particular, you
 would need to create your own corpus reader if you want...
@@ -1033,11 +1033,11 @@ we can create a customized corpus reader for the genesis corpus that
 uses a different sentence tokenizer as follows:
 
     >>> # Find the directory where the corpus lives.
-    >>> genesis_dir = nltk.data.find('corpora/genesis')
+    >>> genesis_dir = cnltk.data.find('corpora/genesis')
     >>> # Create our custom sentence tokenizer.
-    >>> my_sent_tokenizer = nltk.RegexpTokenizer('[^.!?]+')
+    >>> my_sent_tokenizer = cnltk.RegexpTokenizer('[^.!?]+')
     >>> # Create the new corpus reader object.
-    >>> my_genesis = nltk.corpus.PlaintextCorpusReader(
+    >>> my_genesis = cnltk.corpus.PlaintextCorpusReader(
     ...     genesis_dir, '.*\.txt', sent_tokenizer=my_sent_tokenizer)
     >>> # Use the new corpus reader object.
     >>> print(my_genesis.sents('english-kjv.txt')[0]) # doctest: +NORMALIZE_WHITESPACE
@@ -1048,11 +1048,11 @@ If you wish to read your own plaintext corpus, which is stored in the
 directory '/usr/share/some-corpus', then you can create a corpus
 reader for it with::
 
-    >>> my_corpus = nltk.corpus.PlaintextCorpusReader(
+    >>> my_corpus = cnltk.corpus.PlaintextCorpusReader(
     ...     '/usr/share/some-corpus', '.*\.txt') # doctest: +SKIP
 
 For a complete list of corpus reader subclasses, see the API
-documentation for `nltk.corpus.CorpusReader`.
+documentation for `cnltk.corpus.CorpusReader`.
 
 Corpus Types
 ============
@@ -1110,30 +1110,30 @@ identifier, which is basically a path string that uses ``/`` as the
 path separator.  I.e., this identifier can be converted to a relative
 path as follows:
 
-    >>> some_corpus_file_id = nltk.corpus.reuters.fileids()[0]
+    >>> some_corpus_file_id = cnltk.corpus.reuters.fileids()[0]
     >>> import os.path
     >>> os.path.normpath(some_corpus_file_id).replace(os.path.sep,'/')
     'test/14826'
 
 To get a list of all data files that make up a corpus, use the
 ``fileids()`` method.  In some corpora, these files will not all contain
-the same type of data; for example, for the ``nltk.corpus.timit``
+the same type of data; for example, for the ``cnltk.corpus.timit``
 corpus, ``fileids()`` will return a list including text files, word
 segmentation files, phonetic transcription files, sound files, and
 metadata files.  For corpora with diverse file types, the ``fileids()``
 method will often take one or more optional arguments, which can be
 used to get a list of the files with a specific file type:
 
-    >>> nltk.corpus.timit.fileids() # doctest: +ELLIPSIS
+    >>> cnltk.corpus.timit.fileids() # doctest: +ELLIPSIS
     ['dr1-fvmh0/sa1.phn', 'dr1-fvmh0/sa1.txt', 'dr1-fvmh0/sa1.wav', ...]
-    >>> nltk.corpus.timit.fileids('phn') # doctest: +ELLIPSIS
+    >>> cnltk.corpus.timit.fileids('phn') # doctest: +ELLIPSIS
     ['dr1-fvmh0/sa1.phn', 'dr1-fvmh0/sa2.phn', 'dr1-fvmh0/si1466.phn', ...]
 
 In some corpora, the files are divided into distinct categories.  For
 these corpora, the ``fileids()`` method takes an optional argument,
 which can be used to get a list of the files within a specific category:
 
-    >>> nltk.corpus.brown.fileids('hobbies') # doctest: +ELLIPSIS
+    >>> cnltk.corpus.brown.fileids('hobbies') # doctest: +ELLIPSIS
     ['ce01', 'ce02', 'ce03', 'ce04', 'ce05', 'ce06', 'ce07', ...]
 
 The ``abspath()`` method can be used to find the absolute path to a
@@ -1183,25 +1183,25 @@ types, are:
 For example, the `words()` method is supported by many different
 corpora, and returns a flat list of word strings:
 
-    >>> nltk.corpus.brown.words()
+    >>> cnltk.corpus.brown.words()
     ['The', 'Fulton', 'County', 'Grand', 'Jury', ...]
-    >>> nltk.corpus.treebank.words()
+    >>> cnltk.corpus.treebank.words()
     ['Pierre', 'Vinken', ',', '61', 'years', 'old', ...]
-    >>> nltk.corpus.conll2002.words()
+    >>> cnltk.corpus.conll2002.words()
     [u'Sao', u'Paulo', u'(', u'Brasil', u')', u',', u'23', ...]
-    >>> nltk.corpus.genesis.words()
+    >>> cnltk.corpus.genesis.words()
     [u'In', u'the', u'beginning', u'God', u'created', ...]
 
 On the other hand, the `tagged_words()` method is only supported by
 corpora that include part-of-speech annotations:
 
-    >>> nltk.corpus.brown.tagged_words()
+    >>> cnltk.corpus.brown.tagged_words()
     [('The', 'AT'), ('Fulton', 'NP-TL'), ...]
-    >>> nltk.corpus.treebank.tagged_words()
+    >>> cnltk.corpus.treebank.tagged_words()
     [('Pierre', 'NNP'), ('Vinken', 'NNP'), ...]
-    >>> nltk.corpus.conll2002.tagged_words()
+    >>> cnltk.corpus.conll2002.tagged_words()
     [(u'Sao', u'NC'), (u'Paulo', u'VMI'), (u'(', u'Fpa'), ...]
-    >>> nltk.corpus.genesis.tagged_words()
+    >>> cnltk.corpus.genesis.tagged_words()
     Traceback (most recent call last):
       ...
     AttributeError: 'PlaintextCorpusReader' object has no attribute 'tagged_words'
@@ -1211,17 +1211,17 @@ content, some corpora use different identifiers instead.  For example,
 the data access methods for the ``timit`` corpus uses *utterance
 identifiers* to select which corpus items should be returned:
 
-    >>> nltk.corpus.timit.utteranceids() # doctest: +ELLIPSIS
+    >>> cnltk.corpus.timit.utteranceids() # doctest: +ELLIPSIS
     ['dr1-fvmh0/sa1', 'dr1-fvmh0/sa2', 'dr1-fvmh0/si1466', ...]
-    >>> nltk.corpus.timit.words('dr1-fvmh0/sa2')
+    >>> cnltk.corpus.timit.words('dr1-fvmh0/sa2')
     ["don't", 'ask', 'me', 'to', 'carry', 'an', 'oily', 'rag', 'like', 'that']
 
 Attempting to call ``timit``\ 's data access methods with a file
 identifier will result in an exception:
 
-    >>> nltk.corpus.timit.fileids() # doctest: +ELLIPSIS
+    >>> cnltk.corpus.timit.fileids() # doctest: +ELLIPSIS
     ['dr1-fvmh0/sa1.phn', 'dr1-fvmh0/sa1.txt', 'dr1-fvmh0/sa1.wav', ...]
-    >>> nltk.corpus.timit.words('dr1-fvmh0/sa1.txt') # doctest: +SKIP
+    >>> cnltk.corpus.timit.words('dr1-fvmh0/sa1.txt') # doctest: +SKIP
     Traceback (most recent call last):
       ...
     IOError: No such file or directory: '.../dr1-fvmh0/sa1.txt.wrd'
@@ -1229,7 +1229,7 @@ identifier will result in an exception:
 As another example, the ``propbank`` corpus defines the ``roleset()``
 method, which expects a roleset identifier, not a file identifier:
 
-    >>> roleset = nltk.corpus.propbank.roleset('eat.01')
+    >>> roleset = cnltk.corpus.propbank.roleset('eat.01')
     >>> from xml.etree import ElementTree as ET
     >>> print(ET.tostring(roleset).decode('utf8')) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
     <roleset id="eat.01" name="consume" vncls="39.1">
@@ -1363,7 +1363,7 @@ absolute paths.  It then creates a corpus view for each file, using
 the `PlaintextCorpusReader._read_word_block()` method to read elements
 from the data file (see the discussion of corpus views below).
 Finally, it combines these corpus views using the
-`nltk.corpus.reader.util.concat()` function.
+`cnltk.corpus.reader.util.concat()` function.
 
 When writing a corpus reader for a corpus that is never expected to be
 very large, it can sometimes be appropriate to read the files
@@ -1484,7 +1484,7 @@ parameters to the constructor.
     ...     """,
     ...     b="""This is the second file.""")
 
-    >>> from nltk.corpus.reader.plaintext import PlaintextCorpusReader
+    >>> from cnltk.corpus.reader.plaintext import PlaintextCorpusReader
 
 The list of documents can be specified explicitly, or implicitly (using a
 regexp).  The ``ext`` argument specifies a file extension.
@@ -1526,8 +1526,8 @@ We're done with the test corpus:
 
 Test the plaintext corpora that come with nltk:
 
-    >>> from nltk.corpus import abc, genesis, inaugural
-    >>> from nltk.corpus import state_union, webtext
+    >>> from cnltk.corpus import abc, genesis, inaugural
+    >>> from cnltk.corpus import state_union, webtext
     >>> for corpus in (abc, genesis, inaugural, state_union,
     ...                webtext):
     ...     print(str(corpus).replace('\\\\','/'))
@@ -1572,7 +1572,7 @@ By default, they apply to all documents in the corpus.
     ...     This/det is/verb the/det second/adj file/noun ./punc
     ...     """)
 
-    >>> from nltk.corpus.reader.tagged import TaggedCorpusReader
+    >>> from cnltk.corpus.reader.tagged import TaggedCorpusReader
     >>> corpus = TaggedCorpusReader(root, list('ab'))
     >>> corpus.fileids()
     ['a', 'b']
@@ -1606,7 +1606,7 @@ By default, they apply to all documents in the corpus.
 
 The Brown Corpus uses the tagged corpus reader:
 
-    >>> from nltk.corpus import brown
+    >>> from cnltk.corpus import brown
     >>> brown.fileids() # doctest: +ELLIPSIS
     ['ca01', 'ca02', 'ca03', 'ca04', 'ca05', 'ca06', 'ca07', ...]
     >>> brown.categories() # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -1632,7 +1632,7 @@ Verbnet Corpus Reader
 
 Make sure we're picking up the right number of elements:
 
-    >>> from nltk.corpus import verbnet
+    >>> from cnltk.corpus import verbnet
     >>> len(verbnet.lemmas())
     3621
     >>> len(verbnet.wordnetids())
@@ -1695,13 +1695,13 @@ Corpus View Regression Tests
 
 Select some corpus files to play with:
 
-    >>> import nltk.data
+    >>> import cnltk.data
     >>> # A very short file (160 chars):
-    >>> f1 = nltk.data.find('corpora/inaugural/README')
+    >>> f1 = cnltk.data.find('corpora/inaugural/README')
     >>> # A relatively short file (791 chars):
-    >>> f2 = nltk.data.find('corpora/inaugural/1793-Washington.txt')
+    >>> f2 = cnltk.data.find('corpora/inaugural/1793-Washington.txt')
     >>> # A longer file (32k chars):
-    >>> f3 = nltk.data.find('corpora/inaugural/1909-Taft.txt')
+    >>> f3 = cnltk.data.find('corpora/inaugural/1909-Taft.txt')
     >>> fileids = [f1, f2, f3]
 
 
@@ -1709,7 +1709,7 @@ Concatenation
 -------------
 Check that concatenation works as intended.
 
-    >>> from nltk.corpus.reader.util import *
+    >>> from cnltk.corpus.reader.util import *
 
     >>> c1 = StreamBackedCorpusView(f1, read_whitespace_block, encoding='utf-8')
     >>> c2 = StreamBackedCorpusView(f2, read_whitespace_block, encoding='utf-8')
@@ -1734,7 +1734,7 @@ Slicing
 First, do some tests with fairly small slices.  These will all
 generate tuple values.
 
-    >>> from nltk.util import LazySubsequence
+    >>> from cnltk.util import LazySubsequence
     >>> c1 = StreamBackedCorpusView(f1, read_whitespace_block, encoding='utf-8')
     >>> l1 = f1.open(encoding='utf-8').read().split()
     >>> print(len(c1))
@@ -1854,7 +1854,7 @@ the ``codecs.StreamReader`` class.  To construct a new reader, we call
 the constructor with an underlying stream and an encoding name:
 
     >>> from io import StringIO, BytesIO
-    >>> from nltk.data import SeekableUnicodeStreamReader
+    >>> from cnltk.data import SeekableUnicodeStreamReader
     >>> stream = BytesIO(b"""\
     ... This is a test file.
     ... It is encoded in ascii.
@@ -1979,7 +1979,7 @@ svn 5276 fixed a bug in the comment-stripping behavior of
 parse_sexpr_block.
 
     >>> from io import StringIO
-    >>> from nltk.corpus.reader.util import read_sexpr_block
+    >>> from cnltk.corpus.reader.util import read_sexpr_block
     >>> f = StringIO(b"""
     ... (a b c)
     ... # This line is a comment.
@@ -2021,8 +2021,8 @@ svn 5624 & 5265 fixed a bug in ConcatenatedCorpusView, which caused it
 to return the wrong items when indexed starting at any index beyond
 the first file.
 
-    >>> import nltk
-    >>> sents = nltk.corpus.brown.sents()
+    >>> import cnltk
+    >>> sents = cnltk.corpus.brown.sents()
     >>> print(sents[6000])
     ['Cholesterol', 'and', 'thyroid']
     >>> print(sents[6000])
@@ -2031,7 +2031,7 @@ the first file.
 svn 5728 fixed a bug in Categorized*CorpusReader, which caused them
 to return words from *all* files when just one file was specified.
 
-    >>> from nltk.corpus import reuters
+    >>> from cnltk.corpus import reuters
     >>> reuters.words('training/13085')
     ['SNYDER', '&', 'lt', ';', 'SOI', '>', 'MAKES', ...]
     >>> reuters.words('training/5082')
@@ -2040,7 +2040,7 @@ to return words from *all* files when just one file was specified.
 svn 7227 fixed a bug in the qc corpus reader, which prevented
 access to its tuples() method
 
-    >>> from nltk.corpus import qc
+    >>> from cnltk.corpus import qc
     >>> qc.tuples('test.txt')
     [('NUM:dist', 'How far is it from Denver to Aspen ?'), ('LOC:city', 'What county is Modesto , California in ?'), ...]
 

@@ -19,7 +19,7 @@ Given an ambiguous word and the context in which the word occurs, Lesk returns
 a Synset with the highest number of overlapping words between the context
 sentence and different definitions from each Synset.
 
-    >>> from nltk.wsd import lesk
+    >>> from cnltk.wsd import lesk
     >>> sent = ['I', 'went', 'to', 'the', 'bank', 'to', 'deposit', 'money', '.']
 
     >>> print(lesk(sent, 'bank', 'n'))
@@ -30,7 +30,7 @@ sentence and different definitions from each Synset.
 
 The definitions for "bank" are:
 
-    >>> from nltk.corpus import wordnet as wn
+    >>> from cnltk.corpus import wordnet as wn
     >>> for ss in wn.synsets('bank'):
     ...     print(ss, ss.definition())
     ...

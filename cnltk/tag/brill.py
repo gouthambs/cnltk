@@ -12,10 +12,10 @@ from __future__ import print_function, division
 
 from collections import defaultdict
 
-from nltk.compat import Counter
-from nltk.tag import TaggerI
-from nltk.tbl import Feature, Template
-from nltk import jsontags
+from cnltk.compat import Counter
+from cnltk.tag import TaggerI
+from cnltk.tbl import Feature, Template
+from cnltk import jsontags
 
 
 ######################################################################
@@ -28,7 +28,7 @@ class Word(Feature):
     Feature which examines the text (word) of nearby tokens.
     """
 
-    json_tag = 'nltk.tag.brill.Word'
+    json_tag = 'cnltk.tag.brill.Word'
 
     @staticmethod
     def extract_property(tokens, index):
@@ -42,7 +42,7 @@ class Pos(Feature):
     Feature which examines the tags of nearby tokens.
     """
 
-    json_tag = 'nltk.tag.brill.Pos'
+    json_tag = 'cnltk.tag.brill.Pos'
 
     @staticmethod
     def extract_property(tokens, index):
@@ -205,7 +205,7 @@ class BrillTagger(TaggerI):
     of the TaggerTrainers available.
     """
 
-    json_tag = 'nltk.tag.BrillTagger'
+    json_tag = 'cnltk.tag.BrillTagger'
 
     def __init__(self, initial_tagger, rules, training_stats=None):
         """

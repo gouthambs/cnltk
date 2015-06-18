@@ -18,11 +18,11 @@ Contents:
   - Telugu: IIIT Hyderabad
 """
 
-from nltk import compat
-from nltk.tag import str2tuple, map_tag
+from cnltk import compat
+from cnltk.tag import str2tuple, map_tag
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class IndianCorpusReader(CorpusReader):
     """

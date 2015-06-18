@@ -29,7 +29,7 @@ concepts:
   - An "input-feature" is a property of an unlabeled token.
   - A "joint-feature" is a property of a labeled token.
 
-In the rest of the ``nltk.classify`` module, the term "features" is
+In the rest of the ``cnltk.classify`` module, the term "features" is
 used to refer to what we will call "input-features" in this module.
 
 In literature that describes and discusses maximum entropy models,
@@ -63,16 +63,16 @@ import tempfile
 import os
 from collections import defaultdict
 
-from nltk import compat
-from nltk.data import gzip_open_unicode
-from nltk.util import OrderedDict
-from nltk.probability import DictionaryProbDist
+from cnltk import compat
+from cnltk.data import gzip_open_unicode
+from cnltk.util import OrderedDict
+from cnltk.probability import DictionaryProbDist
 
-from nltk.classify.api import ClassifierI
-from nltk.classify.util import CutoffChecker, accuracy, log_likelihood
-from nltk.classify.megam import (call_megam,
+from cnltk.classify.api import ClassifierI
+from cnltk.classify.util import CutoffChecker, accuracy, log_likelihood
+from cnltk.classify.megam import (call_megam,
                                  write_megam_file, parse_megam_weights)
-from nltk.classify.tadm import call_tadm, write_tadm_file, parse_tadm_weights
+from cnltk.classify.tadm import call_tadm, write_tadm_file, parse_tadm_weights
 
 ######################################################################
 #{ Classifier Model
@@ -1356,7 +1356,7 @@ def train_maxent_classifier_with_megam(train_toks, trace=3, encoding=None,
     consistent with ``train_toks``.
 
     :see: ``train_maxent_classifier()`` for parameter descriptions.
-    :see: ``nltk.classify.megam``
+    :see: ``cnltk.classify.megam``
     """
 
     explicit = True
@@ -1495,7 +1495,7 @@ class TadmMaxentClassifier(MaxentClassifier):
 #{ Demo
 ######################################################################
 def demo():
-    from nltk.classify.util import names_demo
+    from cnltk.classify.util import names_demo
     classifier = names_demo(MaxentClassifier.train)
 
 if __name__ == '__main__':

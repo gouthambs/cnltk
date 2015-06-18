@@ -9,14 +9,14 @@
 Graphically display a Tree.
 """
 
-import nltk.compat
+import cnltk.compat
 import sys
 
 from tkinter import IntVar, Menu, Tk
 
-from nltk.util import in_idle
-from nltk.tree import Tree
-from nltk.draw.util import (CanvasFrame, CanvasWidget, BoxWidget,
+from cnltk.util import in_idle
+from cnltk.tree import Tree
+from cnltk.draw.util import (CanvasFrame, CanvasWidget, BoxWidget,
                             TextWidget, ParenWidget, OvalWidget)
 
 ##//////////////////////////////////////////////////////

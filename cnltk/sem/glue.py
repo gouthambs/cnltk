@@ -9,16 +9,16 @@ from __future__ import print_function, division, unicode_literals
 
 import os
 
-import nltk
-from nltk.internals import Counter
-from nltk.compat import string_types
-from nltk.corpus import brown
-from nltk.tag import UnigramTagger, BigramTagger, TrigramTagger, RegexpTagger
-from nltk.sem.logic import (Expression, Variable, VariableExpression,
+import cnltk
+from cnltk.internals import Counter
+from cnltk.compat import string_types
+from cnltk.corpus import brown
+from cnltk.tag import UnigramTagger, BigramTagger, TrigramTagger, RegexpTagger
+from cnltk.sem.logic import (Expression, Variable, VariableExpression,
                             LambdaExpression, AbstractVariableExpression)
-from nltk.compat import python_2_unicode_compatible
-from nltk.sem import drt
-from nltk.sem import linearlogic
+from cnltk.compat import python_2_unicode_compatible
+from cnltk.sem import drt
+from cnltk.sem import linearlogic
 
 SPEC_SEMTYPES = {'a'       : 'ex_quant',
                  'an'      : 'ex_quant',
@@ -126,11 +126,11 @@ class GlueDict(dict):
             self.clear()
 
         try:
-            contents = nltk.data.load(self.filename, format='text', encoding=self.file_encoding)
-            # TODO: the above can't handle zip files, but this should anyway be fixed in nltk.data.load()
+            contents = cnltk.data.load(self.filename, format='text', encoding=self.file_encoding)
+            # TODO: the above can't handle zip files, but this should anyway be fixed in cnltk.data.load()
         except LookupError as e:
             try:
-                contents = nltk.data.load('file:' + self.filename, format='text', encoding=self.file_encoding)
+                contents = cnltk.data.load('file:' + self.filename, format='text', encoding=self.file_encoding)
             except LookupError:
                 raise e
         lines = contents.splitlines()
@@ -436,7 +436,7 @@ class Glue(object):
         self.remove_duplicates = remove_duplicates
         self.depparser = depparser
 
-        from nltk import Prover9
+        from cnltk import Prover9
         self.prover = Prover9()
 
         if semtype_file:
@@ -448,7 +448,7 @@ class Glue(object):
         if depgraphs:
             self.depparser.train(depgraphs)
         else:
-            self.depparser.train_from_file(nltk.data.find(
+            self.depparser.train_from_file(cnltk.data.find(
                 os.path.join('grammars', 'sample_grammars',
                              'glue_train.conll')))
 
@@ -542,7 +542,7 @@ class Glue(object):
     def dep_parse(self, sentence):
         #Lazy-initialize the depparser
         if self.depparser is None:
-            from nltk.parse import MaltParser
+            from cnltk.parse import MaltParser
             self.depparser = MaltParser(tagger=self.get_pos_tagger())
         if not self.depparser._trained:
             self.train_depparser()
@@ -636,7 +636,7 @@ class DrtGlue(Glue):
 
 
 def demo(show_example=-1):
-    from nltk.parse import MaltParser
+    from cnltk.parse import MaltParser
     examples = ['David sees Mary',
                 'David eats a sandwich',
                 'every man chases a dog',

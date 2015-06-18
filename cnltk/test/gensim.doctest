@@ -18,7 +18,7 @@ Train the model
 ~~~~~~~~~~~~~~~~~~
 The word embedding is trained on Brown corpus 
 
-    >>> from nltk.corpus import brown
+    >>> from cnltk.corpus import brown
     >>> model = gensim.models.Word2Vec(brown.sents())
 
 It might take sometime to train the model, after the model is trained, probably you want to save and then use it latter  
@@ -38,7 +38,7 @@ Using the pre-trained model
 ~~~~~~~~~~~~~~~~~~~
 NLTK also include a pre-trained model which is part of a model that is trained on 100 billion words from Google News Dataset. 
 The full model is from https://code.google.com/p/word2vec/  which is about 3 Gb.    
- 	>>> from nltk.data import find
+ 	>>> from cnltk.data import find
 	>>> word2vec_sample = str(find('models/word2vec_sample/pruned.word2vec.bin'))
 	>>> model = gensim.models.Word2Vec.load(word2vec_sample)
 	
@@ -113,7 +113,7 @@ We use this code to get the  `word2vec_sample` model.
     model = Word2Vec.load_word2vec_format('GoogleNews-vectors-negative300.bin.gz', binary = True);
     
     # Only output word that appear in the Brown corpus 
-    from nltk.corpus import brown
+    from cnltk.corpus import brown
     words = set(brown.words())
     print (len(words))
     

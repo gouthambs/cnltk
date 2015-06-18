@@ -16,7 +16,7 @@ class DependencyEvaluator(object):
     Class for measuring labelled and unlabelled attachment score for
     dependency parsing. Note that the evaluation ignores punctuation.
 
-    >>> from nltk.parse import DependencyGraph, DependencyEvaluator
+    >>> from cnltk.parse import DependencyGraph, DependencyEvaluator
 
     >>> gold_sent = DependencyGraph(\"""
     ... Pierre  NNP     2       NMOD

@@ -13,14 +13,14 @@ documents.
 
 import os.path, codecs
 
-import nltk
-from nltk.corpus.reader.bracket_parse import BracketParseCorpusReader
-from nltk import compat
-from nltk.tree import Tree
-from nltk.tokenize import *
-from nltk.chunk import tagstr2tree
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+import cnltk
+from cnltk.corpus.reader.bracket_parse import BracketParseCorpusReader
+from cnltk import compat
+from cnltk.tree import Tree
+from cnltk.tokenize import *
+from cnltk.chunk import tagstr2tree
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class ChunkedCorpusReader(CorpusReader):
     """
@@ -31,7 +31,7 @@ class ChunkedCorpusReader(CorpusReader):
     function.  Each of these steps can be performed using a default
     function or a custom function.  By default, paragraphs are split
     on blank lines; sentences are listed one per line; and sentences
-    are parsed into chunk trees using ``nltk.chunk.tagstr2tree``.
+    are parsed into chunk trees using ``cnltk.chunk.tagstr2tree``.
     """
     def __init__(self, root, fileids, extension='',
                  str2chunktree=tagstr2tree,

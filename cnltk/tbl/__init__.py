@@ -12,17 +12,17 @@
 Transformation Based Learning
 
 A general purpose package for Transformation Based Learning,
-currently used by nltk.tag.BrillTagger.
+currently used by cnltk.tag.BrillTagger.
 """
 
-from nltk.tbl.template import Template
+from cnltk.tbl.template import Template
 #API: Template(...), Template.expand(...)
 
-from nltk.tbl.feature import Feature
+from cnltk.tbl.feature import Feature
 #API: Feature(...), Feature.expand(...)
 
-from nltk.tbl.rule import Rule
+from cnltk.tbl.rule import Rule
 #API: Rule.format(...), Rule.templatetid
 
-from nltk.tbl.erroranalysis import error_list
+from cnltk.tbl.erroranalysis import error_list
 

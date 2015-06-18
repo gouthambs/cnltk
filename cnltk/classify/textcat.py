@@ -31,8 +31,8 @@ http://borel.slu.edu/crubadan/index.html
 # Ensure that literal strings default to unicode rather than str.
 from __future__ import print_function, unicode_literals
 
-from nltk.compat import PY3
-from nltk.util import trigrams
+from cnltk.compat import PY3
+from cnltk.util import trigrams
 
 if PY3:
     from sys import maxsize
@@ -67,7 +67,7 @@ class TextCat(object):
                                    "see https://pypi.python.org/pypi/regex for "
                                    "further details.")
 
-        from nltk.corpus import crubadan
+        from cnltk.corpus import crubadan
         self._corpus = crubadan
         # Load all language ngrams into cache
         for lang in self._corpus.langs():
@@ -79,7 +79,7 @@ class TextCat(object):
     
     def profile(self, text):
         ''' Create FreqDist of trigrams within text '''
-        from nltk import word_tokenize, FreqDist
+        from cnltk import word_tokenize, FreqDist
 
         clean_text = self.remove_punctuation(text)
         tokens = word_tokenize(clean_text)
@@ -148,7 +148,7 @@ class TextCat(object):
         #################################################')
 
 def demo():
-    from nltk.corpus import udhr
+    from cnltk.corpus import udhr
 
     langs = ['Kurdish-UTF8', 'Abkhaz-UTF8', 'Farsi_Persian-UTF8',
              'Hindi-UTF8', 'Hawaiian-UTF8', 'Russian-UTF8', 'Vietnamese-UTF8',

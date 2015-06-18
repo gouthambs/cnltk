@@ -13,19 +13,19 @@ from __future__ import print_function
 import os, re, pickle
 from xml.etree import ElementTree as ET
 
-from nltk.tag import ClassifierBasedTagger, pos_tag
+from cnltk.tag import ClassifierBasedTagger, pos_tag
 
 try:
-    from nltk.classify import MaxentClassifier
+    from cnltk.classify import MaxentClassifier
 except ImportError:
     pass
 
-from nltk.tree import Tree
-from nltk.tokenize import word_tokenize
-from nltk.data import find
+from cnltk.tree import Tree
+from cnltk.tokenize import word_tokenize
+from cnltk.data import find
 
-from nltk.chunk.api import ChunkParserI
-from nltk.chunk.util import ChunkScore
+from cnltk.chunk.api import ChunkParserI
+from cnltk.chunk.util import ChunkScore
 
 class NEChunkParserTagger(ClassifierBasedTagger):
     """
@@ -45,7 +45,7 @@ class NEChunkParserTagger(ClassifierBasedTagger):
         try:
             wl = self._en_wordlist
         except AttributeError:
-            from nltk.corpus import words
+            from cnltk.corpus import words
             self._en_wordlist = set(words.words('en-basic'))
             wl = self._en_wordlist
         return wl
@@ -324,7 +324,7 @@ def build_model(fmt='binary'):
 
 if __name__ == '__main__':
     # Make sure that the pickled object has the right class name:
-    from nltk.chunk.named_entity import build_model
+    from cnltk.chunk.named_entity import build_model
 
     build_model('binary')
     build_model('multiclass')

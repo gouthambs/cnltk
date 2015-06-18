@@ -15,15 +15,15 @@ import operator
 from collections import defaultdict
 from functools import reduce
 
-from nltk.sem import skolemize
-from nltk.sem.logic import (VariableExpression, EqualityExpression,
+from cnltk.sem import skolemize
+from cnltk.sem.logic import (VariableExpression, EqualityExpression,
                             ApplicationExpression, Expression,
                             NegatedExpression, Variable,
                             AndExpression, unique_variable, OrExpression,
                             is_indvar, IndividualVariableExpression, Expression)
 
-from nltk.inference.api import Prover, BaseProverCommand
-from nltk.compat import python_2_unicode_compatible
+from cnltk.inference.api import Prover, BaseProverCommand
+from cnltk.compat import python_2_unicode_compatible
 
 class ProverParseError(Exception): pass
 

@@ -7,10 +7,10 @@
 #
 
 
-import nltk.compat
+import cnltk.compat
 import threading
 import tkinter.font
-if nltk.compat.PY3:
+if cnltk.compat.PY3:
     import queue as q
 else:
     import Queue as q
@@ -18,10 +18,10 @@ from tkinter import (Button, END, Frame, IntVar, LEFT, Label, Menu,
                      OptionMenu, SUNKEN, Scrollbar, StringVar,
                      Text, Tk)
 
-from nltk.corpus import (cess_cat, brown, nps_chat, treebank, sinica_treebank, alpino,
+from cnltk.corpus import (cess_cat, brown, nps_chat, treebank, sinica_treebank, alpino,
                          indian, floresta, mac_morpho, machado, cess_esp)
-from nltk.util import in_idle
-from nltk.probability import FreqDist
+from cnltk.util import in_idle
+from cnltk.probability import FreqDist
 
 
 CORPUS_LOADED_EVENT = '<<CL_EVENT>>'

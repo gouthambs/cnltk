@@ -9,8 +9,8 @@
 from __future__ import unicode_literals
 import re
 
-from nltk.stem.api import StemmerI
-from nltk.compat import python_2_unicode_compatible
+from cnltk.stem.api import StemmerI
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class RegexpStemmer(StemmerI):
@@ -19,7 +19,7 @@ class RegexpStemmer(StemmerI):
     affixes.  Any substrings that match the regular expressions will
     be removed.
 
-        >>> from nltk.stem import RegexpStemmer
+        >>> from cnltk.stem import RegexpStemmer
         >>> st = RegexpStemmer('ing$|s$|e$|able$', min=4)
         >>> st.stem('cars')
         'car'

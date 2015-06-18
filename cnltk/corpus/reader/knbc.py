@@ -10,15 +10,15 @@ from __future__ import print_function
 
 import re
 
-from nltk.compat import string_types
-from nltk.parse import DependencyGraph
+from cnltk.compat import string_types
+from cnltk.parse import DependencyGraph
 
-from nltk.corpus.reader.util import (
+from cnltk.corpus.reader.util import (
     FileSystemPathPointer,
     find_corpus_fileids,
     read_blankline_block,
 )
-from nltk.corpus.reader.api import SyntaxCorpusReader, CorpusReader
+from cnltk.corpus.reader.api import SyntaxCorpusReader, CorpusReader
 
 # default function to convert morphlist to str for tree representation
 _morphs2str_default = lambda morphs: '/'.join(m[0] for m in morphs if m[0] != 'EOS')
@@ -43,7 +43,7 @@ class KNBCorpusReader(SyntaxCorpusReader):
     Usage example
     -------------
 
-    >>> from nltk.corpus.util import LazyCorpusLoader
+    >>> from cnltk.corpus.util import LazyCorpusLoader
     >>> knbc = LazyCorpusLoader(
     ...     'knbc/corpus1',
     ...     KNBCorpusReader,
@@ -140,10 +140,10 @@ class KNBCorpusReader(SyntaxCorpusReader):
 
 def demo():
 
-    import nltk
-    from nltk.corpus.util import LazyCorpusLoader
+    import cnltk
+    from cnltk.corpus.util import LazyCorpusLoader
 
-    root = nltk.data.find('corpora/knbc/corpus1')
+    root = cnltk.data.find('corpora/knbc/corpus1')
     fileids = [f for f in find_corpus_fileids(FileSystemPathPointer(root), ".*")
                if re.search(r"\d\-\d\-[\d]+\-[\d]+", f)]
 
@@ -175,7 +175,7 @@ def demo():
 
 def test():
 
-    from nltk.corpus.util import LazyCorpusLoader
+    from cnltk.corpus.util import LazyCorpusLoader
     knbc = LazyCorpusLoader(
         'knbc/corpus1', KNBCorpusReader, r'.*/KN.*', encoding='euc-jp')
     assert isinstance(knbc.words()[0], string_types)

@@ -14,7 +14,7 @@ A ``RegexpTokenizer`` splits a string into substrings using a regular expression
 For example, the following tokenizer forms tokens out of alphabetic sequences,
 money expressions, and any other non-whitespace sequences:
 
-    >>> from nltk.tokenize import RegexpTokenizer
+    >>> from cnltk.tokenize import RegexpTokenizer
     >>> s = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\n\nThanks."
     >>> tokenizer = RegexpTokenizer('\w+|\$[\d\.]+|\S+')
     >>> tokenizer.tokenize(s)
@@ -41,7 +41,7 @@ the following tokenizer selects just the capitalized words:
 This module contains several subclasses of ``RegexpTokenizer``
 that use pre-defined regular expressions.
 
-    >>> from nltk.tokenize import BlanklineTokenizer
+    >>> from cnltk.tokenize import BlanklineTokenizer
     >>> # Uses '\s*\n\s*\n\s*':
     >>> BlanklineTokenizer().tokenize(s)
     ['Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.',
@@ -49,7 +49,7 @@ that use pre-defined regular expressions.
 
 All of the regular expression tokenizers are also available as functions:
 
-    >>> from nltk.tokenize import regexp_tokenize, wordpunct_tokenize, blankline_tokenize
+    >>> from cnltk.tokenize import regexp_tokenize, wordpunct_tokenize, blankline_tokenize
     >>> regexp_tokenize(s, pattern='\w+|\$[\d\.]+|\S+')
     ['Good', 'muffins', 'cost', '$3.88', 'in', 'New', 'York', '.',
     'Please', 'buy', 'me', 'two', 'of', 'them', '.', 'Thanks', '.']
@@ -70,10 +70,10 @@ from __future__ import unicode_literals
 import re
 import sre_constants
 
-from nltk.internals import compile_regexp_to_noncapturing
-from nltk.tokenize.api import TokenizerI
-from nltk.tokenize.util import regexp_span_tokenize
-from nltk.compat import python_2_unicode_compatible
+from cnltk.internals import compile_regexp_to_noncapturing
+from cnltk.tokenize.api import TokenizerI
+from cnltk.tokenize.util import regexp_span_tokenize
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class RegexpTokenizer(TokenizerI):
@@ -156,7 +156,7 @@ class WhitespaceTokenizer(RegexpTokenizer):
     Tokenize a string on whitespace (space, tab, newline).
     In general, users should use the string ``split()`` method instead.
 
-        >>> from nltk.tokenize import WhitespaceTokenizer
+        >>> from cnltk.tokenize import WhitespaceTokenizer
         >>> s = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\n\nThanks."
         >>> WhitespaceTokenizer().tokenize(s)
         ['Good', 'muffins', 'cost', '$3.88', 'in', 'New', 'York.',
@@ -180,7 +180,7 @@ class WordPunctTokenizer(RegexpTokenizer):
     Tokenize a text into a sequence of alphabetic and
     non-alphabetic characters, using the regexp ``\w+|[^\w\s]+``.
 
-        >>> from nltk.tokenize import WordPunctTokenizer
+        >>> from cnltk.tokenize import WordPunctTokenizer
         >>> s = "Good muffins cost $3.88\\nin New York.  Please buy me\\ntwo of them.\\n\\nThanks."
         >>> WordPunctTokenizer().tokenize(s)
         ['Good', 'muffins', 'cost', '$', '3', '.', '88', 'in', 'New', 'York',

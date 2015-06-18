@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from unittest import TestCase
 from functools import wraps
 from nose.plugins.skip import SkipTest
-from nltk.util import py26
+from cnltk.util import py26
 
 def skip(reason):
     """

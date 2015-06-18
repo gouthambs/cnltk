@@ -4,8 +4,8 @@ UDHR corpus reader. It mostly deals with encodings.
 """
 from __future__ import absolute_import, unicode_literals
 
-from nltk.corpus.reader.util import find_corpus_fileids
-from nltk.corpus.reader.plaintext import PlaintextCorpusReader
+from cnltk.corpus.reader.util import find_corpus_fileids
+from cnltk.corpus.reader.plaintext import PlaintextCorpusReader
 
 class UdhrCorpusReader(PlaintextCorpusReader):
 

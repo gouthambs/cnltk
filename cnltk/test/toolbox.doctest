@@ -5,7 +5,7 @@
 Unit test cases for ``toolbox``
 ===============================
 
-    >>> from nltk import toolbox
+    >>> from cnltk import toolbox
 
 --------------------------
 ``toolbox.StandardFormat``

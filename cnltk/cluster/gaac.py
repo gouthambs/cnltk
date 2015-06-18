@@ -11,8 +11,8 @@ try:
 except ImportError:
     pass
 
-from nltk.cluster.util import VectorSpaceClusterer, Dendrogram, cosine_distance
-from nltk.compat import python_2_unicode_compatible
+from cnltk.cluster.util import VectorSpaceClusterer, Dendrogram, cosine_distance
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class GAAClusterer(VectorSpaceClusterer):
@@ -140,7 +140,7 @@ def demo():
     Non-interactive demonstration of the clusterers with simple 2-D data.
     """
 
-    from nltk.cluster import GAAClusterer
+    from cnltk.cluster import GAAClusterer
 
     # use a set of tokens with 2D indices
     vectors = [numpy.array(f) for f in [[3, 3], [1, 2], [4, 2], [4, 0], [2, 3], [3, 1]]]

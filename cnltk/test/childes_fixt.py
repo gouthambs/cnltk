@@ -3,9 +3,9 @@ from __future__ import absolute_import
 
 def setup_module(module):
     from nose import SkipTest
-    import nltk.data
+    import cnltk.data
     try:
-        nltk.data.find('corpora/childes/data-xml/Eng-USA-MOR/')
+        cnltk.data.find('corpora/childes/data-xml/Eng-USA-MOR/')
     except LookupError as e:
         print(e)
         raise SkipTest("The CHILDES corpus is not found. "

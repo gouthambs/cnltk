@@ -47,11 +47,11 @@ ZH      seizure S IY ZH ER
 
 import codecs
 
-from nltk import compat
-from nltk.util import Index
+from cnltk import compat
+from cnltk.util import Index
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class CMUDictCorpusReader(CorpusReader):
     def entries(self):

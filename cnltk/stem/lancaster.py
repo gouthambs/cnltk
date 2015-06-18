@@ -12,15 +12,15 @@ Paice, Chris D. "Another Stemmer." ACM SIGIR Forum 24.3 (1990): 56-61.
 from __future__ import unicode_literals
 import re
 
-from nltk.stem.api import StemmerI
-from nltk.compat import python_2_unicode_compatible
+from cnltk.stem.api import StemmerI
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class LancasterStemmer(StemmerI):
     """
     Lancaster Stemmer
 
-        >>> from nltk.stem.lancaster import LancasterStemmer
+        >>> from cnltk.stem.lancaster import LancasterStemmer
         >>> st = LancasterStemmer()
         >>> st.stem('maximum')     # Remove "-um" when word is intact
         'maxim'

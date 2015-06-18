@@ -17,11 +17,11 @@ import re
 import zipfile
 
 from sys import stdin
-from nltk import compat
-from nltk.probability import DictionaryProbDist
-from nltk.internals import java, config_java
+from cnltk import compat
+from cnltk.probability import DictionaryProbDist
+from cnltk.internals import java, config_java
 
-from nltk.classify.api import ClassifierI
+from cnltk.classify.api import ClassifierI
 
 _weka_classpath = None
 _weka_search = ['.',
@@ -338,7 +338,7 @@ class ARFF_Formatter:
 
 
 if __name__ == '__main__':
-    from nltk.classify.util import names_demo, binary_names_demo_features
+    from cnltk.classify.util import names_demo, binary_names_demo_features
     def make_classifier(featuresets):
         return WekaClassifier.train('/tmp/name.model', featuresets,
                                     'C4.5')

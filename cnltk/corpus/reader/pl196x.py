@@ -8,12 +8,12 @@
 import os
 import re
 
-from nltk import compat
-from nltk import tokenize, tree
+from cnltk import compat
+from cnltk import tokenize, tree
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.xmldocs import XMLCorpusReader
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.xmldocs import XMLCorpusReader
 
 # (?:something) -- non-capturing parentheses!
 

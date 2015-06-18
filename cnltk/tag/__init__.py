@@ -21,8 +21,8 @@ the word ``'fly'`` with a noun part of speech tag (``'NN'``):
 
 An off-the-shelf tagger is available.  It uses the Penn Treebank tagset:
 
-    >>> from nltk.tag import pos_tag  # doctest: +SKIP
-    >>> from nltk.tokenize import word_tokenize # doctest: +SKIP
+    >>> from cnltk.tag import pos_tag  # doctest: +SKIP
+    >>> from cnltk.tokenize import word_tokenize # doctest: +SKIP
     >>> pos_tag(word_tokenize("John's big idea isn't all that bad.")) # doctest: +SKIP
     [('John', 'NNP'), ("'s", 'POS'), ('big', 'JJ'), ('idea', 'NN'), ('is',
     'VBZ'), ("n't", 'RB'), ('all', 'DT'), ('that', 'DT'), ('bad', 'JJ'),
@@ -34,8 +34,8 @@ tagged tokens.  Most of the taggers are built automatically based on a
 training corpus.  For example, the unigram tagger tags each word *w*
 by checking what the most frequent tag for *w* was in a training corpus:
 
-    >>> from nltk.corpus import brown
-    >>> from nltk.tag import UnigramTagger
+    >>> from cnltk.corpus import brown
+    >>> from cnltk.tag import UnigramTagger
     >>> tagger = UnigramTagger(brown.tagged_sents(categories='news')[:500])
     >>> sent = ['Mitchell', 'decried', 'the', 'high', 'rate', 'of', 'unemployment']
     >>> for word, tag in tagger.tag(sent):
@@ -60,24 +60,24 @@ For more information, please consult chapter 5 of the NLTK Book.
 """
 from __future__ import print_function
 
-from nltk.tag.api           import TaggerI
-from nltk.tag.util          import str2tuple, tuple2str, untag
-from nltk.tag.sequential    import (SequentialBackoffTagger, ContextTagger,
+from cnltk.tag.api           import TaggerI
+from cnltk.tag.util          import str2tuple, tuple2str, untag
+from cnltk.tag.sequential    import (SequentialBackoffTagger, ContextTagger,
                                     DefaultTagger, NgramTagger, UnigramTagger,
                                     BigramTagger, TrigramTagger, AffixTagger,
                                     RegexpTagger, ClassifierBasedTagger,
                                     ClassifierBasedPOSTagger)
-from nltk.tag.brill         import BrillTagger
-from nltk.tag.brill_trainer import BrillTaggerTrainer
-from nltk.tag.tnt           import TnT
-from nltk.tag.hunpos        import HunposTagger
-from nltk.tag.stanford      import StanfordTagger, StanfordPOSTagger, StanfordNERTagger
-from nltk.tag.hmm           import HiddenMarkovModelTagger, HiddenMarkovModelTrainer
-from nltk.tag.senna         import SennaTagger, SennaChunkTagger, SennaNERTagger
-from nltk.tag.mapping       import tagset_mapping, map_tag
-from nltk.tag.crf           import CRFTagger
+from cnltk.tag.brill         import BrillTagger
+from cnltk.tag.brill_trainer import BrillTaggerTrainer
+from cnltk.tag.tnt           import TnT
+from cnltk.tag.hunpos        import HunposTagger
+from cnltk.tag.stanford      import StanfordTagger, StanfordPOSTagger, StanfordNERTagger
+from cnltk.tag.hmm           import HiddenMarkovModelTagger, HiddenMarkovModelTrainer
+from cnltk.tag.senna         import SennaTagger, SennaChunkTagger, SennaNERTagger
+from cnltk.tag.mapping       import tagset_mapping, map_tag
+from cnltk.tag.crf           import CRFTagger
 
-from nltk.data import load
+from cnltk.data import load
 
 
 # Standard treebank POS tagger
@@ -88,8 +88,8 @@ def pos_tag(tokens, tagset=None):
     Use NLTK's currently recommended part of speech tagger to
     tag the given list of tokens.
 
-        >>> from nltk.tag import pos_tag # doctest: +SKIP
-        >>> from nltk.tokenize import word_tokenize # doctest: +SKIP
+        >>> from cnltk.tag import pos_tag # doctest: +SKIP
+        >>> from cnltk.tokenize import word_tokenize # doctest: +SKIP
         >>> pos_tag(word_tokenize("John's big idea isn't all that bad.")) # doctest: +SKIP
         [('John', 'NNP'), ("'s", 'POS'), ('big', 'JJ'), ('idea', 'NN'), ('is',
         'VBZ'), ("n't", 'RB'), ('all', 'DT'), ('that', 'DT'), ('bad', 'JJ'),

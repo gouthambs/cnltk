@@ -9,19 +9,19 @@
 # For license information, see LICENSE.TXT
 
 '''
-Unit tests for nltk.tgrep.
+Unit tests for cnltk.tgrep.
 '''
 
 from __future__ import absolute_import, print_function, unicode_literals
-from nltk.compat import b
-from nltk.tree import ParentedTree
-from nltk import tgrep
+from cnltk.compat import b
+from cnltk.tree import ParentedTree
+from cnltk import tgrep
 import unittest
 
 class TestSequenceFunctions(unittest.TestCase):
 
     '''
-    Class containing unit tests for nltk.tgrep.
+    Class containing unit tests for cnltk.tgrep.
     '''
 
     def test_tokenize_simple(self):

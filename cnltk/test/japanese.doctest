@@ -5,7 +5,7 @@
 Japanese Language Processing
 ============================
 
-    >>> from nltk import *
+    >>> from cnltk import *
 
 -------------
 Corpus Access
@@ -14,7 +14,7 @@ Corpus Access
 KNB Corpus
 ----------
 
-    >>> from nltk.corpus import knbc
+    >>> from cnltk.corpus import knbc
 
 Access the words: this should produce a list of strings:
 
@@ -40,7 +40,7 @@ Access the tagged sentences: this should produce a list of lists of word, tag pa
 JEITA Corpus
 ------------
 
-    >>> from nltk.corpus import jeita
+    >>> from cnltk.corpus import jeita
 
 Access the tagged words: this should produce a list of word, tag pairs, where a tag is a string:
 

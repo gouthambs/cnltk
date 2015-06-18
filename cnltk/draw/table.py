@@ -9,7 +9,7 @@
 Tkinter widgets for displaying multi-column listboxes and tables.
 """
 
-import nltk.compat
+import cnltk.compat
 import operator
 
 from tkinter import (Frame, Label, Listbox, Scrollbar, Tk)
@@ -1062,8 +1062,8 @@ def demo():
                   reprfunc=(lambda i,j,s: '  %s' % s))
     table.pack(expand=True, fill='both')
 
-    from nltk.corpus import wordnet
-    from nltk.corpus import brown
+    from cnltk.corpus import wordnet
+    from cnltk.corpus import brown
     for word, pos in sorted(set(brown.tagged_words()[:500])):
         if pos[0] != 'N': continue
         word = word.lower()

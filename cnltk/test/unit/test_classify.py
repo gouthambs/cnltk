@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Unit tests for nltk.classify. See also: nltk/test/classify.doctest
+Unit tests for cnltk.classify. See also: nltk/test/classify.doctest
 """
 from __future__ import absolute_import
 from nose import SkipTest
-from nltk import classify
+from cnltk import classify
 
 TRAIN = [
      (dict(a=1,b=1,c=1), 'y'),

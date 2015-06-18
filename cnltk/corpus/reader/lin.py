@@ -10,7 +10,7 @@ import re
 from collections import defaultdict
 from functools import reduce
 
-from nltk.corpus.reader import CorpusReader
+from cnltk.corpus.reader import CorpusReader
 
 
 class LinThesaurusCorpusReader(CorpusReader):
@@ -132,7 +132,7 @@ class LinThesaurusCorpusReader(CorpusReader):
 ######################################################################
 
 def demo():
-    from nltk.corpus import lin_thesaurus as thes
+    from cnltk.corpus import lin_thesaurus as thes
 
     word1 = "business"
     word2 = "enterprise"

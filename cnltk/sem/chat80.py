@@ -20,7 +20,7 @@ files.
 This module contains functions to extract data from the Chat-80
 relation files ('the world database'), and convert then into a format
 that can be incorporated in the FOL models of
-``nltk.sem.evaluate``. The code assumes that the Prolog
+``cnltk.sem.evaluate``. The code assumes that the Prolog
 input files are available in the NLTK corpora directory.
 
 The Chat-80 World Database consists of the following files::
@@ -129,8 +129,8 @@ import shelve
 import os
 import sys
 
-import nltk.data
-from nltk.compat import string_types, python_2_unicode_compatible
+import cnltk.data
+from cnltk.compat import string_types, python_2_unicode_compatible
 
 ###########################################################################
 # Chat-80 relation metadata bundles needed to build the valuation
@@ -312,7 +312,7 @@ class Concept(object):
         :return: a new extension for the ``Concept`` in which the
                  relation is closed under a given property
         """
-        from nltk.sem import is_rel
+        from cnltk.sem import is_rel
         assert is_rel(self._extension)
         if 'symmetric' in self.closures:
             pairs = []
@@ -414,7 +414,7 @@ def sql_query(dbname, query):
     """
     import sqlite3
     try:
-        path = nltk.data.find(dbname)
+        path = cnltk.data.find(dbname)
         connection =  sqlite3.connect(str(path))
         cur = connection.cursor()
         return cur.execute(query)
@@ -428,7 +428,7 @@ def _str2records(filename, rel):
     Read a file into memory and convert each relation clause into a list.
     """
     recs = []
-    contents = nltk.data.load("corpora/chat80/%s" % filename, format="text")
+    contents = cnltk.data.load("corpora/chat80/%s" % filename, format="text")
     for line in contents.splitlines():
         if line.startswith(rel):
             line = re.sub(rel+r'\(', '', line)
@@ -543,7 +543,7 @@ def make_valuation(concepts, read=False, lexicon=False):
         vals.append((c.prefLabel, c.extension))
     if lexicon: read = True
     if read:
-        from nltk.sem import Valuation
+        from cnltk.sem import Valuation
         val = Valuation({})
         val.update(vals)
         # add labels for individuals
@@ -586,7 +586,7 @@ def val_load(db):
         sys.exit("Cannot read file: %s" % dbname)
     else:
         db_in = shelve.open(db)
-        from nltk.sem import Valuation
+        from cnltk.sem import Valuation
         val = Valuation(db_in)
 #        val.read(db_in.items())
         return val

@@ -14,11 +14,11 @@ from __future__ import print_function
 import os
 import subprocess
 
-import nltk
-from nltk.sem.logic import Expression, ExistsExpression, AllExpression, \
+import cnltk
+from cnltk.sem.logic import Expression, ExistsExpression, AllExpression, \
     NegatedExpression, AndExpression, IffExpression, OrExpression, \
     EqualityExpression, ImpExpression
-from nltk.inference.api import BaseProverCommand, Prover
+from cnltk.inference.api import BaseProverCommand, Prover
 
 #
 # Following is not yet used. Return code for 2 actually realized as 512.
@@ -111,7 +111,7 @@ class Prover9Parent(object):
             self._prover9_bin = None
         else:
             name = 'prover9'
-            self._prover9_bin = nltk.internals.find_binary(
+            self._prover9_bin = cnltk.internals.find_binary(
                                   name,
                                   path_to_bin=binary_location,
                                   env_vars=['PROVER9'],
@@ -158,7 +158,7 @@ class Prover9Parent(object):
         binary_locations = self.binary_locations()
         if self._binary_location is not None:
             binary_locations += [self._binary_location]
-        return nltk.internals.find_binary(name,
+        return cnltk.internals.find_binary(name,
             searchpath=binary_locations,
             env_vars=['PROVER9'],
             url='http://www.cs.unm.edu/~mccune/prover9/',

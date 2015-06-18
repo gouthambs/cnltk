@@ -14,7 +14,7 @@ order to test the installation when NLTK-Data is absent.
 Tokenization
 ------------
 
-    >>> from nltk.tokenize import wordpunct_tokenize
+    >>> from cnltk.tokenize import wordpunct_tokenize
     >>> s = ("Good muffins cost $3.88\nin New York.  Please buy me\n"
     ...      "two of them.\n\nThanks.")
     >>> wordpunct_tokenize(s) # doctest: +NORMALIZE_WHITESPACE
@@ -25,7 +25,7 @@ Tokenization
 Metrics
 -------
 
-    >>> from nltk.metrics import precision, recall, f_measure
+    >>> from cnltk.metrics import precision, recall, f_measure
     >>> reference = 'DET NN VB DET JJ NN NN IN DET NN'.split()
     >>> test    = 'DET VB VB DET NN NN NN IN DET NN'.split()
     >>> reference_set = set(reference)
@@ -41,7 +41,7 @@ Metrics
 Feature Structures
 ------------------
 
-    >>> from nltk import FeatStruct
+    >>> from cnltk import FeatStruct
     >>> fs1 = FeatStruct(PER=3, NUM='pl', GND='fem')
     >>> fs2 = FeatStruct(POS='N', AGR=fs1)
     >>> print(fs2)
@@ -61,8 +61,8 @@ Feature Structures
 Parsing
 -------
 
-    >>> from nltk.parse.recursivedescent import RecursiveDescentParser
-    >>> from nltk.grammar import CFG
+    >>> from cnltk.parse.recursivedescent import RecursiveDescentParser
+    >>> from cnltk.grammar import CFG
     >>> grammar = CFG.fromstring("""
     ... S -> NP VP
     ... PP -> P NP

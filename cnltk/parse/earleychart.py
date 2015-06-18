@@ -27,15 +27,15 @@ algorithm, originally formulated by Jay Earley (1970).
 """
 from __future__ import print_function, division
 
-from nltk.compat import xrange
-from nltk.parse.chart import (Chart, ChartParser, EdgeI, LeafEdge, LeafInitRule,
+from cnltk.compat import xrange
+from cnltk.parse.chart import (Chart, ChartParser, EdgeI, LeafEdge, LeafInitRule,
                               BottomUpPredictRule, BottomUpPredictCombineRule,
                               TopDownInitRule, SingleEdgeFundamentalRule,
                               EmptyPredictRule,
                               CachedTopDownPredictRule,
                               FilteredSingleEdgeFundamentalRule,
                               FilteredBottomUpPredictCombineRule)
-from nltk.parse.featurechart import (FeatureChart, FeatureChartParser,
+from cnltk.parse.featurechart import (FeatureChart, FeatureChartParser,
                                      FeatureTopDownInitRule,
                                      FeatureTopDownPredictRule,
                                      FeatureEmptyPredictRule,
@@ -416,7 +416,7 @@ def demo(print_times=True, print_grammar=False,
     A demonstration of the Earley parsers.
     """
     import sys, time
-    from nltk.parse.chart import demo_grammar
+    from cnltk.parse.chart import demo_grammar
 
     # The grammar for ChartParser and SteppingChartParser:
     grammar = demo_grammar()

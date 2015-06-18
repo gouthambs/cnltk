@@ -15,7 +15,7 @@ substrings that are either parenthesized expressions (including any
 nested parenthesized expressions), or other whitespace-separated
 tokens.
 
-    >>> from nltk.tokenize import SExprTokenizer
+    >>> from cnltk.tokenize import SExprTokenizer
     >>> SExprTokenizer().tokenize('(a b (c d)) e f (g)')
     ['(a b (c d))', 'e', 'f', '(g)']
 
@@ -43,7 +43,7 @@ using the ``parens`` argument to the `SExprTokenizer` constructor:
 
 The s-expression tokenizer is also available as a function:
 
-    >>> from nltk.tokenize import sexpr_tokenize
+    >>> from cnltk.tokenize import sexpr_tokenize
     >>> sexpr_tokenize('(a b (c d)) e f (g)')
     ['(a b (c d))', 'e', 'f', '(g)']
 
@@ -51,7 +51,7 @@ The s-expression tokenizer is also available as a function:
 
 import re
 
-from nltk.tokenize.api import TokenizerI
+from cnltk.tokenize.api import TokenizerI
 
 class SExprTokenizer(TokenizerI):
     """

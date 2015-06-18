@@ -14,12 +14,12 @@ from operator import add
 from functools import reduce
 import subprocess
 
-from nltk.data import ZipFilePathPointer
-from nltk.tokenize import word_tokenize
-from nltk.internals import find_binary
+from cnltk.data import ZipFilePathPointer
+from cnltk.tokenize import word_tokenize
+from cnltk.internals import find_binary
 
-from nltk.parse.api import ParserI
-from nltk.parse.dependencygraph import DependencyGraph
+from cnltk.parse.api import ParserI
+from cnltk.parse.dependencygraph import DependencyGraph
 
 class MaltParser(ParserI):
 
@@ -42,7 +42,7 @@ class MaltParser(ParserI):
         if tagger is not None:
             self.tagger = tagger
         else:
-            from nltk.tag import RegexpTagger
+            from cnltk.tag import RegexpTagger
             self.tagger = RegexpTagger(
             [(r'^-?[0-9]+(.[0-9]+)?$', 'CD'),   # cardinal numbers
              (r'(The|the|A|a|An|an)$', 'AT'),   # articles

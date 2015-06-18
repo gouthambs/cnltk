@@ -16,13 +16,13 @@ import os
 import codecs
 import textwrap
 
-from nltk import compat
-from nltk.tree import Tree
-from nltk.util import LazyMap, LazyConcatenation
-from nltk.tag import map_tag
+from cnltk import compat
+from cnltk.tree import Tree
+from cnltk.util import LazyMap, LazyConcatenation
+from cnltk.tag import map_tag
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class ConllCorpusReader(CorpusReader):
     """

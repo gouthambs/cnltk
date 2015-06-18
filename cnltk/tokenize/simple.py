@@ -35,14 +35,14 @@ to specify the tokenization conventions when building a `CorpusReader`.
 
 """
 from __future__ import unicode_literals
-from nltk.tokenize.api import TokenizerI, StringTokenizer
-from nltk.tokenize.util import string_span_tokenize, regexp_span_tokenize
+from cnltk.tokenize.api import TokenizerI, StringTokenizer
+from cnltk.tokenize.util import string_span_tokenize, regexp_span_tokenize
 
 class SpaceTokenizer(StringTokenizer):
     r"""Tokenize a string using the space character as a delimiter,
     which is the same as ``s.split(' ')``.
 
-        >>> from nltk.tokenize import SpaceTokenizer
+        >>> from cnltk.tokenize import SpaceTokenizer
         >>> s = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\n\nThanks."
         >>> SpaceTokenizer().tokenize(s)
         ['Good', 'muffins', 'cost', '$3.88\nin', 'New', 'York.', '',
@@ -55,7 +55,7 @@ class TabTokenizer(StringTokenizer):
     r"""Tokenize a string use the tab character as a delimiter,
     the same as ``s.split('\t')``.
 
-        >>> from nltk.tokenize import TabTokenizer
+        >>> from cnltk.tokenize import TabTokenizer
         >>> TabTokenizer().tokenize('a\tb c\n\t d')
         ['a', 'b c\n', ' d']
     """
@@ -78,7 +78,7 @@ class LineTokenizer(TokenizerI):
     r"""Tokenize a string into its lines, optionally discarding blank lines.
     This is similar to ``s.split('\n')``.
 
-        >>> from nltk.tokenize import LineTokenizer
+        >>> from cnltk.tokenize import LineTokenizer
         >>> s = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\n\nThanks."
         >>> LineTokenizer(blanklines='keep').tokenize(s)
         ['Good muffins cost $3.88', 'in New York.  Please buy me',

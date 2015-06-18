@@ -20,10 +20,10 @@ http://jgaa.info/accepted/2006/EschbachGuentherBecker2006.10.2.pdf
 
 from __future__ import division, print_function, unicode_literals
 
-from nltk.util import slice_bounds, OrderedDict
-from nltk.compat import string_types, python_2_unicode_compatible, unicode_repr
-from nltk.internals import raise_unorderable_types
-from nltk.tree import Tree
+from cnltk.util import slice_bounds, OrderedDict
+from cnltk.compat import string_types, python_2_unicode_compatible, unicode_repr
+from cnltk.internals import raise_unorderable_types
+from cnltk.tree import Tree
 
 import re
 import sys
@@ -64,7 +64,7 @@ class TreePrettyPrinter(object):
         in this sequence (nodes should be given as Tree objects, terminals as
         indices).
 
-    >>> from nltk.tree import Tree
+    >>> from cnltk.tree import Tree
     >>> tree = Tree.fromstring('(S (NP Mary) (VP walks))')
     >>> print(TreePrettyPrinter(tree).text())
     ... # doctest: +NORMALIZE_WHITESPACE
@@ -541,7 +541,7 @@ def test():
         except (UnicodeDecodeError, UnicodeEncodeError):
             print(drawtree.text(unicodelines=False, ansi=False, **xargs))
 
-    from nltk.corpus import treebank
+    from cnltk.corpus import treebank
     for n in [0, 1440, 1591, 2771, 2170]:
         tree = treebank.parsed_sents()[n]
         print_tree(n, tree, nodedist=2, maxwidth=8)

@@ -23,7 +23,7 @@ try:
 except ImportError:
     pass
 
-from nltk.parse import ParserI, DependencyGraph, DependencyEvaluator
+from cnltk.parse import ParserI, DependencyGraph, DependencyEvaluator
 
 
 
@@ -633,8 +633,8 @@ class TransitionParser(ParserI):
 
 def demo():
     """
-    >>> from nltk.parse import DependencyGraph, DependencyEvaluator
-    >>> from nltk.parse.transitionparser import TransitionParser, Configuration, Transition
+    >>> from cnltk.parse import DependencyGraph, DependencyEvaluator
+    >>> from cnltk.parse.transitionparser import TransitionParser, Configuration, Transition
     >>> gold_sent = DependencyGraph(\"""
     ... Economic  JJ     2      ATT
     ... news  NN     3       SBJ

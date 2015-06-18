@@ -21,13 +21,13 @@ from __future__ import print_function, unicode_literals
 
 import re
 
-from nltk.probability import ConditionalFreqDist
-from nltk.classify.naivebayes import NaiveBayesClassifier
-from nltk.compat import python_2_unicode_compatible
+from cnltk.probability import ConditionalFreqDist
+from cnltk.classify.naivebayes import NaiveBayesClassifier
+from cnltk.compat import python_2_unicode_compatible
 
-from nltk.tag.api import TaggerI, FeaturesetTaggerI
+from cnltk.tag.api import TaggerI, FeaturesetTaggerI
 
-from nltk import jsontags
+from cnltk import jsontags
 
 ######################################################################
 #{ Abstract Base Classes
@@ -216,7 +216,7 @@ class DefaultTagger(SequentialBackoffTagger):
     """
     A tagger that assigns the same tag to every token.
 
-        >>> from nltk.tag.sequential import DefaultTagger
+        >>> from cnltk.tag.sequential import DefaultTagger
         >>> default_tagger = DefaultTagger('NN')
         >>> list(default_tagger.tag('This is a test'.split()))
         [('This', 'NN'), ('is', 'NN'), ('a', 'NN'), ('test', 'NN')]
@@ -229,7 +229,7 @@ class DefaultTagger(SequentialBackoffTagger):
     :type tag: str
     """
 
-    json_tag = 'nltk.tag.sequential.DefaultTagger'
+    json_tag = 'cnltk.tag.sequential.DefaultTagger'
 
     def __init__(self, tag):
         self._tag = tag
@@ -274,7 +274,7 @@ class NgramTagger(ContextTagger):
         fewer than *cutoff* times, then exclude it from the
         context-to-tag table for the new tagger.
     """
-    json_tag = 'nltk.tag.sequential.NgramTagger'
+    json_tag = 'cnltk.tag.sequential.NgramTagger'
 
     def __init__(self, n, train=None, model=None,
                  backoff=None, cutoff=0, verbose=False):
@@ -307,8 +307,8 @@ class UnigramTagger(NgramTagger):
     The UnigramTagger finds the most likely tag for each word in a training
     corpus, and then uses that information to assign tags to new tokens.
 
-        >>> from nltk.corpus import brown
-        >>> from nltk.tag.sequential import UnigramTagger
+        >>> from cnltk.corpus import brown
+        >>> from cnltk.tag.sequential import UnigramTagger
         >>> test_sent = brown.sents(categories='news')[0]
         >>> unigram_tagger = UnigramTagger(brown.tagged_sents(categories='news')[:500])
         >>> for tok, tag in unigram_tagger.tag(test_sent):
@@ -332,7 +332,7 @@ class UnigramTagger(NgramTagger):
     :type cutoff: int
     """
 
-    json_tag = 'nltk.tag.sequential.UnigramTagger'
+    json_tag = 'cnltk.tag.sequential.UnigramTagger'
 
     def __init__(self, train=None, model=None,
                  backoff=None, cutoff=0, verbose=False):
@@ -370,7 +370,7 @@ class BigramTagger(NgramTagger):
         in order not to use the backoff tagger
     :type cutoff: int
     """
-    json_tag = 'nltk.tag.sequential.BigramTagger'
+    json_tag = 'cnltk.tag.sequential.BigramTagger'
 
     def __init__(self, train=None, model=None,
                  backoff=None, cutoff=0, verbose=False):
@@ -405,7 +405,7 @@ class TrigramTagger(NgramTagger):
         in order not to use the backoff tagger
     :type cutoff: int
     """
-    json_tag = 'nltk.tag.sequential.TrigramTagger'
+    json_tag = 'cnltk.tag.sequential.TrigramTagger'
 
     def __init__(self, train=None, model=None,
                  backoff=None, cutoff=0, verbose=False):
@@ -441,7 +441,7 @@ class AffixTagger(ContextTagger):
         tag of None by this tagger.
     """
 
-    json_tag = 'nltk.tag.sequential.AffixTagger'
+    json_tag = 'cnltk.tag.sequential.AffixTagger'
 
     def __init__(self, train=None, model=None, affix_length=-3,
                  min_stem_length=2, backoff=None, cutoff=0, verbose=False):
@@ -490,8 +490,8 @@ class RegexpTagger(SequentialBackoffTagger):
     uses word suffixes to make guesses about the correct Brown Corpus part
     of speech tag:
 
-        >>> from nltk.corpus import brown
-        >>> from nltk.tag.sequential import RegexpTagger
+        >>> from cnltk.corpus import brown
+        >>> from cnltk.tag.sequential import RegexpTagger
         >>> test_sent = brown.sents(categories='news')[0]
         >>> regexp_tagger = RegexpTagger(
         ...     [(r'^-?[0-9]+(.[0-9]+)?$', 'CD'),   # cardinal numbers
@@ -523,7 +523,7 @@ class RegexpTagger(SequentialBackoffTagger):
         assigned the tag None.
     """
 
-    json_tag = 'nltk.tag.sequential.RegexpTagger'
+    json_tag = 'cnltk.tag.sequential.RegexpTagger'
 
     def __init__(self, regexps, backoff=None):
         """

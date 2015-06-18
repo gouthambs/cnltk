@@ -2,10 +2,10 @@
 .. For license information, see LICENSE.TXT
 
 ===============================
- Unit tests for nltk.tree.Tree
+ Unit tests for cnltk.tree.Tree
 ===============================
 
-    >>> from nltk.tree import *
+    >>> from cnltk.tree import *
 
 Some trees to run tests on:
 
@@ -247,7 +247,7 @@ structure).  If node and leaf labels need to be able to include
 whitespace, then you must also use the optional `node_pattern` and
 `leaf_pattern` arguments.
 
-    >>> from nltk.featstruct import FeatStruct
+    >>> from cnltk.featstruct import FeatStruct
     >>> tree = Tree.fromstring('([cat=NP] [lex=the] [lex=dog])',
     ...                   read_node=FeatStruct, read_leaf=FeatStruct)
     >>> tree.set_label(tree.label().unify(FeatStruct('[num=singular]')))

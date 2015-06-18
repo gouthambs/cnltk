@@ -2,8 +2,8 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
 
-from nltk.collocations import BigramCollocationFinder
-from nltk.metrics import BigramAssocMeasures
+from cnltk.collocations import BigramCollocationFinder
+from cnltk.metrics import BigramAssocMeasures
 
 ## Test bigram counters with discontinuous bigrams and repeated words
 

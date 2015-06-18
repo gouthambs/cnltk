@@ -15,8 +15,8 @@ from collections import defaultdict
 
 import textwrap
 
-from nltk.tag.util import untag
-from nltk.tag.brill import BrillTagger
+from cnltk.tag.util import untag
+from cnltk.tag.brill import BrillTagger
 
 ######################################################################
 #  Brill Tagger Trainer
@@ -102,12 +102,12 @@ class BrillTaggerTrainer(object):
         *min_acc*.
 
         #imports
-        >>> from nltk.tbl.template import Template
-        >>> from nltk.tag.brill import Pos, Word
-        >>> from nltk.tag import RegexpTagger, BrillTaggerTrainer
+        >>> from cnltk.tbl.template import Template
+        >>> from cnltk.tag.brill import Pos, Word
+        >>> from cnltk.tag import RegexpTagger, BrillTaggerTrainer
 
         #some data
-        >>> from nltk.corpus import treebank
+        >>> from cnltk.corpus import treebank
         >>> training_data = treebank.tagged_sents()[:100]
         >>> baseline_data = treebank.tagged_sents()[100:200]
         >>> gold_data = treebank.tagged_sents()[200:300]
@@ -219,10 +219,10 @@ class BrillTaggerTrainer(object):
         >>> tagger2.rules()[2:4]
         (Rule('001', 'NN', '.', [(Pos([-1]),'NN'), (Word([0]),'.')]), Rule('001', 'NN', 'IN', [(Pos([-1]),'NN'), (Word([0]),'of')]))
 
-        # NOTE1: (!!FIXME) A far better baseline uses nltk.tag.UnigramTagger,
+        # NOTE1: (!!FIXME) A far better baseline uses cnltk.tag.UnigramTagger,
         # with a RegexpTagger only as backoff. For instance,
         # >>> baseline = UnigramTagger(baseline_data, backoff=backoff)
-        # However, as of Nov 2013, nltk.tag.UnigramTagger does not yield consistent results
+        # However, as of Nov 2013, cnltk.tag.UnigramTagger does not yield consistent results
         # between python versions. The simplistic backoff above is a workaround to make doctests
         # get consistent input.
 

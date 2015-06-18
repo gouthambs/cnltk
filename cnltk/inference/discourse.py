@@ -48,16 +48,16 @@ import os
 from operator import and_, add
 from functools import reduce
 
-from nltk.data import show_cfg
-from nltk.tag import RegexpTagger
-from nltk.parse import load_parser
-from nltk.parse.malt import MaltParser
-from nltk.sem.drt import resolve_anaphora, AnaphoraResolutionException
-from nltk.sem.glue import DrtGlue
-from nltk.sem.logic import Expression
+from cnltk.data import show_cfg
+from cnltk.tag import RegexpTagger
+from cnltk.parse import load_parser
+from cnltk.parse.malt import MaltParser
+from cnltk.sem.drt import resolve_anaphora, AnaphoraResolutionException
+from cnltk.sem.glue import DrtGlue
+from cnltk.sem.logic import Expression
 
-from nltk.inference.mace import MaceCommand
-from nltk.inference.prover9 import Prover9Command
+from cnltk.inference.mace import MaceCommand
+from cnltk.inference.prover9 import Prover9Command
 
 
 class ReadingCommand(object):
@@ -112,7 +112,7 @@ class CfgReadingCommand(ReadingCommand):
 
     def parse_to_readings(self, sentence):
         """:see: ReadingCommand.parse_to_readings()"""
-        from nltk.sem import root_semrep
+        from cnltk.sem import root_semrep
         tokens = sentence.split()
         trees = self._parser.parse(tokens)
         return [root_semrep(tree) for tree in trees]
@@ -182,7 +182,7 @@ class DiscourseTester(object):
         self._threads = {}
         self._filtered_threads = {}
         if background is not None:
-            from nltk.sem.logic import Expression
+            from cnltk.sem.logic import Expression
             for e in background:
                 assert isinstance(e, Expression)
             self._background = background
@@ -442,7 +442,7 @@ class DiscourseTester(object):
         :param background: Formulas which contain background information
         :type background: list(Expression)
         """
-        from nltk.sem.logic import Expression
+        from cnltk.sem.logic import Expression
         for (count, e) in enumerate(background):
             assert isinstance(e, Expression)
             if verbose:
@@ -494,7 +494,7 @@ class DiscourseTester(object):
 
 def load_fol(s):
     """
-    Temporarily duplicated from ``nltk.sem.util``.
+    Temporarily duplicated from ``cnltk.sem.util``.
     Convert a  file of first order formulas into a list of ``Expression`` objects.
 
     :param s: the contents of the file
@@ -557,9 +557,9 @@ def discourse_demo(reading_command=None):
                           'Vincent is married', 'Fido barks'],
                           reading_command)
     dt.readings(filter=True)
-    import nltk.data
+    import cnltk.data
     background_file = os.path.join('grammars', 'book_grammars', 'background.fol')
-    background = nltk.data.load(background_file)
+    background = cnltk.data.load(background_file)
     
     print()
     dt.add_background(background, verbose=False)

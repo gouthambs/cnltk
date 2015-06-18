@@ -14,11 +14,11 @@ import os
 import re
 from subprocess import PIPE
 
-from nltk import compat
-from nltk.internals import find_jar, find_jar_iter, config_java, java, _java_options
+from cnltk import compat
+from cnltk.internals import find_jar, find_jar_iter, config_java, java, _java_options
 
-from nltk.parse.api import ParserI
-from nltk.tree import Tree
+from cnltk.parse.api import ParserI
+from cnltk.tree import Tree
 
 _stanford_url = 'http://nlp.stanford.edu/software/lex-parser.shtml'
 
@@ -246,7 +246,7 @@ def setup_module(module):
             model_path='edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz'
         )
     except LookupError:
-        raise SkipTest('doctests from nltk.parse.stanford are skipped because the stanford parser jar doesn\'t exist')
+        raise SkipTest('doctests from cnltk.parse.stanford are skipped because the stanford parser jar doesn\'t exist')
     
 if __name__ == '__main__':
     import doctest

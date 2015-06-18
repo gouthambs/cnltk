@@ -7,11 +7,11 @@ WordNet Interface
 
 WordNet is just another NLTK corpus reader, and can be imported like this:
 
-    >>> from nltk.corpus import wordnet
+    >>> from cnltk.corpus import wordnet
 
 For more compact code, we recommend:
 
-    >>> from nltk.corpus import wordnet as wn
+    >>> from cnltk.corpus import wordnet as wn
 
 -----
 Words
@@ -280,14 +280,14 @@ the purposes of the calculation.
 Information Content:
 Load an information content file from the wordnet_ic corpus.
 
-    >>> from nltk.corpus import wordnet_ic
+    >>> from cnltk.corpus import wordnet_ic
     >>> brown_ic = wordnet_ic.ic('ic-brown.dat')
     >>> semcor_ic = wordnet_ic.ic('ic-semcor.dat')
 
 Or you can create an information content dictionary from a corpus (or
 anything that has a words() method).
 
-   >>> from nltk.corpus import genesis
+   >>> from cnltk.corpus import genesis
    >>> genesis_ic = wn.ic(genesis, False, 0.0)
 
 ``synset1.res_similarity(synset2, ic):``
@@ -464,7 +464,7 @@ Bug 21: "instance of" not included in LCS (very similar to bug 160)
 
 Bug 221: Verb root IC is zero
 
-    >>> from nltk.corpus.reader.wordnet import information_content
+    >>> from cnltk.corpus.reader.wordnet import information_content
     >>> s = wn.synsets('say', wn.VERB)[0]
     >>> information_content(s, brown_ic)  # doctest: +ELLIPSIS
     4.623...
@@ -479,7 +479,7 @@ Bug 161: Comparison between WN keys/lemmas should not be case sensitive
 
 Bug 99: WordNet root_hypernyms gives incorrect results
 
-    >>> from nltk.corpus import wordnet as wn
+    >>> from cnltk.corpus import wordnet as wn
     >>> for s in wn.all_synsets(wn.NOUN):
     ...     if s.root_hypernyms()[0] != wn.synset('entity.n.01'):
     ...         print(s, s.root_hypernyms())
@@ -490,7 +490,7 @@ Bug 382: JCN Division by zero error
 
     >>> tow = wn.synset('tow.v.01')
     >>> shlep = wn.synset('shlep.v.02')
-    >>> from nltk.corpus import wordnet_ic
+    >>> from cnltk.corpus import wordnet_ic
     >>> brown_ic =  wordnet_ic.ic('ic-brown.dat')
     >>> tow.jcn_similarity(shlep, brown_ic)  # doctest: +ELLIPSIS
     1...e+300
@@ -532,13 +532,13 @@ Bug 484: similarity metrics returned -1 instead of None for no LCS
 
 Bug 427: "pants" does not return all the senses it should
 
-    >>> from nltk.corpus import wordnet
+    >>> from cnltk.corpus import wordnet
     >>> wordnet.synsets("pants",'n')
     [Synset('bloomers.n.01'), Synset('pant.n.01'), Synset('trouser.n.01'), Synset('gasp.n.01')]
 
 Bug 482: Some nouns not being lemmatised by WordNetLemmatizer().lemmatize
 
-    >>> from nltk.stem.wordnet import WordNetLemmatizer
+    >>> from cnltk.stem.wordnet import WordNetLemmatizer
     >>> WordNetLemmatizer().lemmatize("eggs", pos="n")
     'egg'
     >>> WordNetLemmatizer().lemmatize("legs", pos="n")

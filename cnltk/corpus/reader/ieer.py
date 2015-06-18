@@ -22,9 +22,9 @@ APW_19980429, NYT_19980315, NYT_19980403, and NYT_19980407.
 """
 from __future__ import unicode_literals
 
-import nltk
-from nltk import compat
-from nltk.corpus.reader.api import *
+import cnltk
+from cnltk import compat
+from cnltk.corpus.reader.api import *
 
 #: A dictionary whose keys are the names of documents in this corpus;
 #: and whose values are descriptions of those documents' contents.
@@ -86,7 +86,7 @@ class IEERCorpusReader(CorpusReader):
                 if self._parse(doc).docno is not None]
 
     def _parse(self, doc):
-        val = nltk.chunk.ieerstr2tree(doc, root_label="DOCUMENT")
+        val = cnltk.chunk.ieerstr2tree(doc, root_label="DOCUMENT")
         if isinstance(val, dict):
             return IEERDocument(**val)
         else:

@@ -9,8 +9,8 @@ from __future__ import unicode_literals
 import re
 from collections import defaultdict
 
-from nltk.ccg.api import PrimitiveCategory, Direction, CCGVar, FunctionalCategory
-from nltk.compat import python_2_unicode_compatible
+from cnltk.ccg.api import PrimitiveCategory, Direction, CCGVar, FunctionalCategory
+from cnltk.compat import python_2_unicode_compatible
 
 #------------
 # Regular expressions used for parsing components of the lexicon

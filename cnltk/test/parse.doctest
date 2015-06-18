@@ -8,7 +8,7 @@
 Unit tests for the Context Free Grammar class
 ---------------------------------------------
 
-    >>> from nltk import Nonterminal, nonterminals, Production, CFG
+    >>> from cnltk import Nonterminal, nonterminals, Production, CFG
 
     >>> nt1 = Nonterminal('NP')
     >>> nt2 = Nonterminal('VP')
@@ -60,7 +60,7 @@ Unit tests for the rd (Recursive Descent Parser) class
 Create and run a recursive descent parser over both a syntactically ambiguous
 and unambiguous sentence.
 
-    >>> from nltk.parse import RecursiveDescentParser
+    >>> from cnltk.parse import RecursiveDescentParser
     >>> rd = RecursiveDescentParser(grammar)
 
     >>> sentence1 = 'the cat chased the dog'.split()
@@ -95,7 +95,7 @@ Create and run a shift reduce parser over both a syntactically ambiguous
 and unambiguous sentence. Note that unlike the recursive descent parser, one
 and only one parse is ever returned.
 
-    >>> from nltk.parse import ShiftReduceParser
+    >>> from cnltk.parse import ShiftReduceParser
     >>> sr = ShiftReduceParser(grammar)
 
     >>> sentence1 = 'the cat chased the dog'.split()
@@ -120,11 +120,11 @@ Unit tests for the Chart Parser class
 We use the demo() function for testing.
 We must turn off showing of times.
 
-    >>> import nltk
+    >>> import cnltk
 
 First we test tracing with a short sentence
 
-    >>> nltk.parse.chart.demo(2, print_times=False, trace=1,
+    >>> cnltk.parse.chart.demo(2, print_times=False, trace=1,
     ...                       sent='I saw a dog', numparses=1)
     * Sentence:
     I saw a dog
@@ -175,7 +175,7 @@ Note that the number of edges differ between the strategies.
 
 Top-down
 
-    >>> nltk.parse.chart.demo(1, print_times=False, trace=0,
+    >>> cnltk.parse.chart.demo(1, print_times=False, trace=0,
     ...                       sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -194,7 +194,7 @@ Top-down
 
 Bottom-up
 
-    >>> nltk.parse.chart.demo(2, print_times=False, trace=0,
+    >>> cnltk.parse.chart.demo(2, print_times=False, trace=0,
     ...                       sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -213,7 +213,7 @@ Bottom-up
 
 Bottom-up Left-Corner
 
-    >>> nltk.parse.chart.demo(3, print_times=False, trace=0,
+    >>> cnltk.parse.chart.demo(3, print_times=False, trace=0,
     ...                       sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -232,7 +232,7 @@ Bottom-up Left-Corner
 
 Left-Corner with Bottom-Up Filter
 
-    >>> nltk.parse.chart.demo(4, print_times=False, trace=0,
+    >>> cnltk.parse.chart.demo(4, print_times=False, trace=0,
     ...                       sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -251,7 +251,7 @@ Left-Corner with Bottom-Up Filter
 
 The stepping chart parser
 
-    >>> nltk.parse.chart.demo(5, print_times=False, trace=1,
+    >>> cnltk.parse.chart.demo(5, print_times=False, trace=1,
     ...                       sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -348,11 +348,11 @@ Unit tests for the Incremental Chart Parser class
 The incremental chart parsers are defined in earleychart.py.
 We use the demo() function for testing. We must turn off showing of times.
 
-    >>> import nltk
+    >>> import cnltk
 
 Earley Chart Parser
 
-    >>> nltk.parse.earleychart.demo(print_times=False, trace=1,
+    >>> cnltk.parse.earleychart.demo(print_times=False, trace=1,
     ...                             sent='I saw John with a dog', numparses=2)
     * Sentence:
     I saw John with a dog
@@ -422,14 +422,14 @@ Unit tests for LARGE context-free grammars
 
 Reading the ATIS grammar.
 
-    >>> grammar = nltk.data.load('grammars/large_grammars/atis.cfg')
+    >>> grammar = cnltk.data.load('grammars/large_grammars/atis.cfg')
     >>> grammar
     <Grammar with 5517 productions>
 
 Reading the test sentences.
 
-    >>> sentences = nltk.data.load('grammars/large_grammars/atis_sentences.txt')
-    >>> sentences = nltk.parse.util.extract_test_sentences(sentences)
+    >>> sentences = cnltk.data.load('grammars/large_grammars/atis_sentences.txt')
+    >>> sentences = cnltk.parse.util.extract_test_sentences(sentences)
     >>> len(sentences)
     98
     >>> testsentence = sentences[22]
@@ -444,7 +444,7 @@ Note that the number of edges differ between the strategies.
 
 Bottom-up parsing.
 
-    >>> parser = nltk.parse.BottomUpChartParser(grammar)
+    >>> parser = cnltk.parse.BottomUpChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     7661
@@ -453,7 +453,7 @@ Bottom-up parsing.
 
 Bottom-up Left-corner parsing.
 
-    >>> parser = nltk.parse.BottomUpLeftCornerChartParser(grammar)
+    >>> parser = cnltk.parse.BottomUpLeftCornerChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     4986
@@ -462,7 +462,7 @@ Bottom-up Left-corner parsing.
 
 Left-corner parsing with bottom-up filter.
 
-    >>> parser = nltk.parse.LeftCornerChartParser(grammar)
+    >>> parser = cnltk.parse.LeftCornerChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     1342
@@ -471,7 +471,7 @@ Left-corner parsing with bottom-up filter.
 
 Top-down parsing.
 
-    >>> parser = nltk.parse.TopDownChartParser(grammar)
+    >>> parser = cnltk.parse.TopDownChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     28352
@@ -480,7 +480,7 @@ Top-down parsing.
 
 Incremental Bottom-up parsing.
 
-    >>> parser = nltk.parse.IncrementalBottomUpChartParser(grammar)
+    >>> parser = cnltk.parse.IncrementalBottomUpChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     7661
@@ -489,7 +489,7 @@ Incremental Bottom-up parsing.
 
 Incremental Bottom-up Left-corner parsing.
 
-    >>> parser = nltk.parse.IncrementalBottomUpLeftCornerChartParser(grammar)
+    >>> parser = cnltk.parse.IncrementalBottomUpLeftCornerChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     4986
@@ -498,7 +498,7 @@ Incremental Bottom-up Left-corner parsing.
 
 Incremental Left-corner parsing with bottom-up filter.
 
-    >>> parser = nltk.parse.IncrementalLeftCornerChartParser(grammar)
+    >>> parser = cnltk.parse.IncrementalLeftCornerChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     1342
@@ -507,7 +507,7 @@ Incremental Left-corner parsing with bottom-up filter.
 
 Incremental Top-down parsing.
 
-    >>> parser = nltk.parse.IncrementalTopDownChartParser(grammar)
+    >>> parser = cnltk.parse.IncrementalTopDownChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     28352
@@ -516,7 +516,7 @@ Incremental Top-down parsing.
 
 Earley parsing. This is similar to the incremental top-down algorithm.
 
-    >>> parser = nltk.parse.EarleyChartParser(grammar)
+    >>> parser = cnltk.parse.EarleyChartParser(grammar)
     >>> chart = parser.chart_parse(sentence)
     >>> print((chart.num_edges()))
     28352
@@ -527,9 +527,9 @@ Earley parsing. This is similar to the incremental top-down algorithm.
 Unit tests for the Probabilistic CFG class
 ------------------------------------------
 
-    >>> from nltk.corpus import treebank
+    >>> from cnltk.corpus import treebank
     >>> from itertools import islice
-    >>> from nltk.grammar import PCFG, induce_pcfg, toy_pcfg1, toy_pcfg2
+    >>> from cnltk.grammar import PCFG, induce_pcfg, toy_pcfg1, toy_pcfg2
 
 Create a set of PCFG productions.
 
@@ -612,7 +612,7 @@ Unit tests for the Probabilistic Chart Parse classes
 Create several parsers using different queuing strategies and show the
 resulting parses.
 
-    >>> from nltk.parse import pchart
+    >>> from cnltk.parse import pchart
 
     >>> parser = pchart.InsideChartParser(grammar)
     >>> for t in parser.parse(tokens):
@@ -686,7 +686,7 @@ resulting parses.
 Unit tests for the Viterbi Parse classes
 ----------------------------------------
 
-    >>> from nltk.parse import ViterbiParser
+    >>> from cnltk.parse import ViterbiParser
     >>> tokens = "Jack saw Bob with my cookie".split()
     >>> grammar = toy_pcfg2
 
@@ -707,7 +707,7 @@ Parse the tokenized sentence.
 Unit tests for the FeatStructNonterminal class
 ----------------------------------------------
 
-    >>> from nltk.grammar import FeatStructNonterminal
+    >>> from cnltk.grammar import FeatStructNonterminal
     >>> FeatStructNonterminal(
     ...     pos='n', agr=FeatStructNonterminal(number='pl', gender='f'))
     [agr=[gender='f', number='pl'], pos='n']
@@ -721,7 +721,7 @@ Tracing the Feature Chart Parser
 
 We use the featurechart.demo() function for tracing the Feature Chart Parser.
 
-    >>> nltk.parse.featurechart.demo(print_times=False,
+    >>> cnltk.parse.featurechart.demo(print_times=False,
     ...                              print_grammar=True,
     ...                              parser=nltk.parse.featurechart.FeatureChartParser,
     ...                              sent='I saw John with a dog')
@@ -807,14 +807,14 @@ Unit tests for the Feature Chart Parser classes
 The list of parsers we want to test.
 
     >>> parsers = [nltk.parse.featurechart.FeatureChartParser,
-    ...            nltk.parse.featurechart.FeatureTopDownChartParser,
-    ...            nltk.parse.featurechart.FeatureBottomUpChartParser,
-    ...            nltk.parse.featurechart.FeatureBottomUpLeftCornerChartParser,
-    ...            nltk.parse.earleychart.FeatureIncrementalChartParser,
-    ...            nltk.parse.earleychart.FeatureEarleyChartParser,
-    ...            nltk.parse.earleychart.FeatureIncrementalTopDownChartParser,
-    ...            nltk.parse.earleychart.FeatureIncrementalBottomUpChartParser,
-    ...            nltk.parse.earleychart.FeatureIncrementalBottomUpLeftCornerChartParser,
+    ...            cnltk.parse.featurechart.FeatureTopDownChartParser,
+    ...            cnltk.parse.featurechart.FeatureBottomUpChartParser,
+    ...            cnltk.parse.featurechart.FeatureBottomUpLeftCornerChartParser,
+    ...            cnltk.parse.earleychart.FeatureIncrementalChartParser,
+    ...            cnltk.parse.earleychart.FeatureEarleyChartParser,
+    ...            cnltk.parse.earleychart.FeatureIncrementalTopDownChartParser,
+    ...            cnltk.parse.earleychart.FeatureIncrementalBottomUpChartParser,
+    ...            cnltk.parse.earleychart.FeatureIncrementalBottomUpLeftCornerChartParser,
     ...            ]
 
 A helper function that tests each parser on the given grammar and sentence.
@@ -836,13 +836,13 @@ return the same trees. Otherwise an error is printed.
 
 The demo grammar from before, with an ambiguous sentence.
 
-    >>> isawjohn = nltk.parse.featurechart.demo_grammar()
+    >>> isawjohn = cnltk.parse.featurechart.demo_grammar()
     >>> unittest(isawjohn, "I saw John with a dog with my cookie", 5)
 
 This grammar tests that variables in different grammar rules are renamed
 before unification. (The problematic variable is in this case ?X).
 
-    >>> whatwasthat = nltk.grammar.FeatureGrammar.fromstring('''
+    >>> whatwasthat = cnltk.grammar.FeatureGrammar.fromstring('''
     ... S[] -> NP[num=?N] VP[num=?N, slash=?X]
     ... NP[num=?X] -> "what"
     ... NP[num=?X] -> "that"
@@ -854,7 +854,7 @@ before unification. (The problematic variable is in this case ?X).
 This grammar tests that the same rule can be used in different places
 in another rule, and that the variables are properly renamed.
 
-    >>> thislovesthat = nltk.grammar.FeatureGrammar.fromstring('''
+    >>> thislovesthat = cnltk.grammar.FeatureGrammar.fromstring('''
     ... S[] -> NP[case=nom] V[] NP[case=acc]
     ... NP[case=?X] -> Pron[case=?X]
     ... Pron[] -> "this"
@@ -869,14 +869,14 @@ Tests for loading feature grammar files
 
 Alternative 1: first load the grammar, then create the parser.
 
-    >>> fcfg = nltk.data.load('grammars/book_grammars/feat0.fcfg')
-    >>> fcp1 = nltk.parse.FeatureChartParser(fcfg)
+    >>> fcfg = cnltk.data.load('grammars/book_grammars/feat0.fcfg')
+    >>> fcp1 = cnltk.parse.FeatureChartParser(fcfg)
     >>> print((type(fcp1)))
     <class 'nltk.parse.featurechart.FeatureChartParser'>
 
 Alternative 2: directly load the parser.
 
-    >>> fcp2 = nltk.parse.load_parser('grammars/book_grammars/feat0.fcfg')
+    >>> fcp2 = cnltk.parse.load_parser('grammars/book_grammars/feat0.fcfg')
     >>> print((type(fcp2)))
     <class 'nltk.parse.featurechart.FeatureChartParser'>
 

@@ -9,15 +9,15 @@ from __future__ import print_function, unicode_literals
 
 import re
 
-from nltk.tree import Tree
-from nltk.tag.util import str2tuple
-from nltk.compat import python_2_unicode_compatible
+from cnltk.tree import Tree
+from cnltk.tag.util import str2tuple
+from cnltk.compat import python_2_unicode_compatible
 
 ##//////////////////////////////////////////////////////
 ## EVALUATION
 ##//////////////////////////////////////////////////////
 
-from nltk.metrics import accuracy as _accuracy
+from cnltk.metrics import accuracy as _accuracy
 def accuracy(chunker, gold):
     """
     Score the accuracy of the chunker against the gold standard.
@@ -46,7 +46,7 @@ def accuracy(chunker, gold):
 # Patched for increased performance by Yoav Goldberg <yoavg@cs.bgu.ac.il>, 2006-01-13
 #  -- statistics are evaluated only on demand, instead of at every sentence evaluation
 #
-# SB: use nltk.metrics for precision/recall scoring?
+# SB: use cnltk.metrics for precision/recall scoring?
 #
 class ChunkScore(object):
     """
@@ -546,8 +546,8 @@ def ieerstr2tree(s, chunk_types = ['LOCATION', 'ORGANIZATION', 'PERSON', 'DURATI
 def demo():
 
     s = "[ Pierre/NNP Vinken/NNP ] ,/, [ 61/CD years/NNS ] old/JJ ,/, will/MD join/VB [ the/DT board/NN ] ./."
-    import nltk
-    t = nltk.chunk.tagstr2tree(s, chunk_label='NP')
+    import cnltk
+    t = cnltk.chunk.tagstr2tree(s, chunk_label='NP')
     t.pprint()
     print()
 
@@ -586,7 +586,7 @@ better JJR I-ADJP
 
     # Demonstrate CoNLL output
     print("CoNLL output:")
-    print(nltk.chunk.tree2conllstr(conll_tree))
+    print(cnltk.chunk.tree2conllstr(conll_tree))
     print()
 
 

@@ -17,8 +17,8 @@ from math import log
 
 from operator import itemgetter
 
-from nltk.probability import FreqDist, ConditionalFreqDist
-from nltk.tag.api import TaggerI
+from cnltk.probability import FreqDist, ConditionalFreqDist
+from cnltk.tag.api import TaggerI
 
 class TnT(TaggerI):
     '''
@@ -482,7 +482,7 @@ def basic_sent_chop(data, raw=True):
 
 
 def demo():
-    from nltk.corpus import brown
+    from cnltk.corpus import brown
     sents = list(brown.tagged_sents())
     test = list(brown.sents())
 
@@ -503,7 +503,7 @@ def demo():
 
 
 def demo2():
-    from nltk.corpus import treebank
+    from cnltk.corpus import treebank
 
     d = list(treebank.tagged_sents())
 
@@ -538,7 +538,7 @@ def demo2():
         print('Accuracy over known words:', (sacc / sp_kn))
 
 def demo3():
-    from nltk.corpus import treebank, brown
+    from cnltk.corpus import treebank, brown
 
     d = list(treebank.tagged_sents())
     e = list(brown.tagged_sents())

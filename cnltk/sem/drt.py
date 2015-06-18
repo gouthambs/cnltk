@@ -10,8 +10,8 @@ from __future__ import print_function, unicode_literals
 import operator
 from functools import reduce
 
-from nltk.compat import string_types, python_2_unicode_compatible
-from nltk.sem.logic import (APP, AbstractVariableExpression, AllExpression,
+from cnltk.compat import string_types, python_2_unicode_compatible
+from cnltk.sem.logic import (APP, AbstractVariableExpression, AllExpression,
                             AndExpression, ApplicationExpression, BinaryExpression,
                             BooleanExpression, ConstantExpression, EqualityExpression,
                             EventVariableExpression, ExistsExpression, Expression,
@@ -22,14 +22,14 @@ from nltk.sem.logic import (APP, AbstractVariableExpression, AllExpression,
 
 # Import Tkinter-based modules if they are available
 try:
-    # imports are fixed for Python 2.x by nltk.compat
+    # imports are fixed for Python 2.x by cnltk.compat
     from tkinter import Canvas
     from tkinter import Tk
     from tkinter.font import Font
-    from nltk.util import in_idle
+    from cnltk.util import in_idle
 
 except ImportError:
-    # No need to print a warning here, nltk.draw has already printed one.
+    # No need to print a warning here, cnltk.draw has already printed one.
     pass
 
 class DrtTokens(Tokens):
@@ -211,7 +211,7 @@ class DrtExpression(object):
         If the prover says it is valid, then the self and other are equal.
 
         :param other: an ``DrtExpression`` to check equality against
-        :param prover: a ``nltk.inference.api.Prover``
+        :param prover: a ``cnltk.inference.api.Prover``
         """
         assert isinstance(other, DrtExpression)
 

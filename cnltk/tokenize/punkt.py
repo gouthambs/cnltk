@@ -22,14 +22,14 @@ before it can be used.
 The NLTK data package includes a pre-trained Punkt tokenizer for
 English.
 
-    >>> import nltk.data
+    >>> import cnltk.data
     >>> text = '''
     ... Punkt knows that the periods in Mr. Smith and Johann S. Bach
     ... do not mark sentence boundaries.  And sometimes sentences
     ... can start with non-capitalized words.  i is a good variable
     ... name.
     ... '''
-    >>> sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+    >>> sent_detector = cnltk.data.load('tokenizers/punkt/english.pickle')
     >>> print('\n-----\n'.join(sent_detector.tokenize(text.strip())))
     Punkt knows that the periods in Mr. Smith and Johann S. Bach
     do not mark sentence boundaries.
@@ -109,9 +109,9 @@ import re
 import math
 from collections import defaultdict
 
-from nltk.compat import unicode_repr, python_2_unicode_compatible, string_types
-from nltk.probability import FreqDist
-from nltk.tokenize.api import TokenizerI
+from cnltk.compat import unicode_repr, python_2_unicode_compatible, string_types
+from cnltk.probability import FreqDist
+from cnltk.tokenize.api import TokenizerI
 
 ######################################################################
 #{ Orthographic Context Constants

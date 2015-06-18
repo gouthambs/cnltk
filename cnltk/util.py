@@ -19,8 +19,8 @@ from pprint import pprint
 from collections import defaultdict, deque
 from sys import version_info
 
-from nltk.internals import slice_bounds, raise_unorderable_types
-from nltk.compat import (class_types, text_type, string_types, total_ordering,
+from cnltk.internals import slice_bounds, raise_unorderable_types
+from cnltk.compat import (class_types, text_type, string_types, total_ordering,
                          python_2_unicode_compatible, getproxies,
 			 ProxyHandler, build_opener, install_opener,
 			 HTTPPasswordMgrWithDefaultRealm,
@@ -356,7 +356,7 @@ def flatten(*args):
     """
     Flatten a list.
 
-        >>> from nltk.util import flatten
+        >>> from cnltk.util import flatten
         >>> flatten(1, 2, ['b', 'a' , ['c', 'd']], 3)
         [1, 2, 'b', 'a', 'c', 'd', 3]
 
@@ -385,7 +385,7 @@ def ngrams(sequence, n, pad_left=False, pad_right=False, pad_symbol=None):
     Return the ngrams generated from a sequence of items, as an iterator.
     For example:
 
-        >>> from nltk.util import ngrams
+        >>> from cnltk.util import ngrams
         >>> list(ngrams([1,2,3,4,5], 3))
         [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
 
@@ -428,7 +428,7 @@ def bigrams(sequence, **kwargs):
     Return the bigrams generated from a sequence of items, as an iterator.
     For example:
 
-        >>> from nltk.util import bigrams
+        >>> from cnltk.util import bigrams
         >>> list(bigrams([1,2,3,4,5]))
         [(1, 2), (2, 3), (3, 4), (4, 5)]
 
@@ -447,7 +447,7 @@ def trigrams(sequence, **kwargs):
     Return the trigrams generated from a sequence of items, as an iterator.
     For example:
 
-        >>> from nltk.util import trigrams
+        >>> from cnltk.util import trigrams
         >>> list(trigrams([1,2,3,4,5]))
         [(1, 2, 3), (2, 3, 4), (3, 4, 5)]
 
@@ -786,7 +786,7 @@ class LazyMap(AbstractLazySequence):
     ``map``.  In particular, the following two expressions are
     equivalent:
 
-        >>> from nltk.util import LazyMap
+        >>> from cnltk.util import LazyMap
         >>> function = str
         >>> sequence = [1,2,3]
         >>> map(function, sequence) # doctest: +SKIP
@@ -912,7 +912,7 @@ class LazyZip(LazyMap):
     ``LazyZip`` is essentially a lazy version of the Python primitive function
     ``zip``.  In particular, an evaluated LazyZip is equivalent to a zip:
 
-        >>> from nltk.util import LazyZip
+        >>> from cnltk.util import LazyZip
         >>> sequence1, sequence2 = [1, 2, 3], ['a', 'b', 'c']
         >>> zip(sequence1, sequence2) # doctest: +SKIP
         [(1, 'a'), (2, 'b'), (3, 'c')]
@@ -962,7 +962,7 @@ class LazyEnumerate(LazyZip):
     function ``enumerate``.  In particular, the following two expressions are
     equivalent:
 
-        >>> from nltk.util import LazyEnumerate
+        >>> from cnltk.util import LazyEnumerate
         >>> sequence = ['first', 'second', 'third']
         >>> list(enumerate(sequence))
         [(0, 'first'), (1, 'second'), (2, 'third')]
@@ -1075,7 +1075,7 @@ def set_proxy(proxy, user=None, password=''):
         authentication.
     :param password: The password to authenticate with.
     """
-    from nltk import compat
+    from cnltk import compat
 
     if proxy is None:
         # Try and find the system proxy settings

@@ -14,7 +14,7 @@
 
 from __future__  import division
 from collections import defaultdict
-from nltk.align  import AlignedSent
+from cnltk.align  import AlignedSent
 
 class IBMModel1(object):
     """
@@ -27,7 +27,7 @@ class IBMModel1(object):
     Step 2 - Estimate the probability of translation according to the 
              evidence from Step 1. 
 
-    >>> from nltk.corpus import comtrans
+    >>> from cnltk.corpus import comtrans
     >>> bitexts = comtrans.aligned_sents()[:100]
     >>> ibm = IBMModel1(bitexts, 20)
 

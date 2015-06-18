@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function, unicode_literals
 import unittest
-from nltk.stem.snowball import SnowballStemmer
+from cnltk.stem.snowball import SnowballStemmer
 
 
 class SnowballTest(unittest.TestCase):

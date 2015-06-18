@@ -3,7 +3,7 @@ from __future__ import print_function, unicode_literals
 
 
 import unittest
-from nltk.classify.naivebayes import NaiveBayesClassifier
+from cnltk.classify.naivebayes import NaiveBayesClassifier
 
 
 class NaiveBayesClassifierTest(unittest.TestCase):

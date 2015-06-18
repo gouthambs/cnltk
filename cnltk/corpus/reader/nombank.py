@@ -8,13 +8,13 @@
 
 from __future__ import unicode_literals
 
-from nltk.tree import Tree
+from cnltk.tree import Tree
 from xml.etree import ElementTree
-from nltk.internals import raise_unorderable_types
-from nltk.compat import total_ordering, python_2_unicode_compatible, string_types
+from cnltk.internals import raise_unorderable_types
+from cnltk.compat import total_ordering, python_2_unicode_compatible, string_types
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class NombankCorpusReader(CorpusReader):
     """

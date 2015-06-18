@@ -26,7 +26,7 @@ entity mention itself appears as the leaves of the subtree. This is
 illustrated below, where we have show an extract of the chunk
 representation of document NYT_19980315.064:
 
-    >>> from nltk.corpus import ieer
+    >>> from cnltk.corpus import ieer
     >>> docs = ieer.parsed_docs('NYT_19980315')
     >>> tree = docs[1].text
     >>> print(tree) # doctest: +ELLIPSIS
@@ -62,7 +62,7 @@ Sarrail*, *San Mateo* and *Calif.*.
 The CoNLL2002 Dutch and Spanish data is treated similarly, although in
 this case, the strings are also POS tagged.
 
-    >>> from nltk.corpus import conll2002
+    >>> from cnltk.corpus import conll2002
     >>> for doc in conll2002.chunked_sents('ned.train')[27]:
     ...     print(doc)
     (u'Het', u'Art')
@@ -98,7 +98,7 @@ simple version of this task. The `tree2semi_rel()` function splits a chunk
 document into a list of two-member lists, each of which consists of a
 (possibly empty) string followed by a `Tree` (i.e., a Named Entity):
 
-    >>> from nltk.sem import relextract
+    >>> from cnltk.sem import relextract
     >>> pairs = relextract.tree2semi_rel(tree)
     >>> for s, tree in pairs[18:22]:
     ...     print('("...%s", %s)' % (" ".join(s[-5:]),tree))

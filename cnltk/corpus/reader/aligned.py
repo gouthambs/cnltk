@@ -5,12 +5,12 @@
 # Author: Steven Bird <stevenbird1@gmail.com>
 # For license information, see LICENSE.TXT
 
-from nltk import compat
-from nltk.tokenize import WhitespaceTokenizer, RegexpTokenizer
-from nltk.align import AlignedSent
+from cnltk import compat
+from cnltk.tokenize import WhitespaceTokenizer, RegexpTokenizer
+from cnltk.align import AlignedSent
 
-from nltk.corpus.reader.api import CorpusReader
-from nltk.corpus.reader.util import StreamBackedCorpusView, concat,\
+from cnltk.corpus.reader.api import CorpusReader
+from cnltk.corpus.reader.util import StreamBackedCorpusView, concat,\
     read_alignedsent_block
 
 class AlignedCorpusReader(CorpusReader):

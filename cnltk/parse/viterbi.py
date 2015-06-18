@@ -8,10 +8,10 @@
 from __future__ import print_function, unicode_literals
 
 from functools import reduce
-from nltk.tree import Tree, ProbabilisticTree
-from nltk.compat import python_2_unicode_compatible
+from cnltk.tree import Tree, ProbabilisticTree
+from cnltk.compat import python_2_unicode_compatible
 
-from nltk.parse.api import ParserI
+from cnltk.parse.api import ParserI
 
 ##//////////////////////////////////////////////////////
 ##  Viterbi PCFG Parser
@@ -331,9 +331,9 @@ def demo():
     summary of the results are displayed.
     """
     import sys, time
-    from nltk import tokenize
-    from nltk.parse import ViterbiParser
-    from nltk.grammar import toy_pcfg1, toy_pcfg2
+    from cnltk import tokenize
+    from cnltk.parse import ViterbiParser
+    from cnltk.grammar import toy_pcfg1, toy_pcfg2
 
     # Define two demos.  Each demo has a sentence and a grammar.
     demos = [('I saw the man with my telescope', toy_pcfg1),
@@ -386,7 +386,7 @@ def demo():
     print()
     print('Draw parses (y/n)? ', end=' ')
     if sys.stdin.readline().strip().lower().startswith('y'):
-        from nltk.draw.tree import draw_trees
+        from cnltk.draw.tree import draw_trees
         print('  please wait...')
         draw_trees(*parses)
 

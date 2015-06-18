@@ -39,9 +39,9 @@ of the author.
 """
 from __future__ import unicode_literals
 
-from nltk import compat
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk import compat
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 
 @compat.python_2_unicode_compatible

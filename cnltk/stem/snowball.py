@@ -20,12 +20,12 @@ There is also a demo function: `snowball.demo()`.
 """
 from __future__ import unicode_literals, print_function
 
-from nltk import compat
-from nltk.corpus import stopwords
-from nltk.stem import porter
-from nltk.stem.util import suffix_replace
+from cnltk import compat
+from cnltk.corpus import stopwords
+from cnltk.stem import porter
+from cnltk.stem.util import suffix_replace
 
-from nltk.stem.api import StemmerI
+from cnltk.stem.api import StemmerI
 
 
 class SnowballStemmer(StemmerI):
@@ -51,7 +51,7 @@ class SnowballStemmer(StemmerI):
 
     The stemmer is invoked as shown below:
 
-    >>> from nltk.stem import SnowballStemmer
+    >>> from cnltk.stem import SnowballStemmer
     >>> print(" ".join(SnowballStemmer.languages)) # See which languages are supported
     danish dutch english finnish french german hungarian
     italian norwegian porter portuguese romanian russian
@@ -64,7 +64,7 @@ class SnowballStemmer(StemmerI):
     language to be stemmed at runtime. Alternatively, if you already know
     the language, then you can invoke the language specific stemmer directly:
 
-    >>> from nltk.stem.snowball import GermanStemmer
+    >>> from cnltk.stem.snowball import GermanStemmer
     >>> stemmer = GermanStemmer()
     >>> stemmer.stem("Autobahnen")
     'autobahn'
@@ -140,7 +140,7 @@ class PorterStemmer(_LanguageSpecificStemmer, porter.PorterStemmer):
 
     A few minor modifications have been made to Porter's basic
     algorithm.  See the source code of the module
-    nltk.stem.porter for more information.
+    cnltk.stem.porter for more information.
 
     """
     def __init__(self, ignore_stopwords=False):
@@ -3651,7 +3651,7 @@ def demo():
     """
 
     import re
-    from nltk.corpus import udhr
+    from cnltk.corpus import udhr
 
     udhr_corpus = {"danish":     "Danish_Dansk-Latin1",
                    "dutch":      "Dutch_Nederlands-Latin1",

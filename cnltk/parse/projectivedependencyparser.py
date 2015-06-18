@@ -10,11 +10,11 @@ from __future__ import print_function, unicode_literals
 
 from collections import defaultdict
 
-from nltk.grammar import (DependencyProduction, DependencyGrammar,
+from cnltk.grammar import (DependencyProduction, DependencyGrammar,
                           ProbabilisticDependencyGrammar)
-from nltk.parse.dependencygraph import DependencyGraph
-from nltk.internals import raise_unorderable_types
-from nltk.compat import total_ordering, python_2_unicode_compatible
+from cnltk.parse.dependencygraph import DependencyGraph
+from cnltk.internals import raise_unorderable_types
+from cnltk.compat import total_ordering, python_2_unicode_compatible
 
 #################################################################
 # Dependency Span
@@ -251,7 +251,7 @@ class ProbabilisticProjectiveDependencyParser(object):
 
     Usage example
     -------------
-    >>> from nltk.parse.dependencygraph import conll_data2
+    >>> from cnltk.parse.dependencygraph import conll_data2
 
     >>> graphs = [
     ... DependencyGraph(entry) for entry in conll_data2.split('\\n\\n') if entry
@@ -560,7 +560,7 @@ def projective_prob_parse_demo():
     A demo showing the training and use of a projective
     dependency parser.
     """
-    from nltk.parse.dependencygraph import conll_data2
+    from cnltk.parse.dependencygraph import conll_data2
 
     graphs = [DependencyGraph(entry)
               for entry in conll_data2.split('\n\n') if entry]

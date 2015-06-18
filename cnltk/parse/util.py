@@ -12,12 +12,12 @@ Utility functions for parsers.
 """
 from __future__ import print_function
 
-from nltk.grammar import CFG, FeatureGrammar, PCFG
-from nltk.data import load
+from cnltk.grammar import CFG, FeatureGrammar, PCFG
+from cnltk.data import load
 
-from nltk.parse.chart import Chart, ChartParser
-from nltk.parse.pchart import InsideChartParser
-from nltk.parse.featurechart import FeatureChart, FeatureChartParser
+from cnltk.parse.chart import Chart, ChartParser
+from cnltk.parse.pchart import InsideChartParser
+from cnltk.parse.featurechart import FeatureChart, FeatureChartParser
 
 def load_parser(grammar_url, trace=0,
                 parser=None, chart_class=None,

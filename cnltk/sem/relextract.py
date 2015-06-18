@@ -25,7 +25,7 @@ from __future__ import print_function
 
 from collections import defaultdict
 import re
-from nltk.compat import htmlentitydefs
+from cnltk.compat import htmlentitydefs
 
 # Dictionary that associates corpora with NE classes
 NE_CLASSES = {
@@ -76,7 +76,7 @@ def _join(lst, sep=' ', untag=False):
     except TypeError:
         if untag:
             return sep.join(tup[0] for tup in lst)
-        from nltk.tag import tuple2str
+        from cnltk.tag import tuple2str
         return sep.join(tuple2str(tup) for tup in lst)
 
 def descape_entity(m, defs=htmlentitydefs.entitydefs):
@@ -125,7 +125,7 @@ def tree2semi_rel(tree):
     :rtype: list of tuple
     """
 
-    from nltk.tree import Tree
+    from cnltk.tree import Tree
 
     semi_rels = []
     semi_rel = [[], None]
@@ -272,7 +272,7 @@ def in_demo(trace=0, sql=True):
     an in-memory database, and subsequently pulled out using an SQL "SELECT"
     query.
     """
-    from nltk.corpus import ieer
+    from cnltk.corpus import ieer
     if sql:
         try:
             import sqlite3
@@ -326,7 +326,7 @@ def in_demo(trace=0, sql=True):
 ############################################
 
 def roles_demo(trace=0):
-    from nltk.corpus import ieer
+    from cnltk.corpus import ieer
     roles = """
     (.*(                   # assorted roles
     analyst|
@@ -377,8 +377,8 @@ def roles_demo(trace=0):
 
 def ieer_headlines():
 
-    from nltk.corpus import ieer
-    from nltk.tree import Tree
+    from cnltk.corpus import ieer
+    from cnltk.tree import Tree
     
     print("IEER: First 20 Headlines")
     print("=" * 45)  
@@ -400,7 +400,7 @@ def conllned(trace=1):
     from CoNLL 2002.
     """
 
-    from nltk.corpus import conll2002
+    from cnltk.corpus import conll2002
 
     vnv = """
     (
@@ -431,7 +431,7 @@ def conllned(trace=1):
 #############################################
 
 def conllesp():
-    from nltk.corpus import conll2002
+    from cnltk.corpus import conll2002
 
     de = """
     .*
@@ -457,16 +457,16 @@ def ne_chunked():
     print("=" * 45)
     ROLE = re.compile(r'.*(chairman|president|trader|scientist|economist|analyst|partner).*')
     rels = []
-    for i, sent in enumerate(nltk.corpus.treebank.tagged_sents()[:1500]):
-        sent = nltk.ne_chunk(sent)
+    for i, sent in enumerate(cnltk.corpus.treebank.tagged_sents()[:1500]):
+        sent = cnltk.ne_chunk(sent)
         rels = extract_rels('PER', 'ORG', sent, corpus='ace', pattern=ROLE, window=7)
         for rel in rels:
             print('{0:<5}{1}'.format(i, rtuple(rel)))
 
 
 if __name__ == '__main__':
-    import nltk
-    from nltk.sem import relextract
+    import cnltk
+    from cnltk.sem import relextract
     in_demo(trace=0)
     roles_demo(trace=0)
     conllned()

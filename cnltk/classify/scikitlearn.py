@@ -13,7 +13,7 @@ wrapper, construct a scikit-learn estimator object, then use that to construct
 a SklearnClassifier. E.g., to wrap a linear SVM with default settings:
 
 >>> from sklearn.svm import LinearSVC
->>> from nltk.classify.scikitlearn import SklearnClassifier
+>>> from cnltk.classify.scikitlearn import SklearnClassifier
 >>> classif = SklearnClassifier(LinearSVC())
 
 A scikit-learn classifier may include preprocessing steps when it's wrapped
@@ -32,9 +32,9 @@ best 1000 features:
 """
 from __future__ import print_function, unicode_literals
 
-from nltk.classify.api import ClassifierI
-from nltk.probability import DictionaryProbDist
-from nltk import compat
+from cnltk.classify.api import ClassifierI
+from cnltk.probability import DictionaryProbDist
+from cnltk import compat
 
 try:
     from sklearn.feature_extraction import DictVectorizer
@@ -134,7 +134,7 @@ def setup_module(module):
 
 
 if __name__ == "__main__":
-    from nltk.classify.util import names_demo, names_demo_features
+    from cnltk.classify.util import names_demo, names_demo_features
     from sklearn.linear_model import LogisticRegression
     from sklearn.naive_bayes import BernoulliNB
 

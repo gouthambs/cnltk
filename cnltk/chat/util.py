@@ -11,7 +11,7 @@ from __future__ import print_function
 
 import re
 import random
-from nltk import compat
+from cnltk import compat
 
 reflections = {
   "i am"       : "you are",

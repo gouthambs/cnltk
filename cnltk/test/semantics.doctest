@@ -5,8 +5,8 @@
 Semantics
 =========
 
-    >>> import nltk
-    >>> from nltk.sem import Valuation, Model
+    >>> import cnltk
+    >>> from cnltk.sem import Valuation, Model
     >>> v = [('adam', 'b1'), ('betty', 'g1'), ('fido', 'd1'),
     ... ('girl', set(['g1', 'g2'])), ('boy', set(['b1', 'b2'])),
     ... ('dog', set(['d1'])),
@@ -23,7 +23,7 @@ assigns a semantic value to expressions of the ``logic`` module, under
 an assignment ``g``:
 
     >>> dom = val.domain
-    >>> g = nltk.sem.Assignment(dom)
+    >>> g = cnltk.sem.Assignment(dom)
     >>> m.evaluate('all x.(boy(x) -> - girl(x))', g)
     True
 
@@ -48,7 +48,7 @@ The utility functions ``interpret_sents()`` and ``evaluate_sents()`` are intende
 help with processing multiple sentences. Here's an example of the first of these:
 
     >>> sents = ['Mary walks']
-    >>> results = nltk.sem.util.interpret_sents(sents, 'grammars/sample_grammars/sem2.fcfg')
+    >>> results = cnltk.sem.util.interpret_sents(sents, 'grammars/sample_grammars/sem2.fcfg')
     >>> for result in results:
     ...     for (synrep, semrep) in result:
     ...         print(synrep)
@@ -64,11 +64,11 @@ is specified with a lowercase
 ``semkey`` parameter, as shown here:
 
     >>> sents = ['raining']
-    >>> g = nltk.grammar.FeatureGrammar.fromstring("""
+    >>> g = cnltk.grammar.FeatureGrammar.fromstring("""
     ... % start S
     ... S[sem=<raining>] -> 'raining'
     ... """)
-    >>> results = nltk.sem.util.interpret_sents(sents, g, semkey='sem')
+    >>> results = cnltk.sem.util.interpret_sents(sents, g, semkey='sem')
     >>> for result in results:
     ...     for (synrep, semrep) in result:
     ...         print(semrep)
@@ -84,7 +84,7 @@ Unit Tests
 Unit tests for relations and valuations
 ---------------------------------------
 
-    >>> from nltk.sem import *
+    >>> from cnltk.sem import *
 
 Relations are sets of tuples, all of the same length.
 
@@ -294,7 +294,7 @@ Propositional Model Test
 Test of i Function
 ------------------
 
-    >>> from nltk.sem import Expression
+    >>> from cnltk.sem import Expression
     >>> v = [('adam', 'b1'), ('betty', 'g1'), ('fido', 'd1'),
     ...      ('girl', set(['g1', 'g2'])), ('boy', set(['b1', 'b2'])), ('dog', set(['d1'])),
     ...      ('love', set([('b1', 'g1'), ('b2', 'g2'), ('g1', 'b1'), ('g2', 'b1')]))]
@@ -419,7 +419,7 @@ Satisfier Tests
     '- exists y. love(y, x)' gets value: False
     'exists y. (love(adam, y) & love(y, x))' gets value: True
 
-    >>> from nltk.sem import Expression
+    >>> from cnltk.sem import Expression
     >>> for fmla in formulas: # doctest: +NORMALIZE_WHITESPACE
     ...     p = Expression.fromstring(fmla)
     ...     g.purge()
@@ -540,9 +540,9 @@ Tests for mapping from syntax to semantics
 
 Load a valuation from a file.
 
-    >>> import nltk.data
-    >>> from nltk.sem.util import parse_sents
-    >>> val = nltk.data.load('grammars/sample_grammars/valuation1.val')
+    >>> import cnltk.data
+    >>> from cnltk.sem.util import parse_sents
+    >>> val = cnltk.data.load('grammars/sample_grammars/valuation1.val')
     >>> dom = val.domain
     >>> m = Model(dom, val)
     >>> g = Assignment(dom)
@@ -581,7 +581,7 @@ Load a valuation from a file.
     Semantics: all x.(dog(x) -> bark(x))
 
     >>> sent = "every dog barks"
-    >>> result = nltk.sem.util.interpret_sents([sent], gramfile)[0]
+    >>> result = cnltk.sem.util.interpret_sents([sent], gramfile)[0]
     >>> for (syntree, semrep) in result:
     ...     print(syntree)
     ...     print()
@@ -596,7 +596,7 @@ Load a valuation from a file.
     <BLANKLINE>
     all x.(dog(x) -> bark(x))
 
-    >>> result = nltk.sem.util.evaluate_sents([sent], gramfile, m, g)[0]
+    >>> result = cnltk.sem.util.evaluate_sents([sent], gramfile, m, g)[0]
     >>> for (syntree, semrel, value) in result:
     ...     print(syntree)
     ...     print()
@@ -616,7 +616,7 @@ Load a valuation from a file.
     True
 
     >>> sents = ['Mary walks', 'John sees a dog']
-    >>> results = nltk.sem.util.interpret_sents(sents, 'grammars/sample_grammars/sem2.fcfg')
+    >>> results = cnltk.sem.util.interpret_sents(sents, 'grammars/sample_grammars/sem2.fcfg')
     >>> for result in results:
     ...     for (synrep, semrep) in result:
     ...         print(synrep)
@@ -638,7 +638,7 @@ Load a valuation from a file.
 Cooper Storage
 --------------
 
-    >>> from nltk.sem import cooper_storage as cs
+    >>> from cnltk.sem import cooper_storage as cs
     >>> sentence = 'every girl chases a dog'
     >>> trees = cs.parse_with_bindops(sentence, grammar='grammars/book_grammars/storage.fcfg')
     >>> semrep = trees[0].label()['SEM']

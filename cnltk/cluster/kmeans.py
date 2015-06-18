@@ -16,8 +16,8 @@ except ImportError:
     pass
 
 
-from nltk.cluster.util import VectorSpaceClusterer
-from nltk.compat import python_2_unicode_compatible
+from cnltk.cluster.util import VectorSpaceClusterer
+from cnltk.compat import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
@@ -185,7 +185,7 @@ class KMeansClusterer(VectorSpaceClusterer):
 def demo():
     # example from figure 14.9, page 517, Manning and Schutze
 
-    from nltk.cluster import KMeansClusterer, euclidean_distance
+    from cnltk.cluster import KMeansClusterer, euclidean_distance
 
     vectors = [numpy.array(f) for f in [[2, 1], [1, 3], [4, 7], [6, 7]]]
     means = [[4, 3], [5, 5]]

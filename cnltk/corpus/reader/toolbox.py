@@ -16,11 +16,11 @@ import os
 import re
 import codecs
 
-from nltk import compat
-from nltk.toolbox import ToolboxData
+from cnltk import compat
+from cnltk.toolbox import ToolboxData
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class ToolboxCorpusReader(CorpusReader):
     def xml(self, fileids, key=None):

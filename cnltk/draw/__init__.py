@@ -7,21 +7,21 @@
 # For license information, see LICENSE.TXT
 
 # Import Tkinter-based modules if Tkinter is installed
-import nltk.compat
+import cnltk.compat
 try:
     import tkinter
 except ImportError:
     import warnings
-    warnings.warn("nltk.draw package not loaded "
+    warnings.warn("cnltk.draw package not loaded "
                   "(please install Tkinter library).")
 else:
-    from nltk.draw.cfg import ProductionList, CFGEditor, CFGDemo
-    from nltk.draw.tree import (TreeSegmentWidget, tree_to_treesegment,
+    from cnltk.draw.cfg import ProductionList, CFGEditor, CFGDemo
+    from cnltk.draw.tree import (TreeSegmentWidget, tree_to_treesegment,
                       TreeWidget, TreeView, draw_trees)
-    from nltk.draw.dispersion import dispersion_plot
-    from nltk.draw.table import Table
+    from cnltk.draw.dispersion import dispersion_plot
+    from cnltk.draw.table import Table
 
 # skip doctests from this package
 def setup_module(module):
     from nose import SkipTest
-    raise SkipTest("nltk.draw examples are not doctests")
+    raise SkipTest("cnltk.draw examples are not doctests")

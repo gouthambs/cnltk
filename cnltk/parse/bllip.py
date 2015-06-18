@@ -8,8 +8,8 @@
 
 from __future__ import print_function
 
-from nltk.parse.api import ParserI
-from nltk.tree import Tree
+from cnltk.parse.api import ParserI
+from cnltk.tree import Tree
 
 """
 Interface for parsing with BLLIP Parser. Requires the Python
@@ -24,9 +24,9 @@ or see docs for ``bllipparser.ModelFetcher.download_and_install_model``).
 Basic usage::
 
     # download and install a basic unified parsing model (Wall Street Journal)
-    # sudo python -m nltk.downloader bllip_wsj_no_aux
+    # sudo python -m cnltk.downloader bllip_wsj_no_aux
 
-    >>> from nltk.data import find
+    >>> from cnltk.data import find
     >>> model_dir = find('models/bllip_wsj_no_aux').path
     >>> bllip = BllipParser.from_unified_model_dir(model_dir)
 
@@ -234,9 +234,9 @@ def demo():
     """This assumes the Python module bllipparser is installed."""
 
     # download and install a basic unified parsing model (Wall Street Journal)
-    # sudo python -m nltk.downloader bllip_wsj_no_aux
+    # sudo python -m cnltk.downloader bllip_wsj_no_aux
 
-    from nltk.data import find
+    from cnltk.data import find
     model_dir = find('models/bllip_wsj_no_aux').path
 
     print('Loading BLLIP Parsing models...')
@@ -276,7 +276,7 @@ def setup_module(module):
     try:
         _ensure_bllip_import_or_error()
     except ImportError:
-        raise SkipTest('doctests from nltk.parse.bllip are skipped because '
+        raise SkipTest('doctests from cnltk.parse.bllip are skipped because '
                        'the bllipparser module is not installed')
 
 if __name__ == '__main__':

@@ -6,8 +6,8 @@
 # URL: <http://nltk.org/>
 # For license information, see LICENSE.TXT
 from __future__ import print_function, unicode_literals
-from nltk.probability import FreqDist
-from nltk.compat import python_2_unicode_compatible
+from cnltk.probability import FreqDist
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class ConfusionMatrix(object):
@@ -17,7 +17,7 @@ class ConfusionMatrix(object):
     matrix is a count of the number of times that the reference value
     *r* corresponds to the test value *t*.  E.g.:
 
-        >>> from nltk.metrics import ConfusionMatrix
+        >>> from cnltk.metrics import ConfusionMatrix
         >>> ref  = 'DET NN VB DET JJ NN NN IN DET NN'.split()
         >>> test = 'DET VB VB DET NN NN NN IN DET NN'.split()
         >>> cm = ConfusionMatrix(ref, test)

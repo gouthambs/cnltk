@@ -7,11 +7,11 @@
 # For license information, see LICENSE.TXT
 from __future__ import print_function, unicode_literals
 
-from nltk.grammar import Nonterminal
-from nltk.tree import Tree
-from nltk.compat import unicode_repr
+from cnltk.grammar import Nonterminal
+from cnltk.tree import Tree
+from cnltk.compat import unicode_repr
 
-from nltk.parse.api import ParserI
+from cnltk.parse.api import ParserI
 
 ##//////////////////////////////////////////////////////
 ##  Shift/Reduce Parser
@@ -55,7 +55,7 @@ class ShiftReduceParser(ParserI):
     parses exists, ``ShiftReduceParser`` will return at most one of
     them.
 
-    :see: ``nltk.grammar``
+    :see: ``cnltk.grammar``
     """
     def __init__(self, grammar, trace=0):
         """
@@ -287,7 +287,7 @@ class SteppingShiftReduceParser(ShiftReduceParser):
     :ivar _history: A list of ``(stack, remaining_text)`` pairs,
         containing all of the previous states of the parser.  This
         history is used to implement the ``undo`` operation.
-    :see: ``nltk.grammar``
+    :see: ``cnltk.grammar``
     """
     def __init__(self, grammar, trace=0):
         self._grammar = grammar
@@ -415,7 +415,7 @@ class SteppingShiftReduceParser(ShiftReduceParser):
             ):
             yield self._stack[0]
 
-# copied from nltk.parser
+# copied from cnltk.parser
 
     def set_grammar(self, grammar):
         """
@@ -435,7 +435,7 @@ def demo():
     A demonstration of the shift-reduce parser.
     """
 
-    from nltk import parse, CFG
+    from cnltk import parse, CFG
 
     grammar = CFG.fromstring("""
     S -> NP VP

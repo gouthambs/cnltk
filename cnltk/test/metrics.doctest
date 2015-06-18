@@ -5,11 +5,11 @@
 Metrics
 =======
 
-The `nltk.metrics` package provides a variety of *evaluation measures*
+The `cnltk.metrics` package provides a variety of *evaluation measures*
 which can be used for a wide variety of NLP tasks.
 
    >>> from __future__ import print_function
-   >>> from nltk.metrics import *
+   >>> from cnltk.metrics import *
 
 ------------------
 Standard IR Scores
@@ -37,7 +37,7 @@ The following measures apply to sets:
 
 Measuring the likelihood of the data, given probability distributions:
 
-    >>> from nltk import FreqDist, MLEProbDist
+    >>> from cnltk import FreqDist, MLEProbDist
     >>> pdist1 = MLEProbDist(FreqDist("aldjfalskfjaldsf"))
     >>> pdist2 = MLEProbDist(FreqDist("aldjfalssjjlldss"))
     >>> print(log_likelihood(['a', 'd'], [pdist1, pdist2]))

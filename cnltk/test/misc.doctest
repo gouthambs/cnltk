@@ -6,7 +6,7 @@ Unit tests for the miscellaneous sort functions.
 --------------------------------------------------------------------------------
 
     >>> from copy import deepcopy
-    >>> from nltk.misc.sort import *
+    >>> from cnltk.misc.sort import *
 
 A (very) small list of unsorted integers.
 
@@ -54,7 +54,7 @@ Unit tests for Wordfinder class
     >>> # (see http://bugs.python.org/issue9025) so this test is skipped.
     >>> random.seed(12345)
 
-    >>> from nltk.misc import wordfinder
+    >>> from cnltk.misc import wordfinder
     >>> wordfinder.word_finder() # doctest: +SKIP
     Word Finder
     <BLANKLINE>

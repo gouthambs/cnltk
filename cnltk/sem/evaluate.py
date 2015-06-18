@@ -20,10 +20,10 @@ import inspect
 import textwrap
 import re
 
-from nltk.decorators import decorator # this used in code that is commented out
-from nltk.compat import string_types, python_2_unicode_compatible
+from cnltk.decorators import decorator # this used in code that is commented out
+from cnltk.compat import string_types, python_2_unicode_compatible
 
-from nltk.sem.logic import (AbstractVariableExpression, AllExpression, Expression,
+from cnltk.sem.logic import (AbstractVariableExpression, AllExpression, Expression,
                             AndExpression, ApplicationExpression, EqualityExpression,
                             ExistsExpression, IffExpression, ImpExpression,
                             IndividualVariableExpression, LambdaExpression,
@@ -204,7 +204,7 @@ def read_valuation(s, encoding=None):
     :type s: str
     :param encoding: the encoding of the input string, if it is binary
     :type encoding: str
-    :return: a ``nltk.sem`` valuation
+    :return: a ``cnltk.sem`` valuation
     :rtype: Valuation
     """
     if encoding is not None:
@@ -243,7 +243,7 @@ class Assignment(dict):
     created using the ``Assignment`` constructor, which also takes the
     domain as a parameter.
 
-        >>> from nltk.sem.evaluate import Assignment
+        >>> from cnltk.sem.evaluate import Assignment
         >>> dom = set(['u1', 'u2', 'u3', 'u4'])
         >>> g3 = Assignment(dom, [('x', 'u1'), ('y', 'u2')])
         >>> g3 == {'x': 'u1', 'y': 'u2'}

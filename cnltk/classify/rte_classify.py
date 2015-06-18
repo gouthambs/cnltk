@@ -18,8 +18,8 @@ TO DO: add lemmatization
 """
 from __future__ import print_function
 
-import nltk
-from nltk.classify.util import accuracy
+import cnltk
+from cnltk.classify.util import accuracy
 
 def ne(token):
     """
@@ -36,7 +36,7 @@ def lemmatize(word):
     """
     Use morphy from WordNet to find the base form of verbs.
     """
-    lemma = nltk.corpus.wordnet.morphy(word, pos='verb')
+    lemma = cnltk.corpus.wordnet.morphy(word, pos='verb')
     if lemma is not None:
         return lemma
     return word
@@ -60,7 +60,7 @@ class RTEFeatureExtractor(object):
                              'denied'])
         # Try to tokenize so that abbreviations like U.S.and monetary amounts
         # like "$23.00" are kept as tokens.
-        from nltk.tokenize import RegexpTokenizer
+        from cnltk.tokenize import RegexpTokenizer
         tokenizer = RegexpTokenizer('([A-Z]\.)+|\w+|\$[\d\.]+')
 
         #Get the set of word types for text and hypothesis
@@ -135,10 +135,10 @@ def rte_classifier(trainer, features=rte_features):
     Classify RTEPairs
     """
     train = ((pair, pair.value) for pair in
-             nltk.corpus.rte.pairs(['rte1_dev.xml', 'rte2_dev.xml',
+             cnltk.corpus.rte.pairs(['rte1_dev.xml', 'rte2_dev.xml',
                                     'rte3_dev.xml']))
     test = ((pair, pair.value) for pair in
-            nltk.corpus.rte.pairs(['rte1_test.xml', 'rte2_test.xml',
+            cnltk.corpus.rte.pairs(['rte1_test.xml', 'rte2_test.xml',
                                    'rte3_test.xml']))
 
     # Train up a classifier.
@@ -156,7 +156,7 @@ def rte_classifier(trainer, features=rte_features):
 
 
 def demo_features():
-    pairs = nltk.corpus.rte.pairs(['rte1_dev.xml'])[:6]
+    pairs = cnltk.corpus.rte.pairs(['rte1_dev.xml'])[:6]
     for pair in pairs:
         print()
         for key in sorted(rte_features(pair)):
@@ -164,7 +164,7 @@ def demo_features():
 
 
 def demo_feature_extractor():
-    rtepair = nltk.corpus.rte.pairs(['rte3_dev.xml'])[33]
+    rtepair = cnltk.corpus.rte.pairs(['rte3_dev.xml'])[33]
     extractor = RTEFeatureExtractor(rtepair)
     print(extractor.hyp_words)
     print(extractor.overlap('word'))
@@ -173,16 +173,16 @@ def demo_feature_extractor():
 
 
 def demo():
-    import nltk
+    import cnltk
     try:
-        nltk.config_megam('/usr/local/bin/megam')
-        trainer = lambda x: nltk.MaxentClassifier.train(x, 'megam')
+        cnltk.config_megam('/usr/local/bin/megam')
+        trainer = lambda x: cnltk.MaxentClassifier.train(x, 'megam')
     except ValueError:
         try:
-            trainer = lambda x: nltk.MaxentClassifier.train(x, 'BFGS')
+            trainer = lambda x: cnltk.MaxentClassifier.train(x, 'BFGS')
         except ValueError:
-            trainer = nltk.MaxentClassifier.train
-    nltk.classify.rte_classifier(trainer)
+            trainer = cnltk.MaxentClassifier.train
+    cnltk.classify.rte_classifier(trainer)
 
 if __name__ == '__main__':
     demo_features()

@@ -21,8 +21,8 @@ from pprint import pformat
 import subprocess
 import warnings
 
-from nltk.tree import Tree
-from nltk.compat import python_2_unicode_compatible, string_types
+from cnltk.tree import Tree
+from cnltk.compat import python_2_unicode_compatible, string_types
 
 
 #################################################################

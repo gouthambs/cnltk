@@ -108,7 +108,7 @@ def wordfinder(words, rows=20, cols=20, attempts=50,
     return grid, used
 
 def word_finder():
-    from nltk.corpus import words
+    from cnltk.corpus import words
     wordlist = words.words()
     random.shuffle(wordlist)
     wordlist = wordlist[:200]

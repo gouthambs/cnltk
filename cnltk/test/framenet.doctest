@@ -69,7 +69,7 @@ To get a list of all of the Frames in FrameNet, you can use the
 that pattern:
 
     >>> from pprint import pprint
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> len(fn.frames())
     1019
     >>> pprint(fn.frames(r'(?i)medical'))
@@ -79,7 +79,7 @@ To get the details of a particular Frame, you can use the `frame()`
 function passing in the frame number:
 
     >>> from pprint import pprint
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> f = fn.frame(256)
     >>> f.ID
     256
@@ -105,7 +105,7 @@ expression. Note that LU names are composed of "lemma.POS", where the
 "lemma" part can be made up of either a single lexeme (e.g. 'run') or
 multiple lexemes (e.g. 'a little') (see below).
 
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> fn.frames_by_lemma(r'(?i)a little')
     [<frame ID=189 name=Quantity>, <frame ID=2001 name=Degree>]
 
@@ -175,7 +175,7 @@ Details for a specific lexical unit can be obtained using this class's
 pattern that will be matched against the name of the lexical unit:
 
     >>> from pprint import pprint
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> len(fn.lus())
     11829
     >>> pprint(fn.lus(r'(?i)a little'))
@@ -185,7 +185,7 @@ You can obtain detailed information on a particular LU by calling the
 `lu()` function and passing in an LU's 'ID' number:
 
     >>> from pprint import pprint
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> fn.lu(256).name
     'foresee.v'
     >>> fn.lu(256).definition
@@ -224,7 +224,7 @@ The FrameNet corpus contains a small set of annotated documents. A list
 of these documents can be obtained by calling the `documents()` function:
 
     >>> from pprint import pprint
-    >>> from nltk.corpus import framenet as fn
+    >>> from cnltk.corpus import framenet as fn
     >>> docs = fn.documents()
     >>> len(docs)
     78

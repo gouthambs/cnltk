@@ -26,8 +26,8 @@ External links:
 Usage
 =====
 
->>> from nltk.tree import ParentedTree
->>> from nltk.tgrep import tgrep_nodes, tgrep_positions
+>>> from cnltk.tree import ParentedTree
+>>> from cnltk.tgrep import tgrep_nodes, tgrep_positions
 >>> tree = ParentedTree.fromstring('(S (NP (DT the) (JJ big) (NN dog)) (VP bit) (NP (DT a) (NN cat)))')
 >>> list(tgrep_nodes('NN', [tree]))
 [[ParentedTree('NN', ['dog']), ParentedTree('NN', ['cat'])]]
@@ -111,13 +111,13 @@ macro definitions to ``m`` and initialises ``l`` to an empty dictionary.
 '''
 
 from __future__ import absolute_import, print_function, unicode_literals
-from nltk.compat import binary_type, text_type
+from cnltk.compat import binary_type, text_type
 import functools
-import nltk.tree
+import cnltk.tree
 try:
     import pyparsing
 except ImportError:
-    print('Warning: nltk.tgrep will not work without the `pyparsing` package')
+    print('Warning: cnltk.tgrep will not work without the `pyparsing` package')
     print('installed.')
 import re
 
@@ -192,8 +192,8 @@ def _rightmost_descendants(node):
     return [node[rightmost_leaf[:i]] for i in range(1, len(rightmost_leaf) + 1)]
 
 def _istree(obj):
-    '''Predicate to check whether `obj` is a nltk.tree.Tree.'''
-    return isinstance(obj, nltk.tree.Tree)
+    '''Predicate to check whether `obj` is a cnltk.tree.Tree.'''
+    return isinstance(obj, cnltk.tree.Tree)
 
 def _unique_descendants(node):
     '''

@@ -7,7 +7,7 @@ SentiWordNet Interface
 
 SentiWordNet can be imported like this:
 
-    >>> from nltk.corpus import sentiwordnet as swn
+    >>> from cnltk.corpus import sentiwordnet as swn
 
 ------------
 SentiSynsets

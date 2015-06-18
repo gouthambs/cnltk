@@ -126,12 +126,12 @@ import re
 import tempfile
 import time
 
-from nltk import compat
-from nltk.tree import Tree
-from nltk.internals import import_from_stdlib
+from cnltk import compat
+from cnltk.tree import Tree
+from cnltk.internals import import_from_stdlib
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class TimitCorpusReader(CorpusReader):
     """
@@ -334,7 +334,7 @@ class TimitCorpusReader(CorpusReader):
     # fileids are WAV fileids (aka RIFF), but they're actually NIST SPHERE
     # fileids.
     def wav(self, utterance, start=0, end=None):
-        # nltk.chunk conflicts with the stdlib module 'chunk'
+        # cnltk.chunk conflicts with the stdlib module 'chunk'
         wave = import_from_stdlib('wave')
 
         w = wave.open(self.open(utterance+'.wav'), 'rb')

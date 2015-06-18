@@ -17,8 +17,8 @@ try:
 except ImportError:
     betai = None
 
-from nltk.compat import xrange, izip
-from nltk.util import LazyConcatenation, LazyMap
+from cnltk.compat import xrange, izip
+from cnltk.util import LazyConcatenation, LazyMap
 
 def accuracy(reference, test):
     """

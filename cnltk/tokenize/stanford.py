@@ -14,10 +14,10 @@ import os
 import json
 from subprocess import PIPE
 
-from nltk import compat
-from nltk.internals import find_jar, config_java, java, _java_options
+from cnltk import compat
+from cnltk.internals import find_jar, config_java, java, _java_options
 
-from nltk.tokenize.api import TokenizerI
+from cnltk.tokenize.api import TokenizerI
 
 _stanford_url = 'http://nlp.stanford.edu/software/lex-parser.shtml'
 
@@ -25,7 +25,7 @@ class StanfordTokenizer(TokenizerI):
     r"""
     Interface to the Stanford Tokenizer
 
-    >>> from nltk.tokenize.stanford import StanfordTokenizer
+    >>> from cnltk.tokenize.stanford import StanfordTokenizer
     >>> s = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\nThanks."
     >>> StanfordTokenizer().tokenize(s)
     ['Good', 'muffins', 'cost', '$', '3.88', 'in', 'New', 'York', '.', 'Please', 'buy', 'me', 'two', 'of', 'them', '.', 'Thanks', '.']
@@ -104,7 +104,7 @@ def setup_module(module):
     try:
         StanfordTokenizer()
     except LookupError:
-        raise SkipTest('doctests from nltk.tokenize.stanford are skipped because the stanford postagger jar doesn\'t exist')
+        raise SkipTest('doctests from cnltk.tokenize.stanford are skipped because the stanford postagger jar doesn\'t exist')
 
 
 if __name__ == '__main__':

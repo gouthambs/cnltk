@@ -24,8 +24,8 @@ try:
 except ImportError:
     from xml.etree import ElementTree
 
-from nltk import __file__
-from nltk import compat
+from cnltk import __file__
+from cnltk import compat
 ######################################################################
 # Regular Expression Processing
 ######################################################################
@@ -324,7 +324,7 @@ def deprecated(message):
     A decorator used to mark functions as deprecated.  This will cause
     a warning to be printed the when the function is used.  Usage:
 
-        >>> from nltk.internals import deprecated
+        >>> from cnltk.internals import deprecated
         >>> @deprecated('Use foo() instead')
         ... def bar(x):
         ...     print(x/10)
@@ -355,7 +355,7 @@ class Deprecated(object):
     A base class used to mark deprecated classes.  A typical usage is to
     alert users that the name of a class has changed:
 
-        >>> from nltk.internals import Deprecated
+        >>> from cnltk.internals import Deprecated
         >>> class NewClassName(object):
         ...     pass # All logic goes here.
         ...
@@ -413,7 +413,7 @@ class Counter:
 def find_file_iter(filename, env_vars=(), searchpath=(),
         file_names=None, url=None, verbose=True):
     """
-    Search for a file to be used by nltk.
+    Search for a file to be used by cnltk.
 
     :param filename: The name or path of the file.
     :param env_vars: A list of environment variable names to check.
@@ -526,7 +526,7 @@ def find_file(filename, env_vars=(), searchpath=(),
 def find_binary_iter(name, path_to_bin=None, env_vars=(), searchpath=(),
                 binary_names=None, url=None, verbose=True):
     """
-    Search for a file to be used by nltk.
+    Search for a file to be used by cnltk.
 
     :param name: The name or path of the file.
     :param path_to_bin: The user-supplied binary location (deprecated)
@@ -548,7 +548,7 @@ def find_binary(name, path_to_bin=None, env_vars=(), searchpath=(),
 def find_jar_iter(name_pattern, path_to_jar=None, env_vars=(),
         searchpath=(), url=None, verbose=True, is_regex=False):
     """
-    Search for a jar that is used by nltk.
+    Search for a jar that is used by cnltk.
 
     :param name_pattern: The name of the jar file
     :param path_to_jar: The user-supplied jar location, or None.

@@ -6,7 +6,7 @@ PAICE's evaluation statistics for stemming algorithms
 Given a list of words with their real lemmas and stems according to stemming algorithm under evaluation,
 counts Understemming Index (UI), Overstemming Index (OI), Stemming Weight (SW) and Error-rate relative to truncation (ERRT).
 
-   >>> from nltk.metrics import Paice
+   >>> from cnltk.metrics import Paice
 
 
 -------------------------------------

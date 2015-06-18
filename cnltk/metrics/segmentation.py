@@ -46,7 +46,7 @@ try:
 except ImportError:
     pass
 
-from nltk.compat import xrange
+from cnltk.compat import xrange
 
 def windowdiff(seg1, seg2, k, boundary="1", weighted=False):
     """
@@ -227,7 +227,7 @@ def setup_module(module):
     try:
         import numpy
     except ImportError:
-        raise SkipTest("numpy is required for nltk.metrics.segmentation")
+        raise SkipTest("numpy is required for cnltk.metrics.segmentation")
 
 
 if __name__ == "__main__":

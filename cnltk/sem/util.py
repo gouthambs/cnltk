@@ -15,7 +15,7 @@ a first-order model.
 from __future__ import print_function, unicode_literals
 
 import codecs
-from nltk.sem import evaluate
+from cnltk.sem import evaluate
 
 
 ##############################################################
@@ -34,8 +34,8 @@ def parse_sents(inputs, grammar, trace=0):
     """
 
     # put imports here to avoid circult dependencies
-    from nltk.grammar import FeatureGrammar
-    from nltk.parse import FeatureChartParser, load_parser
+    from cnltk.grammar import FeatureGrammar
+    from cnltk.parse import FeatureChartParser, load_parser
 
     if isinstance(grammar, FeatureGrammar):
         cp = FeatureChartParser(grammar)
@@ -57,7 +57,7 @@ def root_semrep(syntree, semkey='SEM'):
     :return: the semantic representation at the root of a ``Tree``
     :rtype: sem.Expression
     """
-    from nltk.grammar import FeatStructNonterminal
+    from cnltk.grammar import FeatStructNonterminal
 
     node = syntree.label()
     assert isinstance(node, FeatStructNonterminal)
@@ -142,7 +142,7 @@ def demo_legacy_grammar():
     Define 'test.fcfg' to be the following
 
     """
-    from nltk.grammar import FeatureGrammar
+    from cnltk.grammar import FeatureGrammar
 
     g = FeatureGrammar.fromstring("""
     % start S

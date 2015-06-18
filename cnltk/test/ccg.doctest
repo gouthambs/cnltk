@@ -8,7 +8,7 @@ Combinatory Categorial Grammar
 Relative Clauses
 ----------------
 
-    >>> from nltk.ccg import chart, lexicon
+    >>> from cnltk.ccg import chart, lexicon
 
 Construct a lexicon:
 
@@ -145,9 +145,9 @@ With Substitution:
 Conjunction
 -----------
 
-    >>> from nltk.ccg.chart import CCGChartParser, ApplicationRuleSet, CompositionRuleSet
-    >>> from nltk.ccg.chart import SubstitutionRuleSet, TypeRaiseRuleSet, printCCGDerivation
-    >>> from nltk.ccg import lexicon
+    >>> from cnltk.ccg.chart import CCGChartParser, ApplicationRuleSet, CompositionRuleSet
+    >>> from cnltk.ccg.chart import SubstitutionRuleSet, TypeRaiseRuleSet, printCCGDerivation
+    >>> from cnltk.ccg import lexicon
 
 Lexicons for the tests:
 

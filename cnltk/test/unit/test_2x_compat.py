@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Unit tests for nltk.compat.
+Unit tests for cnltk.compat.
 See also nltk/test/compat.doctest.
 """
 from __future__ import absolute_import, unicode_literals
 import unittest
 
-from nltk.text import Text
-from nltk.compat import PY3, python_2_unicode_compatible
+from cnltk.text import Text
+from cnltk.compat import PY3, python_2_unicode_compatible
 
 def setup_module(module):
     from nose import SkipTest
     if PY3:
-        raise SkipTest("test_2x_compat is for testing nltk.compat under Python 2.x")
+        raise SkipTest("test_2x_compat is for testing cnltk.compat under Python 2.x")
 
 
 class TestTextTransliteration(unittest.TestCase):

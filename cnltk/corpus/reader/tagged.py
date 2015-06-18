@@ -13,13 +13,13 @@ A reader for corpora whose documents contain part-of-speech-tagged words.
 
 import os
 
-from nltk import compat
-from nltk.tag import str2tuple, map_tag
-from nltk.tokenize import *
+from cnltk import compat
+from cnltk.tag import str2tuple, map_tag
+from cnltk.tokenize import *
 
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.timit import read_timit_block
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.timit import read_timit_block
 
 class TaggedCorpusReader(CorpusReader):
     """
@@ -27,7 +27,7 @@ class TaggedCorpusReader(CorpusReader):
     assumed to be split using blank lines.  Sentences and words can be
     tokenized using the default tokenizers, or by custom tokenizers
     specified as parameters to the constructor.  Words are parsed
-    using ``nltk.tag.str2tuple``.  By default, ``'/'`` is used as the
+    using ``cnltk.tag.str2tuple``.  By default, ``'/'`` is used as the
     separator.  I.e., words should have the form::
 
        word1/tag1 word2/tag2 word3/tag3 ...

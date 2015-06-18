@@ -22,13 +22,13 @@ to the YCOE standard: http://www-users.york.ac.uk/~lang22/YCOE/YcoeHome.htm
 import os
 import re
 
-from nltk import compat
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus.reader.bracket_parse import BracketParseCorpusReader
-from nltk.corpus.reader.tagged import TaggedCorpusReader
+from cnltk import compat
+from cnltk.tokenize import RegexpTokenizer
+from cnltk.corpus.reader.bracket_parse import BracketParseCorpusReader
+from cnltk.corpus.reader.tagged import TaggedCorpusReader
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 class YCOECorpusReader(CorpusReader):
     """

@@ -15,7 +15,7 @@ files.
 The ``chat80`` module contains functions to extract data from the Chat-80
 relation files ('the world database'), and convert then into a format
 that can be incorporated in the FOL models of
-``nltk.sem.evaluate``. The code assumes that the Prolog
+``cnltk.sem.evaluate``. The code assumes that the Prolog
 input files are available in the NLTK corpora directory.
 
 The Chat-80 World Database consists of the following files::
@@ -50,7 +50,7 @@ unary predicate *city*.
 By analogy with NLTK corpora, ``chat80`` defines a number of 'items'
 which correspond to the relations.
 
-    >>> from nltk.sem import chat80
+    >>> from cnltk.sem import chat80
     >>> print(chat80.items) # doctest: +ELLIPSIS
     ('borders', 'circle_of_lat', 'circle_of_long', 'city', ...)
 
@@ -167,7 +167,7 @@ SQL Query
 The ``city`` relation is also available in RDB form and can be queried
 using SQL statements.
 
-    >>> import nltk
+    >>> import cnltk
     >>> q = "SELECT City, Population FROM city_table WHERE Country = 'china' and Population > 1000"
     >>> for answer in chat80.sql_query('corpora/city_database/city.db', q):
     ...     print("%-10s %4s" % answer)
@@ -181,7 +181,7 @@ using SQL statements.
 The (deliberately naive) grammar ``sql.fcfg`` translates from English
 to SQL:
 
-    >>> nltk.data.show_cfg('grammars/book_grammars/sql0.fcfg')
+    >>> cnltk.data.show_cfg('grammars/book_grammars/sql0.fcfg')
     % start S
     S[SEM=(?np + WHERE + ?vp)] -> NP[SEM=?np] VP[SEM=?vp]
     VP[SEM=(?v + ?pp)] -> IV[SEM=?v] PP[SEM=?pp]
@@ -199,7 +199,7 @@ to SQL:
 
 Given this grammar, we can express, and then execute, queries in English.
 
-    >>> cp = nltk.parse.load_parser('grammars/book_grammars/sql0.fcfg')
+    >>> cp = cnltk.parse.load_parser('grammars/book_grammars/sql0.fcfg')
     >>> query = 'What cities are in China'
     >>> for tree in cp.parse(query.split()):
     ...     answer = tree.label()['SEM']
@@ -226,8 +226,8 @@ a new ``Valuation`` object which contains the results.
    >>> [town for (town, country) in val['country_of'] if country == 'india']
    ['bombay', 'calcutta', 'delhi', 'hyderabad', 'madras']
    >>> dom = val.domain
-   >>> g = nltk.sem.Assignment(dom)
-   >>> m = nltk.sem.Model(dom, val)
+   >>> g = cnltk.sem.Assignment(dom)
+   >>> m = cnltk.sem.Model(dom, val)
    >>> m.evaluate(r'population_of(jakarta, 533)', g)
    True
 

@@ -20,12 +20,12 @@ except ImportError:
 try: from xml.etree import cElementTree as ElementTree
 except ImportError: from xml.etree import ElementTree
 
-from nltk.compat import string_types, text_type
-from nltk.tokenize import wordpunct_tokenize
-from nltk.internals import slice_bounds
-from nltk.data import PathPointer, FileSystemPathPointer, ZipFilePathPointer
-from nltk.data import SeekableUnicodeStreamReader
-from nltk.util import AbstractLazySequence, LazySubsequence, LazyConcatenation, py25
+from cnltk.compat import string_types, text_type
+from cnltk.tokenize import wordpunct_tokenize
+from cnltk.internals import slice_bounds
+from cnltk.data import PathPointer, FileSystemPathPointer, ZipFilePathPointer
+from cnltk.data import SeekableUnicodeStreamReader
+from cnltk.util import AbstractLazySequence, LazySubsequence, LazyConcatenation, py25
 
 ######################################################################
 #{ Corpus View
@@ -466,8 +466,8 @@ class PickleCorpusView(StreamBackedCorpusView):
     don't want to repeat it); but the corpus is too large to store in
     memory.  The following example illustrates this technique:
 
-        >>> from nltk.corpus.reader.util import PickleCorpusView
-        >>> from nltk.util import LazyMap
+        >>> from cnltk.corpus.reader.util import PickleCorpusView
+        >>> from cnltk.util import LazyMap
         >>> feature_corpus = LazyMap(detect_features, corpus) # doctest: +SKIP
         >>> PickleCorpusView.write(feature_corpus, some_fileid)  # doctest: +SKIP
         >>> pcv = PickleCorpusView(some_fileid) # doctest: +SKIP

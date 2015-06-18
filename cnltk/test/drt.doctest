@@ -5,8 +5,8 @@
  Discourse Representation Theory
 ================================
 
-    >>> from nltk.sem import logic
-    >>> from nltk.inference import TableauProver
+    >>> from cnltk.sem import logic
+    >>> from cnltk.inference import TableauProver
 
 Overview
 ========
@@ -14,7 +14,7 @@ Overview
 A DRS can be created with the ``DRS()`` constructor. This takes two arguments: a list of
 discourse referents and list of conditions. .
 
-    >>> from nltk.sem.drt import *
+    >>> from cnltk.sem.drt import *
     >>> dexpr = DrtExpression.fromstring
     >>> man_x = dexpr('man(x)')
     >>> walk_x = dexpr('walk(x)')
@@ -73,8 +73,8 @@ DRSs can be used for building compositional semantics in a feature
 based grammar. To specify that we want to use DRSs, the appropriate
 logic parser needs be passed as a parameter to ``load_earley()``
 
-    >>> from nltk.parse import load_parser
-    >>> from nltk.sem.drt import DrtParser
+    >>> from cnltk.parse import load_parser
+    >>> from cnltk.sem.drt import DrtParser
     >>> parser = load_parser('grammars/book_grammars/drt.fcfg', trace=0, logic_parser=DrtParser())
     >>> for tree in parser.parse('a dog barks'.split()):
     ...     print(tree.label()['SEM'].simplify())
@@ -83,8 +83,8 @@ logic parser needs be passed as a parameter to ``load_earley()``
 
 Alternatively, a ``FeatStructReader`` can be passed with the ``logic_parser`` set on it
 
-    >>> from nltk.featstruct import FeatStructReader
-    >>> from nltk.grammar import FeatStructNonterminal
+    >>> from cnltk.featstruct import FeatStructReader
+    >>> from cnltk.grammar import FeatStructNonterminal
     >>> parser = load_parser('grammars/book_grammars/drt.fcfg', trace=0, fstruct_reader=FeatStructReader(fdict_class=FeatStructNonterminal, logic_parser=DrtParser()))
     >>> for tree in parser.parse('every girl chases a dog'.split()):
     ...     print(tree.label()['SEM'].simplify().normalize())
@@ -213,7 +213,7 @@ Parser
 ``resolve_anaphora()``
 ----------------------
 
-    >>> from nltk.sem.drt import AnaphoraResolutionException
+    >>> from cnltk.sem.drt import AnaphoraResolutionException
 
     >>> print(resolve_anaphora(dexpr(r'([x,y,z],[dog(x), cat(y), walks(z), PRO(z)])')))
     ([x,y,z],[dog(x), cat(y), walks(z), (z = [x,y])])

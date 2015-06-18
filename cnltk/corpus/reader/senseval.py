@@ -26,11 +26,11 @@ from __future__ import print_function, unicode_literals
 import re
 from xml.etree import ElementTree
 
-from nltk import compat
-from nltk.tokenize import *
+from cnltk import compat
+from cnltk.tokenize import *
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 @compat.python_2_unicode_compatible
 class SensevalInstance(object):

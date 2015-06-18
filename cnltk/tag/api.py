@@ -10,10 +10,10 @@
 Interface for tagging each token in a sentence with supplementary
 information, such as its part of speech.
 """
-from nltk.internals import overridden
-from nltk.metrics import accuracy
+from cnltk.internals import overridden
+from cnltk.metrics import accuracy
 
-from nltk.tag.util import untag
+from cnltk.tag.util import untag
 
 class TaggerI(object):
     """
@@ -74,7 +74,7 @@ class FeaturesetTaggerI(TaggerI):
     """
     A tagger that requires tokens to be ``featuresets``.  A featureset
     is a dictionary that maps from feature names to feature
-    values.  See ``nltk.classify`` for more information about features
+    values.  See ``cnltk.classify`` for more information about features
     and featuresets.
     """
 

@@ -6,9 +6,9 @@
 # For license information, see LICENSE.TXT
 from __future__ import print_function
 
-from nltk.sem.logic import LambdaExpression, ApplicationExpression, Variable
-from nltk.parse import load_parser
-from nltk.parse.featurechart import InstantiateVarsChart
+from cnltk.sem.logic import LambdaExpression, ApplicationExpression, Variable
+from cnltk.parse import load_parser
+from cnltk.parse.featurechart import InstantiateVarsChart
 
 class CooperStore(object):
     """
@@ -86,7 +86,7 @@ def parse_with_bindops(sentence, grammar=None, trace=0):
 
 
 def demo():
-    from nltk.sem import cooper_storage as cs
+    from cnltk.sem import cooper_storage as cs
     sentence = "every girl chases a dog"
     #sentence = "a man gives a bone to every dog"
     print()

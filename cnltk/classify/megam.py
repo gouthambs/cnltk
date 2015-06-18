@@ -11,14 +11,14 @@ optimization package. Before megam can be used, you should tell NLTK where it
 can find the megam binary, using the ``config_megam()`` function. Typical
 usage:
 
-    >>> from nltk.classify import megam
+    >>> from cnltk.classify import megam
     >>> megam.config_megam() # pass path to megam if not found in PATH # doctest: +SKIP
     [Found megam: ...]
 
 Use with MaxentClassifier. Example below, see MaxentClassifier documentation
 for details.
 
-    nltk.classify.MaxentClassifier.train(corpus, 'megam')
+    cnltk.classify.MaxentClassifier.train(corpus, 'megam')
 
 .. _megam: http://www.umiacs.umd.edu/~hal/megam/index.html
 """
@@ -26,8 +26,8 @@ from __future__ import print_function
 
 import subprocess
 
-from nltk import compat
-from nltk.internals import find_binary
+from cnltk import compat
+from cnltk.internals import find_binary
 try:
     import numpy
 except ImportError:

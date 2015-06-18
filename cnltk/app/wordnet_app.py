@@ -63,9 +63,9 @@ import base64
 import pickle
 import copy
 
-from nltk import compat
-from nltk.corpus import wordnet as wn
-from nltk.corpus.reader.wordnet import Synset, Lemma
+from cnltk import compat
+from cnltk.corpus import wordnet as wn
+from cnltk.corpus.reader.wordnet import Synset, Lemma
 
 if compat.PY3:
     from http.server import HTTPServer, BaseHTTPRequestHandler

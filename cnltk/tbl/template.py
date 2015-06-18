@@ -10,7 +10,7 @@
 
 from __future__ import print_function
 import itertools as it
-from nltk.tbl.feature import Feature
+from cnltk.tbl.feature import Feature
 
 
 class BrillTemplateI(object):
@@ -60,7 +60,7 @@ class BrillTemplateI(object):
         raise NotImplementedError
 
 
-from nltk.tbl.rule import Rule
+from cnltk.tbl.rule import Rule
 
 
 class Template(BrillTemplateI):
@@ -94,8 +94,8 @@ class Template(BrillTemplateI):
         Template(Feature(start1, end1), Feature(start2, end2), ...)
 
         #For instance, importing some features
-        >>> from nltk.tbl.template import Template
-        >>> from nltk.tag.brill import Word, Pos
+        >>> from cnltk.tbl.template import Template
+        >>> from cnltk.tag.brill import Word, Pos
 
         #create some features
 
@@ -205,8 +205,8 @@ class Template(BrillTemplateI):
         The feature lists may have been specified
         manually, or generated from Feature.expand(). For instance,
 
-        >>> from nltk.tbl.template import Template
-        >>> from nltk.tag.brill import Word, Pos
+        >>> from cnltk.tbl.template import Template
+        >>> from cnltk.tag.brill import Word, Pos
 
         #creating some features
         >>> (wd_0, wd_01) = (Word([0]), Word([0,1]))

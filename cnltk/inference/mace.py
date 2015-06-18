@@ -14,11 +14,11 @@ from __future__ import print_function
 import os
 import tempfile
 
-from nltk.sem.logic import is_indvar
-from nltk.sem import Valuation, Expression
+from cnltk.sem.logic import is_indvar
+from cnltk.sem import Valuation, Expression
 
-from nltk.inference.api import ModelBuilder, BaseModelBuilderCommand
-from nltk.inference.prover9 import Prover9CommandParent, Prover9Parent
+from cnltk.inference.api import ModelBuilder, BaseModelBuilderCommand
+from cnltk.inference.prover9 import Prover9CommandParent, Prover9Parent
 
 
 class MaceCommand(Prover9CommandParent, BaseModelBuilderCommand):
@@ -250,7 +250,7 @@ def test_model_found(arguments):
 
 def test_build_model(arguments):
     """
-    Try to build a ``nltk.sem.Valuation``.
+    Try to build a ``cnltk.sem.Valuation``.
     """
     g = Expression.fromstring('all x.man(x)')
     alist = [Expression.fromstring(a) for a in ['man(John)',

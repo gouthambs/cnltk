@@ -28,7 +28,7 @@ The input is:
 - (optionally) the encoding of the input data (default:utf-8)
 
     >>> from __future__ import unicode_literals
-    >>> from nltk.classify import Senna
+    >>> from cnltk.classify import Senna
     >>> pipeline = Senna('/usr/share/senna-v2.0', ['pos', 'chk', 'ner'])
     >>> sent = 'Dusseldorf is an international business center'.split()
     >>> [(token['word'], token['chk'], token['ner'], token['pos']) for token in pipeline.tag(sent)]
@@ -42,8 +42,8 @@ from os import path, sep, environ
 from subprocess import Popen, PIPE
 from platform import architecture, system
 
-from nltk.tag.api import TaggerI
-from nltk.compat import text_type, python_2_unicode_compatible
+from cnltk.tag.api import TaggerI
+from cnltk.compat import text_type, python_2_unicode_compatible
 
 _senna_url = 'http://ml.nec-labs.com/senna/'
 

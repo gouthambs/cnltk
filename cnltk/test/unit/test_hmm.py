@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from nltk.tag import hmm
+from cnltk.tag import hmm
 
 def _wikipedia_example_hmm():
     # Example from wikipedia
@@ -85,4 +85,4 @@ def setup_module(module):
     try:
         import numpy
     except ImportError:
-        raise SkipTest("numpy is required for nltk.test.test_hmm")
+        raise SkipTest("numpy is required for cnltk.test.test_hmm")

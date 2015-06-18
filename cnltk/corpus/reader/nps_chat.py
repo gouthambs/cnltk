@@ -9,13 +9,13 @@ from __future__ import unicode_literals
 import re
 import textwrap
 
-from nltk.util import LazyConcatenation
-from nltk.internals import ElementWrapper
-from nltk.tag import map_tag
+from cnltk.util import LazyConcatenation
+from cnltk.internals import ElementWrapper
+from cnltk.tag import map_tag
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.xmldocs import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.xmldocs import *
 
 class NPSChatCorpusReader(XMLCorpusReader):
 

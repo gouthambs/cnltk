@@ -33,7 +33,7 @@ from __future__ import print_function, unicode_literals, division
 from collections import defaultdict
 from os.path import join
 
-from nltk.data import load
+from cnltk.data import load
 
 _UNIVERSAL_DATA = "taggers/universal_tagset"
 _UNIVERSAL_TAGS = ('VERB','NOUN','PRON','ADJ','ADV','ADP','CONJ','DET','NUM','PRT','X','.')

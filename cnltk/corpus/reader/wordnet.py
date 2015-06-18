@@ -28,10 +28,10 @@ from itertools import islice, chain
 from operator import itemgetter, attrgetter
 from collections import defaultdict, deque
 
-from nltk.corpus.reader import CorpusReader
-from nltk.util import binary_search_file as _binary_search_file
-from nltk.probability import FreqDist
-from nltk.compat import (iteritems, python_2_unicode_compatible,
+from cnltk.corpus.reader import CorpusReader
+from cnltk.util import binary_search_file as _binary_search_file
+from cnltk.probability import FreqDist
+from cnltk.compat import (iteritems, python_2_unicode_compatible,
                          total_ordering, xrange)
 
 ######################################################################
@@ -494,7 +494,7 @@ class Synset(_WordNetObject):
         """Return the transitive closure of source under the rel
         relationship, breadth-first
 
-            >>> from nltk.corpus import wordnet as wn
+            >>> from cnltk.corpus import wordnet as wn
             >>> dog = wn.synset('dog.n.01')
             >>> hyp = lambda s:s.hypernyms()
             >>> list(dog.closure(hyp))
@@ -507,7 +507,7 @@ class Synset(_WordNetObject):
             Synset('physical_entity.n.01'), Synset('entity.n.01')]
 
         """
-        from nltk.util import breadth_first
+        from cnltk.util import breadth_first
         synset_offsets = []
         for synset in breadth_first(self, rel, depth):
             if synset._offset != self._offset:
@@ -689,7 +689,7 @@ class Synset(_WordNetObject):
 
     def tree(self, rel, depth=-1, cut_mark=None):
         """
-        >>> from nltk.corpus import wordnet as wn
+        >>> from cnltk.corpus import wordnet as wn
         >>> dog = wn.synset('dog.n.01')
         >>> hyp = lambda s:s.hypernyms()
         >>> from pprint import pprint
@@ -883,7 +883,7 @@ class Synset(_WordNetObject):
         :type  other: Synset
         :param other: The ``Synset`` that this ``Synset`` is being compared to.
         :type ic: dict
-        :param ic: an information content object (as returned by ``nltk.corpus.wordnet_ic.ic()``).
+        :param ic: an information content object (as returned by ``cnltk.corpus.wordnet_ic.ic()``).
         :return: A float score denoting the similarity of the two ``Synset`` objects.
             Synsets whose LCS is the root node of the taxonomy will have a
             score of 0 (e.g. N['dog'][0] and N['table'][0]).
@@ -903,7 +903,7 @@ class Synset(_WordNetObject):
         :type  other: Synset
         :param other: The ``Synset`` that this ``Synset`` is being compared to.
         :type  ic: dict
-        :param ic: an information content object (as returned by ``nltk.corpus.wordnet_ic.ic()``).
+        :param ic: an information content object (as returned by ``cnltk.corpus.wordnet_ic.ic()``).
         :return: A float score denoting the similarity of the two ``Synset`` objects.
         """
 
@@ -935,7 +935,7 @@ class Synset(_WordNetObject):
         :type other: Synset
         :param other: The ``Synset`` that this ``Synset`` is being compared to.
         :type ic: dict
-        :param ic: an information content object (as returned by ``nltk.corpus.wordnet_ic.ic()``).
+        :param ic: an information content object (as returned by ``cnltk.corpus.wordnet_ic.ic()``).
         :return: A float score denoting the similarity of the two ``Synset`` objects,
             in the range 0 to 1.
         """
@@ -1580,7 +1580,7 @@ class WordNetCorpusReader(CorpusReader):
         forms, and by recursively stripping affixes for this part of
         speech until a form in WordNet is found.
 
-        >>> from nltk.corpus import wordnet as wn
+        >>> from cnltk.corpus import wordnet as wn
         >>> print(wn.morphy('dogs'))
         dog
         >>> print(wn.morphy('churches'))
@@ -1879,7 +1879,7 @@ def _get_pos(field):
 
 # unload corpus after tests
 def teardown_module(module=None):
-    from nltk.corpus import wordnet
+    from cnltk.corpus import wordnet
     wordnet._unload()
 
 
@@ -1888,9 +1888,9 @@ def teardown_module(module=None):
 ######################################################################
 
 def demo():
-    import nltk
+    import cnltk
     print('loading wordnet')
-    wn = WordNetCorpusReader(nltk.data.find('corpora/wordnet'), None)
+    wn = WordNetCorpusReader(cnltk.data.find('corpora/wordnet'), None)
     print('done loading')
     S = wn.synset
     L = wn.lemma
@@ -1962,7 +1962,7 @@ def demo():
     print(S('dog.n.01').lch_similarity(S('cat.n.01')))
     print(S('dog.n.01').wup_similarity(S('cat.n.01')))
 
-    wnic = WordNetICCorpusReader(nltk.data.find('corpora/wordnet_ic'),
+    wnic = WordNetICCorpusReader(cnltk.data.find('corpora/wordnet_ic'),
                                  '.*\.dat')
     ic = wnic.ic('ic-brown.dat')
     print(S('dog.n.01').jcn_similarity(S('cat.n.01'), ic))

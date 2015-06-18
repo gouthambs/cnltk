@@ -18,7 +18,7 @@ Chapter 1 of the NLTK book contains many elementary programming examples, all
 with English texts.  In this section, we'll see some corresponding examples
 using Portuguese.  Please refer to the chapter for full discussion.  *Vamos!*
 
-    >>> from nltk.examples.pt import *
+    >>> from cnltk.examples.pt import *
     *** Introductory Examples for the NLTK Book ***
     Loading ptext1, ... and psent1, ...
     Type the name of the text or sentence to view it.
@@ -174,7 +174,7 @@ Accessing the Machado Text Corpus
 
 NLTK includes the complete works of Machado de Assis.
 
-    >>> from nltk.corpus import machado
+    >>> from cnltk.corpus import machado
     >>> machado.fileids()
     ['contos/macn001.txt', 'contos/macn002.txt', 'contos/macn003.txt', ...]
 
@@ -205,7 +205,7 @@ of a text as a sequence of words and punctuation, not characters:
 Here's a program that finds the most common ngrams that contain a
 particular target word.
 
-    >>> from nltk import ngrams, FreqDist
+    >>> from cnltk import ngrams, FreqDist
     >>> target_word = 'olhos'
     >>> fd = FreqDist(ng
     ...               for ng in ngrams(text1, 5)
@@ -237,20 +237,20 @@ journalistic texts extracted from ten sections of
 the daily newspaper *Folha de Sao Paulo*, 1994.
 
 We can access this corpus as a sequence of words or tagged words as follows:
-    >>> import nltk.corpus
-    >>> nltk.corpus.mac_morpho.words()
+    >>> import cnltk.corpus
+    >>> cnltk.corpus.mac_morpho.words()
     ['Jersei', 'atinge', 'm\xe9dia', 'de', 'Cr$', '1,4', ...]
-    >>> nltk.corpus.mac_morpho.sents() # doctest: +NORMALIZE_WHITESPACE
+    >>> cnltk.corpus.mac_morpho.sents() # doctest: +NORMALIZE_WHITESPACE
     [['Jersei', 'atinge', 'm\xe9dia', 'de', 'Cr$', '1,4', 'milh\xe3o',
     'em', 'a', 'venda', 'de', 'a', 'Pinhal', 'em', 'S\xe3o', 'Paulo'],
     ['Programe', 'sua', 'viagem', 'a', 'a', 'Exposi\xe7\xe3o', 'Nacional',
     'do', 'Zebu', ',', 'que', 'come\xe7a', 'dia', '25'], ...]
-    >>> nltk.corpus.mac_morpho.tagged_words()
+    >>> cnltk.corpus.mac_morpho.tagged_words()
     [('Jersei', 'N'), ('atinge', 'V'), ('m\xe9dia', 'N'), ...]
 
 We can also access it in sentence chunks.
 
-    >>> nltk.corpus.mac_morpho.tagged_sents() # doctest: +NORMALIZE_WHITESPACE
+    >>> cnltk.corpus.mac_morpho.tagged_sents() # doctest: +NORMALIZE_WHITESPACE
     [[('Jersei', 'N'), ('atinge', 'V'), ('m\xe9dia', 'N'), ('de', 'PREP'),
       ('Cr$', 'CUR'), ('1,4', 'NUM'), ('milh\xe3o', 'N'), ('em', 'PREP|+'),
       ('a', 'ART'), ('venda', 'N'), ('de', 'PREP|+'), ('a', 'ART'),
@@ -272,7 +272,7 @@ The NLTK data distribution includes the
 
 We can access this corpus as a sequence of words or tagged words as follows:
 
-    >>> from nltk.corpus import floresta
+    >>> from cnltk.corpus import floresta
     >>> floresta.words()
     ['Um', 'revivalismo', 'refrescante', 'O', '7_e_Meio', ...]
     >>> floresta.tagged_words()
@@ -303,7 +303,7 @@ Count the word tokens and types, and determine the most common word:
     >>> words = floresta.words()
     >>> len(words)
     211852
-    >>> fd = nltk.FreqDist(words)
+    >>> fd = cnltk.FreqDist(words)
     >>> len(fd)
     29421
     >>> fd.max()
@@ -312,7 +312,7 @@ Count the word tokens and types, and determine the most common word:
 List the 20 most frequent tags, in order of decreasing frequency:
 
     >>> tags = [simplify_tag(tag) for (word,tag) in floresta.tagged_words()]
-    >>> fd = nltk.FreqDist(tags)
+    >>> fd = cnltk.FreqDist(tags)
     >>> fd.keys()[:20] # doctest: +NORMALIZE_WHITESPACE
     ['n', 'prp', 'art', 'v-fin', ',', 'prop', 'adj', 'adv', '.',
      'conj-c', 'v-inf', 'pron-det', 'v-pcp', 'num', 'pron-indp',
@@ -356,7 +356,7 @@ Character Encodings
 
 Python understands the common character encoding used for Portuguese, ISO 8859-1 (ISO Latin 1).
 
-    >>> import os, nltk.test
+    >>> import os, cnltk.test
     >>> testdir = os.path.split(nltk.test.__file__)[0]
     >>> text = open(os.path.join(testdir, 'floresta.txt'), 'rb').read().decode('ISO 8859-1')
     >>> text[:60]
@@ -411,7 +411,7 @@ Part-of-Speech Tagging
 Let's begin by getting the tagged sentence data, and simplifying the tags
 as described earlier.
 
-    >>> from nltk.corpus import floresta
+    >>> from cnltk.corpus import floresta
     >>> tsents = floresta.tagged_sents()
     >>> tsents = [[(w.lower(),simplify_tag(t)) for (w,t) in sent] for sent in tsents if sent]
     >>> train = tsents[100:]
@@ -420,21 +420,21 @@ as described earlier.
 We already know that ``n`` is the most common tag, so we can set up a
 default tagger that tags every word as a noun, and see how well it does:
 
-    >>> tagger0 = nltk.DefaultTagger('n')
-    >>> nltk.tag.accuracy(tagger0, test)
+    >>> tagger0 = cnltk.DefaultTagger('n')
+    >>> cnltk.tag.accuracy(tagger0, test)
     0.17697228144989338
 
 Evidently, about one in every six words is a noun.  Let's improve on this by
 training a unigram tagger:
 
-    >>> tagger1 = nltk.UnigramTagger(train, backoff=tagger0)
-    >>> nltk.tag.accuracy(tagger1, test)
+    >>> tagger1 = cnltk.UnigramTagger(train, backoff=tagger0)
+    >>> cnltk.tag.accuracy(tagger1, test)
     0.87029140014214645
 
 Next a bigram tagger:
 
-    >>> tagger2 = nltk.BigramTagger(train, backoff=tagger1)
-    >>> nltk.tag.accuracy(tagger2, test)
+    >>> tagger2 = cnltk.BigramTagger(train, backoff=tagger1)
+    >>> cnltk.tag.accuracy(tagger2, test)
     0.89019189765458417
 
 
@@ -470,7 +470,7 @@ We read the text, split it into its lines, and then join these lines together us
 spaces.  Now the information about sentence breaks has been discarded.  We split this
 material into training and testing data:
 
-    >>> import os, nltk.test
+    >>> import os, cnltk.test
     >>> testdir = os.path.split(nltk.test.__file__)[0]
     >>> text = open(os.path.join(testdir, 'floresta.txt'), 'rb').read().decode('ISO-8859-1')
     >>> lines = text.split('\n')
@@ -479,7 +479,7 @@ material into training and testing data:
 
 Now we train the sentence segmenter (or sentence tokenizer) and use it on our test sentences:
 
-    >>> stok = nltk.PunktSentenceTokenizer(train)
+    >>> stok = cnltk.PunktSentenceTokenizer(train)
     >>> print(stok.tokenize(test))
     ['O 7 e Meio \xe9 um ex-libris da noite algarvia.',
     '\xc9 uma das mais antigas discotecas do Algarve, situada em Albufeira,
@@ -513,14 +513,14 @@ NLTK's data collection includes a trained model for Portuguese sentence
 segmentation, which can be loaded as follows.  It is faster to load a trained model than
 to retrain it.
 
-    >>> stok = nltk.data.load('tokenizers/punkt/portuguese.pickle')
+    >>> stok = cnltk.data.load('tokenizers/punkt/portuguese.pickle')
 
 Stemming
 --------
 
 NLTK includes the RSLP Portuguese stemmer.  Here we use it to stem some Portuguese text:
 
-    >>> stemmer = nltk.stem.RSLPStemmer()
+    >>> stemmer = cnltk.stem.RSLPStemmer()
     >>> stemmer.stem("copiar")
     'copi'
     >>> stemmer.stem("paisagem")
@@ -532,14 +532,14 @@ Stopwords
 
 NLTK includes Portuguese stopwords:
 
-    >>> stopwords = nltk.corpus.stopwords.words('portuguese')
+    >>> stopwords = cnltk.corpus.stopwords.words('portuguese')
     >>> stopwords[:10]
     ['a', 'ao', 'aos', 'aquela', 'aquelas', 'aquele', 'aqueles', 'aquilo', 'as', 'at\xe9']
 
 Now we can use these to filter text.  Let's find the most frequent words (other than stopwords)
 and print them in descending order of frequency:
 
-    >>> fd = nltk.FreqDist(w.lower() for w in floresta.words() if w not in stopwords)
+    >>> fd = cnltk.FreqDist(w.lower() for w in floresta.words() if w not in stopwords)
     >>> for word in list(fd.keys())[:20]:
     ...     print(word, fd[word])
     , 13444

@@ -8,7 +8,7 @@ WordNet Lowest Common Hypernyms
 Wordnet's lowest_common_hypernyms() method is based used to locate the 
 lowest single hypernym that is shared by two given words:
 
-    >>> from nltk.corpus import wordnet as wn
+    >>> from cnltk.corpus import wordnet as wn
     >>> wn.synset('kin.n.01').lowest_common_hypernyms(wn.synset('mother.n.01'))
     [Synset('relative.n.01')]
 

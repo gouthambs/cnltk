@@ -11,9 +11,9 @@ from __future__ import print_function
 import math
 import logging
 
-from nltk.compat import xrange
+from cnltk.compat import xrange
 
-from nltk.parse.dependencygraph import DependencyGraph
+from cnltk.parse.dependencygraph import DependencyGraph
 
 logger = logging.getLogger(__name__)
 
@@ -85,7 +85,7 @@ class NaiveBayesDependencyScorer(DependencyScorerI):
     It uses head-word, head-tag, child-word, and child-tag features
     for classification.
 
-    >>> from nltk.parse.dependencygraph import DependencyGraph, conll_data2
+    >>> from cnltk.parse.dependencygraph import DependencyGraph, conll_data2
 
     >>> graphs = [DependencyGraph(entry) for entry in conll_data2.split('\\n\\n') if entry]
     >>> npp = ProbabilisticNonprojectiveParser()
@@ -110,7 +110,7 @@ class NaiveBayesDependencyScorer(DependencyScorerI):
         :param graphs: A list of dependency graphs to train the scorer.
         """
 
-        from nltk.classify import NaiveBayesClassifier
+        from cnltk.classify import NaiveBayesClassifier
 
         # Create training labeled training examples
         labeled_examples = []
@@ -231,7 +231,7 @@ class ProbabilisticNonprojectiveParser(object):
     Rule based example
     ------------------
 
-    >>> from nltk.grammar import DependencyGrammar
+    >>> from cnltk.grammar import DependencyGrammar
 
     >>> grammar = DependencyGrammar.fromstring('''
     ... 'taught' -> 'play' | 'man'
@@ -750,7 +750,7 @@ def hall_demo():
 
 
 def nonprojective_conll_parse_demo():
-    from nltk.parse.dependencygraph import conll_data2
+    from cnltk.parse.dependencygraph import conll_data2
 
     graphs = [
         DependencyGraph(entry) for entry in conll_data2.split('\n\n') if entry
@@ -762,7 +762,7 @@ def nonprojective_conll_parse_demo():
 
 
 def rule_based_demo():
-    from nltk.grammar import DependencyGrammar
+    from cnltk.grammar import DependencyGrammar
 
     grammar = DependencyGrammar.fromstring("""
     'taught' -> 'play' | 'man'

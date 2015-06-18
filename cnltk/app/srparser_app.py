@@ -69,20 +69,20 @@ Possible future improvements:
     not in the grammar.
   - button/window to change and/or select grammar.  Select from
     several alternative grammars?  Or actually change the grammar?  If
-    the later, then I'd want to define nltk.draw.cfg, which would be
+    the later, then I'd want to define cnltk.draw.cfg, which would be
     responsible for that.
 """
 
-import nltk.compat
+import cnltk.compat
 import tkinter.font
 from tkinter import (IntVar, Listbox, Button, Frame, Label, Menu,
                      Scrollbar, Tk)
 
-from nltk.tree import Tree
-from nltk.parse import SteppingShiftReduceParser
-from nltk.util import in_idle
-from nltk.draw.util import CanvasFrame, EntryDialog, ShowText, TextWidget
-from nltk.draw import CFGEditor, TreeSegmentWidget, tree_to_treesegment
+from cnltk.tree import Tree
+from cnltk.parse import SteppingShiftReduceParser
+from cnltk.util import in_idle
+from cnltk.draw.util import CanvasFrame, EntryDialog, ShowText, TextWidget
+from cnltk.draw import CFGEditor, TreeSegmentWidget, tree_to_treesegment
 
 class ShiftReduceApp(object):
     """
@@ -92,7 +92,7 @@ class ShiftReduceApp(object):
     can shift tokens onto the stack, and can perform reductions on the
     top elements of the stack.  A "step" button simply steps through
     the parsing process, performing the operations that
-    ``nltk.parse.ShiftReduceParser`` would use.
+    ``cnltk.parse.ShiftReduceParser`` would use.
     """
     def __init__(self, grammar, sent, trace=0):
         self._sent = sent
@@ -772,7 +772,7 @@ def app():
     text.
     """
 
-    from nltk.grammar import Nonterminal, Production, CFG
+    from cnltk.grammar import Nonterminal, Production, CFG
     nonterminals = 'S VP NP PP P N Name V Det'
     (S, VP, NP, PP, P, N, Name, V, Det) = [Nonterminal(s)
                                            for s in nonterminals.split()]

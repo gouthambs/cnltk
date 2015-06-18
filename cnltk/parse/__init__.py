@@ -37,20 +37,20 @@ texts; and two simple implementations of that interface,
 ``ShiftReduceParser`` and ``RecursiveDescentParser``.  It also contains
 three sub-modules for specialized kinds of parsing:
 
-  - ``nltk.parser.chart`` defines chart parsing, which uses dynamic
+  - ``cnltk.parser.chart`` defines chart parsing, which uses dynamic
     programming to efficiently parse texts.
-  - ``nltk.parser.probabilistic`` defines probabilistic parsing, which
+  - ``cnltk.parser.probabilistic`` defines probabilistic parsing, which
     associates a probability with each parse.
 """
 
-from nltk.parse.api import ParserI
-from nltk.parse.chart import (ChartParser, SteppingChartParser, TopDownChartParser,
+from cnltk.parse.api import ParserI
+from cnltk.parse.chart import (ChartParser, SteppingChartParser, TopDownChartParser,
                               BottomUpChartParser, BottomUpLeftCornerChartParser,
                               LeftCornerChartParser)
-from nltk.parse.featurechart import (FeatureChartParser, FeatureTopDownChartParser,
+from cnltk.parse.featurechart import (FeatureChartParser, FeatureTopDownChartParser,
                                      FeatureBottomUpChartParser,
                                      FeatureBottomUpLeftCornerChartParser)
-from nltk.parse.earleychart import (IncrementalChartParser, EarleyChartParser,
+from cnltk.parse.earleychart import (IncrementalChartParser, EarleyChartParser,
                                     IncrementalTopDownChartParser,
                                     IncrementalBottomUpChartParser,
                                     IncrementalBottomUpLeftCornerChartParser,
@@ -60,21 +60,21 @@ from nltk.parse.earleychart import (IncrementalChartParser, EarleyChartParser,
                                     FeatureIncrementalTopDownChartParser,
                                     FeatureIncrementalBottomUpChartParser,
                                     FeatureIncrementalBottomUpLeftCornerChartParser)
-from nltk.parse.pchart import (BottomUpProbabilisticChartParser, InsideChartParser,
+from cnltk.parse.pchart import (BottomUpProbabilisticChartParser, InsideChartParser,
                                RandomChartParser, UnsortedChartParser,
                                LongestChartParser)
-from nltk.parse.recursivedescent import (RecursiveDescentParser,
+from cnltk.parse.recursivedescent import (RecursiveDescentParser,
                                          SteppingRecursiveDescentParser)
-from nltk.parse.shiftreduce import (ShiftReduceParser, SteppingShiftReduceParser)
-from nltk.parse.util import load_parser, TestGrammar, extract_test_sentences
-from nltk.parse.viterbi import ViterbiParser
-from nltk.parse.dependencygraph import DependencyGraph
-from nltk.parse.projectivedependencyparser import (ProjectiveDependencyParser,
+from cnltk.parse.shiftreduce import (ShiftReduceParser, SteppingShiftReduceParser)
+from cnltk.parse.util import load_parser, TestGrammar, extract_test_sentences
+from cnltk.parse.viterbi import ViterbiParser
+from cnltk.parse.dependencygraph import DependencyGraph
+from cnltk.parse.projectivedependencyparser import (ProjectiveDependencyParser,
                                                    ProbabilisticProjectiveDependencyParser)
-from nltk.parse.nonprojectivedependencyparser import (NonprojectiveDependencyParser,
+from cnltk.parse.nonprojectivedependencyparser import (NonprojectiveDependencyParser,
                                                       NaiveBayesDependencyScorer,
                                                       ProbabilisticNonprojectiveParser)
-from nltk.parse.malt import MaltParser
-from nltk.parse.evaluate import DependencyEvaluator
-from nltk.parse.transitionparser import TransitionParser
-from nltk.parse.bllip import BllipParser
+from cnltk.parse.malt import MaltParser
+from cnltk.parse.evaluate import DependencyEvaluator
+from cnltk.parse.transitionparser import TransitionParser
+from cnltk.parse.bllip import BllipParser

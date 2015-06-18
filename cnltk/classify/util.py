@@ -13,9 +13,9 @@ from __future__ import print_function
 
 import math
 
-#from nltk.util import Deprecated
-import nltk.classify.util # for accuracy & log_likelihood
-from nltk.util import LazyMap
+#from cnltk.util import Deprecated
+import cnltk.classify.util # for accuracy & log_likelihood
+from cnltk.util import LazyMap
 
 ######################################################################
 #{ Helper Functions
@@ -115,7 +115,7 @@ class CutoffChecker(object):
         if 'max_iter' in cutoffs and self.iter >= cutoffs['max_iter']:
             return True # iteration cutoff.
 
-        new_ll = nltk.classify.util.log_likelihood(classifier, train_toks)
+        new_ll = cnltk.classify.util.log_likelihood(classifier, train_toks)
         if math.isnan(new_ll):
             return True
 
@@ -128,7 +128,7 @@ class CutoffChecker(object):
             self.ll = new_ll
 
         if 'max_acc' in cutoffs or 'min_accdelta' in cutoffs:
-            new_acc = nltk.classify.util.log_likelihood(
+            new_acc = cnltk.classify.util.log_likelihood(
                 classifier, train_toks)
             if 'max_acc' in cutoffs and new_acc >= cutoffs['max_acc']:
                 return True # log likelihood cutoff
@@ -166,7 +166,7 @@ def binary_names_demo_features(name):
     return features
 
 def names_demo(trainer, features=names_demo_features):
-    from nltk.corpus import names
+    from cnltk.corpus import names
     import random
 
     # Construct a list of classified names, using the names corpus.
@@ -211,7 +211,7 @@ def names_demo(trainer, features=names_demo_features):
     return classifier
 
 def partial_names_demo(trainer, features=names_demo_features):
-    from nltk.corpus import names
+    from cnltk.corpus import names
     import random
 
     male_names = names.words('male.txt')
@@ -266,7 +266,7 @@ def partial_names_demo(trainer, features=names_demo_features):
 
 _inst_cache = {}
 def wsd_demo(trainer, word, features, n=1000):
-    from nltk.corpus import senseval
+    from cnltk.corpus import senseval
     import random
 
     # Get the instances.

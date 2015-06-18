@@ -45,60 +45,60 @@ they return.  Some common examples, and their return types, are:
 - raw(): unprocessed corpus contents
 
 For example, to read a list of the words in the Brown Corpus, use
-``nltk.corpus.brown.words()``:
+``cnltk.corpus.brown.words()``:
 
-    >>> from nltk.corpus import brown
+    >>> from cnltk.corpus import brown
     >>> print(", ".join(brown.words()))
     The, Fulton, County, Grand, Jury, said, ...
 
 """
 
-from nltk.corpus.reader.plaintext import *
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.tagged import *
-from nltk.corpus.reader.cmudict import *
-from nltk.corpus.reader.conll import *
-from nltk.corpus.reader.chunked import *
-from nltk.corpus.reader.wordlist import *
-from nltk.corpus.reader.xmldocs import *
-from nltk.corpus.reader.ppattach import *
-from nltk.corpus.reader.senseval import *
-from nltk.corpus.reader.ieer import *
-from nltk.corpus.reader.sinica_treebank import *
-from nltk.corpus.reader.bracket_parse import *
-from nltk.corpus.reader.indian import *
-from nltk.corpus.reader.toolbox import *
-from nltk.corpus.reader.timit import *
-from nltk.corpus.reader.ycoe import *
-from nltk.corpus.reader.rte import *
-from nltk.corpus.reader.string_category import *
-from nltk.corpus.reader.propbank import *
-from nltk.corpus.reader.verbnet import *
-from nltk.corpus.reader.bnc import *
-from nltk.corpus.reader.nps_chat import *
-from nltk.corpus.reader.wordnet import *
-from nltk.corpus.reader.switchboard import *
-from nltk.corpus.reader.dependency import *
-from nltk.corpus.reader.nombank import *
-from nltk.corpus.reader.ipipan import *
-from nltk.corpus.reader.pl196x import *
-from nltk.corpus.reader.knbc import *
-from nltk.corpus.reader.chasen import *
-from nltk.corpus.reader.childes import *
-from nltk.corpus.reader.aligned import *
-from nltk.corpus.reader.lin import *
-from nltk.corpus.reader.semcor import *
-from nltk.corpus.reader.framenet import *
-from nltk.corpus.reader.udhr import *
-from nltk.corpus.reader.bnc import *
-from nltk.corpus.reader.sentiwordnet import *
-from nltk.corpus.reader.nkjp import *
-from nltk.corpus.reader.crubadan import *
+from cnltk.corpus.reader.plaintext import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.tagged import *
+from cnltk.corpus.reader.cmudict import *
+from cnltk.corpus.reader.conll import *
+from cnltk.corpus.reader.chunked import *
+from cnltk.corpus.reader.wordlist import *
+from cnltk.corpus.reader.xmldocs import *
+from cnltk.corpus.reader.ppattach import *
+from cnltk.corpus.reader.senseval import *
+from cnltk.corpus.reader.ieer import *
+from cnltk.corpus.reader.sinica_treebank import *
+from cnltk.corpus.reader.bracket_parse import *
+from cnltk.corpus.reader.indian import *
+from cnltk.corpus.reader.toolbox import *
+from cnltk.corpus.reader.timit import *
+from cnltk.corpus.reader.ycoe import *
+from cnltk.corpus.reader.rte import *
+from cnltk.corpus.reader.string_category import *
+from cnltk.corpus.reader.propbank import *
+from cnltk.corpus.reader.verbnet import *
+from cnltk.corpus.reader.bnc import *
+from cnltk.corpus.reader.nps_chat import *
+from cnltk.corpus.reader.wordnet import *
+from cnltk.corpus.reader.switchboard import *
+from cnltk.corpus.reader.dependency import *
+from cnltk.corpus.reader.nombank import *
+from cnltk.corpus.reader.ipipan import *
+from cnltk.corpus.reader.pl196x import *
+from cnltk.corpus.reader.knbc import *
+from cnltk.corpus.reader.chasen import *
+from cnltk.corpus.reader.childes import *
+from cnltk.corpus.reader.aligned import *
+from cnltk.corpus.reader.lin import *
+from cnltk.corpus.reader.semcor import *
+from cnltk.corpus.reader.framenet import *
+from cnltk.corpus.reader.udhr import *
+from cnltk.corpus.reader.bnc import *
+from cnltk.corpus.reader.sentiwordnet import *
+from cnltk.corpus.reader.nkjp import *
+from cnltk.corpus.reader.crubadan import *
 
-# Make sure that nltk.corpus.reader.bracket_parse gives the module, not
-# the function bracket_parse() defined in nltk.tree:
-from nltk.corpus.reader import bracket_parse
+# Make sure that cnltk.corpus.reader.bracket_parse gives the module, not
+# the function bracket_parse() defined in cnltk.tree:
+from cnltk.corpus.reader import bracket_parse
 
 __all__ = [
     'CorpusReader', 'CategorizedCorpusReader',

@@ -10,8 +10,8 @@
 
 from __future__ import print_function
 
-from nltk.compat import python_2_unicode_compatible, unicode_repr
-from nltk import jsontags
+from cnltk.compat import python_2_unicode_compatible, unicode_repr
+from cnltk import jsontags
 
 ######################################################################
 # Tag Rules
@@ -115,7 +115,7 @@ class Rule(TagRule):
 
     """
 
-    json_tag = 'nltk.tbl.Rule'
+    json_tag = 'cnltk.tbl.Rule'
 
     def __init__(self, templateid, original_tag, replacement_tag, conditions):
         """
@@ -239,8 +239,8 @@ class Rule(TagRule):
         """
         Return a string representation of this rule.
 
-        >>> from nltk.tbl.rule import Rule
-        >>> from nltk.tag.brill import Pos
+        >>> from cnltk.tbl.rule import Rule
+        >>> from cnltk.tag.brill import Pos
 
         >>> r = Rule("23", "VB", "NN", [(Pos([-2,-1]), 'DT')])
 

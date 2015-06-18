@@ -15,10 +15,10 @@ import os
 import re
 from collections import defaultdict
 
-from nltk import compat
-from nltk.data import PathPointer, FileSystemPathPointer, ZipFilePathPointer
+from cnltk import compat
+from cnltk.data import PathPointer, FileSystemPathPointer, ZipFilePathPointer
 
-from nltk.corpus.reader.util import *
+from cnltk.corpus.reader.util import *
 
 @compat.python_2_unicode_compatible
 class CorpusReader(object):

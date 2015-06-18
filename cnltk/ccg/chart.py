@@ -33,16 +33,16 @@ from __future__ import print_function, division, unicode_literals
 
 import itertools
 
-from nltk.parse import ParserI
-from nltk.parse.chart import AbstractChartRule, EdgeI, Chart
-from nltk.tree import Tree
+from cnltk.parse import ParserI
+from cnltk.parse.chart import AbstractChartRule, EdgeI, Chart
+from cnltk.tree import Tree
 
-from nltk.ccg.lexicon import parseLexicon
-from nltk.ccg.combinator import (ForwardT, BackwardT, ForwardApplication,
+from cnltk.ccg.lexicon import parseLexicon
+from cnltk.ccg.combinator import (ForwardT, BackwardT, ForwardApplication,
                                  BackwardApplication, ForwardComposition,
                                  BackwardComposition, ForwardSubstitution,
                                  BackwardBx, BackwardSx)
-from nltk.compat import python_2_unicode_compatible, string_types
+from cnltk.compat import python_2_unicode_compatible, string_types
 
 # Based on the EdgeI class from NLTK.
 # A number of the properties of the EdgeI interface don't

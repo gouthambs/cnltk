@@ -14,9 +14,9 @@ from __future__ import print_function, unicode_literals
 
 from collections import defaultdict
 
-from nltk.probability import FreqDist, MLEProbDist, entropy
-from nltk.classify.api import ClassifierI
-from nltk.compat import python_2_unicode_compatible
+from cnltk.probability import FreqDist, MLEProbDist, entropy
+from cnltk.classify.api import ClassifierI
+from cnltk.compat import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class DecisionTreeClassifier(ClassifierI):
@@ -284,7 +284,7 @@ def f(x):
     return DecisionTreeClassifier.train(x, binary=True, verbose=True)
 
 def demo():
-    from nltk.classify.util import names_demo, binary_names_demo_features
+    from cnltk.classify.util import names_demo, binary_names_demo_features
     classifier = names_demo(f, #DecisionTreeClassifier.train,
                             binary_names_demo_features)
     print(classifier.pp(depth=7))

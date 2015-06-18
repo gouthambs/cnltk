@@ -12,12 +12,12 @@ Stemmers remove morphological affixes from words, leaving only the
 word stem.
 
     >>> from __future__ import print_function
-    >>> from nltk.stem import *
+    >>> from cnltk.stem import *
 
 Unit tests for the Porter stemmer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    >>> from nltk.stem.porter import *
+    >>> from cnltk.stem.porter import *
 
 Create a new Porter stemmer.
 
@@ -44,7 +44,7 @@ Test the stemmer on various pluralised words.
 Unit tests for Snowball stemmer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    >>> from nltk.stem.snowball import SnowballStemmer
+    >>> from cnltk.stem.snowball import SnowballStemmer
 
 See which languages are supported.
 
@@ -78,4 +78,4 @@ The 'english' stemmer is better than the original 'porter' stemmer.
 
 .. note::
 
-    Extra stemmer tests can be found in `nltk.test.unit.test_stem`.
+    Extra stemmer tests can be found in `cnltk.test.unit.test_stem`.

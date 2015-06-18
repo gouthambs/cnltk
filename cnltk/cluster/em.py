@@ -10,8 +10,8 @@ try:
 except ImportError:
     pass
 
-from nltk.compat import python_2_unicode_compatible
-from nltk.cluster.util import VectorSpaceClusterer
+from cnltk.compat import python_2_unicode_compatible
+from cnltk.cluster.util import VectorSpaceClusterer
 
 @python_2_unicode_compatible
 class EMClusterer(VectorSpaceClusterer):
@@ -174,7 +174,7 @@ def demo():
     Non-interactive demonstration of the clusterers with simple 2-D data.
     """
 
-    from nltk import cluster
+    from cnltk import cluster
 
     # example from figure 14.10, page 519, Manning and Schutze
 

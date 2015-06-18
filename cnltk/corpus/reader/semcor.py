@@ -11,9 +11,9 @@ Corpus reader for the SemCor Corpus.
 from __future__ import absolute_import, unicode_literals
 __docformat__ = 'epytext en'
 
-from nltk.corpus.reader.api import *
-from nltk.corpus.reader.xmldocs import XMLCorpusReader, XMLCorpusView
-from nltk.tree import Tree
+from cnltk.corpus.reader.api import *
+from cnltk.corpus.reader.xmldocs import XMLCorpusReader, XMLCorpusView
+from cnltk.tree import Tree
 
 class SemcorCorpusReader(XMLCorpusReader):
     """
@@ -174,7 +174,7 @@ class SemcorCorpusReader(XMLCorpusReader):
                         # cannot retrieve the wordnet.Lemma object. possible reasons:
                         #  (a) the wordnet corpus is not downloaded;
                         #  (b) a nonexistant sense is annotated: e.g., such.s.00 triggers: 
-                        #  nltk.corpus.reader.wordnet.WordNetError: No synset found for key u'such%5:00:01:specified:00'
+                        #  cnltk.corpus.reader.wordnet.WordNetError: No synset found for key u'such%5:00:01:specified:00'
                         # solution: just use the lemma name as a string
                         try:
                             sense = '%s.%s.%02d' % (lemma, wnpos, int(sensenum))    # e.g.: reach.v.02

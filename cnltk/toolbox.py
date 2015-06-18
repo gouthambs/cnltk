@@ -15,8 +15,8 @@ from __future__ import print_function
 import os, re, codecs
 from xml.etree.ElementTree import ElementTree, TreeBuilder, Element, SubElement
 
-from nltk.compat import StringIO, u, PY3
-from nltk.data import PathPointer, ZipFilePathPointer, find
+from cnltk.compat import StringIO, u, PY3
+from cnltk.data import PathPointer, ZipFilePathPointer, find
 
 
 class StandardFormat(object):
@@ -217,7 +217,7 @@ class ToolboxData(StandardFormat):
         return builder.close()
 
     def _tree2etree(self, parent):
-        from nltk.tree import Tree
+        from cnltk.tree import Tree
 
         root = Element(parent.label())
         for child in parent:
@@ -249,8 +249,8 @@ class ToolboxData(StandardFormat):
         :param kwargs: Keyword arguments passed to ``toolbox.StandardFormat.fields()``
         :rtype: ElementTree._ElementInterface
         """
-        from nltk import chunk
-        from nltk.tree import Tree
+        from cnltk import chunk
+        from cnltk.tree import Tree
 
         cp = chunk.RegexpParser(grammar, root_label=root_label, trace=trace)
         db = self.parse(**kwargs)

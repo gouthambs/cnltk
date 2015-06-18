@@ -10,9 +10,9 @@ from __future__ import division
 
 import re
 
-from nltk.tree import Tree
-from nltk.chunk.api import ChunkParserI
-from nltk.compat import python_2_unicode_compatible, string_types, unicode_repr
+from cnltk.tree import Tree
+from cnltk.chunk.api import ChunkParserI
+from cnltk.compat import python_2_unicode_compatible, string_types, unicode_repr
 
 ##//////////////////////////////////////////////////////
 ##  ChunkString
@@ -349,7 +349,7 @@ class RegexpChunkRule(object):
         text following the comment marker (``#``) will be used as
         the rule's description:
 
-        >>> from nltk.chunk.regexp import RegexpChunkRule
+        >>> from cnltk.chunk.regexp import RegexpChunkRule
         >>> RegexpChunkRule.fromstring('{<DT>?<NN.*>+}')
         <ChunkRule: '<DT>?<NN.*>+'>
         """
@@ -1242,8 +1242,8 @@ def demo_eval(chunkparser, text):
         evaluation.
     :type text: str
     """
-    from nltk import chunk
-    from nltk.tree import Tree
+    from cnltk import chunk
+    from cnltk.tree import Tree
 
     # Evaluate our chunk parser.
     chunkscore = chunk.ChunkScore()
@@ -1294,7 +1294,7 @@ def demo():
     and strategies.
     """
 
-    from nltk import chunk, Tree
+    from cnltk import chunk, Tree
 
     text = """\
     [ the/DT little/JJ cat/NN ] sat/VBD on/IN [ the/DT mat/NN ] ./.
@@ -1344,7 +1344,7 @@ def demo():
 
 # Evaluation
 
-    from nltk.corpus import conll2000
+    from cnltk.corpus import conll2000
 
     print()
     print("Demonstration of empty grammar:")

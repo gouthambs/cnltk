@@ -6,8 +6,8 @@
 # For license information, see LICENSE.TXT
 
 from matplotlib import pylab
-from nltk.text import Text
-from nltk.corpus import gutenberg
+from cnltk.text import Text
+from cnltk.corpus import gutenberg
 
 def plot_word_freq_dist(text):
     fd = text.vocab()

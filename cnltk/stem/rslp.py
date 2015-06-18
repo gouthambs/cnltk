@@ -31,15 +31,15 @@
 # e/ou melhor para o português. Também sugiro utilizar-se a lista de discussão
 # do NLTK para o português para qualquer debate.
 from __future__ import print_function, unicode_literals
-from nltk.data import load
+from cnltk.data import load
 
-from nltk.stem.api import StemmerI
+from cnltk.stem.api import StemmerI
 
 class RSLPStemmer(StemmerI):
     """
     A stemmer for Portuguese.
 
-        >>> from nltk.stem import RSLPStemmer
+        >>> from cnltk.stem import RSLPStemmer
         >>> st = RSLPStemmer()
         >>> # opening lines of Erico Verissimo's "Música ao Longe"
         >>> text = '''

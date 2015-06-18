@@ -5,7 +5,7 @@ from __future__ import absolute_import
 # not installed, but there are pure-python parts that don't need Prover9.
 def setup_module(module):
     from nose import SkipTest
-    from nltk.inference.mace import Mace
+    from cnltk.inference.mace import Mace
     try:
         m = Mace()
         m._find_binary('mace4')

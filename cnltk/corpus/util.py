@@ -12,8 +12,8 @@
 from __future__ import unicode_literals
 import re
 import gc
-import nltk
-from nltk.compat import python_2_unicode_compatible
+import cnltk
+from cnltk.compat import python_2_unicode_compatible
 
 TRY_ZIPFILE_FIRST = False
 
@@ -36,11 +36,11 @@ class LazyCorpusLoader(object):
     If the corpus can not be found, then accessing this object will
     raise an exception, displaying installation instructions for the
     NLTK data package.  Once they've properly installed the data
-    package (or modified ``nltk.data.path`` to point to its location),
+    package (or modified ``cnltk.data.path`` to point to its location),
     they can then use the corpus object without restarting python.
     """
     def __init__(self, name, reader_cls, *args, **kwargs):
-        from nltk.corpus.reader.api import CorpusReader
+        from cnltk.corpus.reader.api import CorpusReader
         assert issubclass(reader_cls, CorpusReader)
         self.__name = self.__name__ = name
         self.__reader_cls = reader_cls
@@ -52,15 +52,15 @@ class LazyCorpusLoader(object):
         zip_name = re.sub(r'(([^/]*)(/.*)?)', r'\2.zip/\1/', self.__name)
         if TRY_ZIPFILE_FIRST:
             try:
-                root = nltk.data.find('corpora/%s' % zip_name)
+                root = cnltk.data.find('corpora/%s' % zip_name)
             except LookupError as e:
-                try: root = nltk.data.find('corpora/%s' % self.__name)
+                try: root = cnltk.data.find('corpora/%s' % self.__name)
                 except LookupError: raise e
         else:
             try:
-                root = nltk.data.find('corpora/%s' % self.__name)
+                root = cnltk.data.find('corpora/%s' % self.__name)
             except LookupError as e:
-                try: root = nltk.data.find('corpora/%s' % zip_name)
+                try: root = cnltk.data.find('corpora/%s' % zip_name)
                 except LookupError: raise e
 
         # Load the corpus.

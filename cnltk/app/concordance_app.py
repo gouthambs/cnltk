@@ -6,10 +6,10 @@
 # For license information, see LICENSE.TXT
 
 
-import nltk.compat
+import cnltk.compat
 import re
 import threading
-if nltk.compat.PY3:
+if cnltk.compat.PY3:
     import queue as q
 else:
     import Queue as q
@@ -18,10 +18,10 @@ from tkinter import (Tk, Button, END, Entry, Frame, IntVar, LEFT,
                      Label, Menu, OptionMenu, SUNKEN, Scrollbar,
                      StringVar, Text)
 
-from nltk.corpus import (cess_cat, brown, nps_chat, treebank, sinica_treebank,
+from cnltk.corpus import (cess_cat, brown, nps_chat, treebank, sinica_treebank,
                          alpino, indian, floresta, mac_morpho, cess_esp)
-from nltk.util import in_idle
-from nltk.draw.util import ShowText
+from cnltk.util import in_idle
+from cnltk.draw.util import ShowText
 
 WORD_OR_TAG = '[^/ ]+'
 BOUNDARY = r'\b'

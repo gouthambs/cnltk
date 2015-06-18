@@ -5,8 +5,8 @@
  Feature Structures & Unification
 ==================================
     >>> from __future__ import print_function
-    >>> from nltk.featstruct import FeatStruct
-    >>> from nltk.sem.logic import Variable, VariableExpression, Expression
+    >>> from cnltk.featstruct import FeatStruct
+    >>> from cnltk.sem.logic import Variable, VariableExpression, Expression
 
 .. note:: For now, featstruct uses the older lambdalogic semantics
    module.  Eventually, it should be updated to use the new first
@@ -109,7 +109,7 @@ Feature structures can be constructed directly from strings.  Often,
 this is more convenient than constructing them directly.  NLTK can
 parse most feature strings to produce the corresponding feature
 structures.  (But you must restrict your base feature values to
-strings, ints, logic expressions (`nltk.sem.logic.Expression`), and a
+strings, ints, logic expressions (`cnltk.sem.logic.Expression`), and a
 few other types discussed below).
 
 Feature dictionaries are written like Python dictionaries, except that
@@ -228,7 +228,7 @@ while ignoring reentrance relations, use the `equal_values()` method:
 
 Feature Value Sets & Feature Value Tuples
 -----------------------------------------
-`nltk.featstruct` defines two new data types that are intended to be
+`cnltk.featstruct` defines two new data types that are intended to be
 used as feature values: `FeatureValueTuple` and `FeatureValueSet`.
 Both of these types are considered base values -- i.e., unification
 does *not* apply to them.  However, variable binding *does* apply to
@@ -292,7 +292,7 @@ If you need a list-like structure that unification does apply to, use
 
 Light-weight Feature Structures
 -------------------------------
-Many of the functions defined by `nltk.featstruct` can be applied
+Many of the functions defined by `cnltk.featstruct` can be applied
 directly to simple Python dictionaries and lists, rather than to
 full-fledged `FeatDict` and `FeatList` objects.  In other words,
 Python ``dicts`` and ``lists`` can be used as "light-weight" feature
@@ -300,7 +300,7 @@ structures.
 
     >>> # Note: pprint prints dicts sorted
     >>> from pprint import pprint
-    >>> from nltk.featstruct import unify
+    >>> from cnltk.featstruct import unify
     >>> pprint(unify(dict(x=1, y=dict()), dict(a='a', y=dict(b='b'))))
     {'a': 'a', 'x': 1, 'y': {'b': 'b'}}
 
@@ -334,8 +334,8 @@ base value types that have custom unification methods.  For example,
 the following feature value type encodes a range, and defines
 unification as taking the intersection on the ranges:
 
-    >>> from nltk.compat import total_ordering
-    >>> from nltk.featstruct import CustomFeatureValue, UnificationFailure
+    >>> from cnltk.compat import total_ordering
+    >>> from cnltk.featstruct import CustomFeatureValue, UnificationFailure
     >>> @total_ordering
     ... class Range(CustomFeatureValue):
     ...     def __init__(self, low, high):
@@ -696,7 +696,7 @@ Here the slash feature gets coerced:
 
 Playing with ranges:
 
-    >>> from nltk.featstruct import RangeFeature, FeatStructReader
+    >>> from cnltk.featstruct import RangeFeature, FeatStructReader
     >>> width = RangeFeature('width')
     >>> reader = FeatStructReader([width])
     >>> fs1 = reader.fromstring('[*width*=-5:12]')
@@ -1131,7 +1131,7 @@ Unification on Dicts & Lists
 ----------------------------
 It's possible to do unification on dictionaries:
 
-    >>> from nltk.featstruct import unify
+    >>> from cnltk.featstruct import unify
     >>> pprint(unify(dict(x=1, y=dict(z=2)), dict(x=1, q=5)), width=1)
     {'q': 5, 'x': 1, 'y': {'z': 2}}
 
@@ -1162,7 +1162,7 @@ dictionaries and FeatStructs should be treated as feature structures:
 Finding Conflicts
 -----------------
 
-    >>> from nltk.featstruct import conflicts
+    >>> from cnltk.featstruct import conflicts
     >>> fs1 = FeatStruct('[a=[b=(1)[c=2], d->(1), e=[f->(1)]]]')
     >>> fs2 = FeatStruct('[a=[b=[c=[x=5]], d=[c=2], e=[f=[c=3]]]]')
     >>> for path in conflicts(fs1, fs2):
@@ -1176,7 +1176,7 @@ Finding Conflicts
 Retracting Bindings
 -------------------
 
-    >>> from nltk.featstruct import retract_bindings
+    >>> from cnltk.featstruct import retract_bindings
     >>> bindings = {}
     >>> fs1 = FeatStruct('[a=?x, b=[c=?y]]')
     >>> fs2 = FeatStruct('[a=(1)[c=[d=1]], b->(1)]')

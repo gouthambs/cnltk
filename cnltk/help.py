@@ -13,7 +13,7 @@ from __future__ import print_function
 import re
 from textwrap import wrap
 
-from nltk.data import load
+from cnltk.data import load
 
 def brown_tagset(tagpattern=None):
     _format_tagset("brown_tagset", tagpattern)

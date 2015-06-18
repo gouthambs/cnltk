@@ -5,8 +5,8 @@
 Dependency Grammars
 ===================
 
-    >>> from nltk.grammar import DependencyGrammar
-    >>> from nltk.parse import (
+    >>> from cnltk.grammar import DependencyGrammar
+    >>> from cnltk.parse import (
     ...     DependencyGraph,
     ...     ProjectiveDependencyParser,
     ...     NonprojectiveDependencyParser,
@@ -65,7 +65,7 @@ CoNLL Data
 
 Using the dependency-parsed version of the Penn Treebank corpus sample.
 
-    >>> from nltk.corpus import dependency_treebank
+    >>> from cnltk.corpus import dependency_treebank
     >>> t = dependency_treebank.parsed_sents()[0]
     >>> print(t.to_conll(3))  # doctest: +NORMALIZE_WHITESPACE
     Pierre      NNP     2

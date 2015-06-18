@@ -13,14 +13,14 @@ feature structures as nodes.
 """
 from __future__ import print_function, unicode_literals
 
-from nltk.compat import xrange, python_2_unicode_compatible
-from nltk.featstruct import FeatStruct, unify, TYPE, find_variables
-from nltk.sem import logic
-from nltk.tree import Tree
-from nltk.grammar import (Nonterminal, Production, CFG,
+from cnltk.compat import xrange, python_2_unicode_compatible
+from cnltk.featstruct import FeatStruct, unify, TYPE, find_variables
+from cnltk.sem import logic
+from cnltk.tree import Tree
+from cnltk.grammar import (Nonterminal, Production, CFG,
                           FeatStructNonterminal, is_nonterminal,
                           is_terminal)
-from nltk.parse.chart import (TreeEdge, Chart, ChartParser, EdgeI,
+from cnltk.parse.chart import (TreeEdge, Chart, ChartParser, EdgeI,
                               FundamentalRule, LeafInitRule,
                               EmptyPredictRule, BottomUpPredictRule,
                               SingleEdgeFundamentalRule,
@@ -509,7 +509,7 @@ class InstantiateVarsChart(FeatureChart):
 #////////////////////////////////////////////////////////////
 
 def demo_grammar():
-    from nltk.grammar import FeatureGrammar
+    from cnltk.grammar import FeatureGrammar
     return FeatureGrammar.fromstring("""
 S  -> NP VP
 PP -> Prep NP
@@ -566,7 +566,7 @@ def run_profile():
     p.strip_dirs().sort_stats('cum', 'time').print_stats(60)
 
 if __name__ == '__main__':
-    from nltk.data import load
+    from cnltk.data import load
     demo()
     print()
     grammar = load('grammars/book_grammars/feat0.fcfg')

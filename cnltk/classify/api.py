@@ -18,7 +18,7 @@ category.
 classification", which is like single-category classification except
 that each text belongs to zero or more categories.
 """
-from nltk.internals import overridden
+from cnltk.internals import overridden
 
 ##//////////////////////////////////////////////////////
 #{ Classification Interfaces

@@ -64,7 +64,7 @@ Usage::
 
 or::
 
-    python -m nltk.downloader [-d DATADIR] [-q] [-f] [-k] PACKAGE_IDS
+    python -m cnltk.downloader [-d DATADIR] [-q] [-f] [-k] PACKAGE_IDS
 """
 #----------------------------------------------------------------------
 from __future__ import print_function, division, unicode_literals
@@ -89,7 +89,7 @@ Handling data files..  Some questions:
   people to have to download 400MB corpora just to use nltk from svn.
 
 * Compromise: keep the data files in trunk/data rather than in
-  trunk/nltk.  That way you can check them out in svn if you want
+  trunk/cnltk.  That way you can check them out in svn if you want
   to; but you don't need to, and you can use the downloader instead.
 
 * Also: keep models in mind.  When we change the code, we'd
@@ -167,16 +167,16 @@ try:
     from tkinter import (Tk, Frame, Label, Entry, Button, Canvas, Menu, IntVar,
                          TclError)
     from tkinter.messagebox import showerror
-    from nltk.draw.table import Table
-    from nltk.draw.util import ShowText
+    from cnltk.draw.table import Table
+    from cnltk.draw.util import ShowText
 except:
     TKINTER = False
     TclError = ValueError
 
 from xml.etree import ElementTree
-import nltk
-from nltk import compat
-#urllib2 = nltk.internals.import_from_stdlib('urllib2')
+import cnltk
+from cnltk import compat
+#urllib2 = cnltk.internals.import_from_stdlib('urllib2')
 
 
 ######################################################################
@@ -821,7 +821,7 @@ class Downloader(object):
         self._url = url or self._url
 
         # Download the index file.
-        self._index = nltk.internals.ElementWrapper(
+        self._index = cnltk.internals.ElementWrapper(
             ElementTree.parse(compat.urlopen(self._url)).getroot())
         self._index_timestamp = time.time()
 
@@ -930,9 +930,9 @@ class Downloader(object):
 
         # Check if we have sufficient permissions to install in a
         # variety of system-wide locations.
-        for nltkdir in nltk.data.path:
+        for nltkdir in cnltk.data.path:
             if (os.path.exists(nltkdir) and
-                nltk.internals.is_writable(nltkdir)):
+                cnltk.internals.is_writable(nltkdir)):
                 return nltkdir
 
         # On Windows, use %APPDATA%
@@ -1958,7 +1958,7 @@ class DownloaderGUI(object):
 ######################################################################
 # Helper Functions
 ######################################################################
-# [xx] It may make sense to move these to nltk.internals.
+# [xx] It may make sense to move these to cnltk.internals.
 
 def md5_hexdigest(file):
     """
@@ -2187,7 +2187,7 @@ def _find_packages(root):
       - ``subdir`` is the subdirectory (relative to ``root``) where
         the package was found (e.g. 'corpora' or 'grammars').
     """
-    from nltk.corpus.reader.util import _path_from
+    from cnltk.corpus.reader.util import _path_from
     # Find all packages.
     packages = []
     for dirname, subdirs, files in os.walk(root):

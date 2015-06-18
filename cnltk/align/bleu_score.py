@@ -12,9 +12,9 @@ from __future__ import division
 
 import math
 
-from nltk.tokenize import word_tokenize
-from nltk.compat import Counter
-from nltk.util import ngrams
+from cnltk.tokenize import word_tokenize
+from cnltk.compat import Counter
+from cnltk.util import ngrams
 
 
 def bleu(candidate, references, weights):

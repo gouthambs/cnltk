@@ -16,7 +16,7 @@ sentiment scores: positivity, negativity, and objectivity.
 For details about SentiWordNet see:
 http://sentiwordnet.isti.cnr.it/
 
-    >>> from nltk.corpus import sentiwordnet as swn
+    >>> from cnltk.corpus import sentiwordnet as swn
     >>> print(swn.senti_synset('breakdown.n.03'))
     <breakdown.n.03: PosScore=0.0 NegScore=0.25>
     >>> list(swn.senti_synsets('slow'))
@@ -35,8 +35,8 @@ http://sentiwordnet.isti.cnr.it/
 """
 
 import re
-from nltk.compat import python_2_unicode_compatible
-from nltk.corpus.reader import CorpusReader
+from cnltk.compat import python_2_unicode_compatible
+from cnltk.corpus.reader import CorpusReader
 
 @python_2_unicode_compatible
 class SentiWordNetCorpusReader(CorpusReader):
@@ -66,7 +66,7 @@ class SentiWordNetCorpusReader(CorpusReader):
                 self._db[(pos, offset)] = (float(pos_score), float(neg_score))
 
     def senti_synset(self, *vals):        
-        from nltk.corpus import wordnet as wn
+        from cnltk.corpus import wordnet as wn
         if tuple(vals) in self._db:
             pos_score, neg_score = self._db[tuple(vals)]
             pos, offset = vals
@@ -83,7 +83,7 @@ class SentiWordNetCorpusReader(CorpusReader):
                 return None
 
     def senti_synsets(self, string, pos=None):
-        from nltk.corpus import wordnet as wn
+        from cnltk.corpus import wordnet as wn
         sentis = []
         synset_list = wn.synsets(string, pos)
         for synset in synset_list:
@@ -92,7 +92,7 @@ class SentiWordNetCorpusReader(CorpusReader):
         return sentis
 
     def all_senti_synsets(self):
-        from nltk.corpus import wordnet as wn
+        from cnltk.corpus import wordnet as wn
         for key, fields in self._db.items():
             pos, offset = key
             pos_score, neg_score = fields

@@ -41,11 +41,11 @@ Extraction, Proceedings of IJCNLP-04, pp560-565.
 import os
 import re
 
-from nltk.tree import sinica_parse
-from nltk.tag import map_tag
+from cnltk.tree import sinica_parse
+from cnltk.tag import map_tag
 
-from nltk.corpus.reader.util import *
-from nltk.corpus.reader.api import *
+from cnltk.corpus.reader.util import *
+from cnltk.corpus.reader.api import *
 
 IDENTIFIER = re.compile(r'^#\S+\s')
 APPENDIX = re.compile(r'(?<=\))#.*$')

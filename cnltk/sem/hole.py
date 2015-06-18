@@ -23,11 +23,11 @@ from __future__ import print_function, unicode_literals
 
 from functools import reduce
 
-from nltk import compat
-from nltk.parse import load_parser
+from cnltk import compat
+from cnltk.parse import load_parser
 
-from nltk.sem.skolemize import skolemize
-from nltk.sem.logic import (AllExpression, AndExpression, ApplicationExpression,
+from cnltk.sem.skolemize import skolemize
+from cnltk.sem.logic import (AllExpression, AndExpression, ApplicationExpression,
                             ExistsExpression, IffExpression, ImpExpression,
                             LambdaExpression, NegatedExpression, OrExpression)
 

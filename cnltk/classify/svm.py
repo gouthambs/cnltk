@@ -7,7 +7,7 @@
 # For license information, see LICENSE.TXT
 """
 nltk.classify.svm was deprecated. For classification based
-on support vector machines SVMs use nltk.classify.scikitlearn
+on support vector machines SVMs use cnltk.classify.scikitlearn
 (or `scikit-learn <http://scikit-learn.org>`_ directly).
 """
 class SvmClassifier(object):

@@ -32,12 +32,12 @@ from __future__ import print_function
 #   and unigram counts (raw_freq, pmi, student_t)
 
 import itertools as _itertools
-from nltk.compat import iteritems
+from cnltk.compat import iteritems
 
-from nltk.probability import FreqDist
-from nltk.util import ngrams
-from nltk.metrics import ContingencyMeasures, BigramAssocMeasures, TrigramAssocMeasures
-from nltk.metrics.spearman import ranks_from_scores, spearman_correlation
+from cnltk.probability import FreqDist
+from cnltk.util import ngrams
+from cnltk.metrics import ContingencyMeasures, BigramAssocMeasures, TrigramAssocMeasures
+from cnltk.metrics.spearman import ranks_from_scores, spearman_correlation
 
 
 class AbstractCollocationFinder(object):
@@ -47,7 +47,7 @@ class AbstractCollocationFinder(object):
 
     As a minimum, collocation finders require the frequencies of each
     word in a corpus, and the joint frequency of word tuples. This data
-    should be provided through nltk.probability.FreqDist objects or an
+    should be provided through cnltk.probability.FreqDist objects or an
     identical interface.
     """
 
@@ -317,14 +317,14 @@ class QuadgramCollocationFinder(AbstractCollocationFinder):
 
 def demo(scorer=None, compare_scorer=None):
     """Finds bigram collocations in the files of the WebText corpus."""
-    from nltk.metrics import BigramAssocMeasures, spearman_correlation, ranks_from_scores
+    from cnltk.metrics import BigramAssocMeasures, spearman_correlation, ranks_from_scores
 
     if scorer is None:
         scorer = BigramAssocMeasures.likelihood_ratio
     if compare_scorer is None:
         compare_scorer = BigramAssocMeasures.raw_freq
 
-    from nltk.corpus import stopwords, webtext
+    from cnltk.corpus import stopwords, webtext
 
     ignored_words = stopwords.words('english')
     word_filter = lambda w: len(w) < 3 or w.lower() in ignored_words
@@ -350,7 +350,7 @@ def demo(scorer=None, compare_scorer=None):
 
 if __name__ == '__main__':
     import sys
-    from nltk.metrics import BigramAssocMeasures
+    from cnltk.metrics import BigramAssocMeasures
 
     try:
         scorer = eval('BigramAssocMeasures.' + sys.argv[1])
