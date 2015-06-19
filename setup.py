@@ -20,34 +20,61 @@ except LookupError:
     codecs.register(func)
 
 import os
+from Cython.Build import cythonize
+
+PROJECT_DIR = os.path.dirname(__file__)
+def ext_file(submodule, pyx_file):
+    pyx_file = os.path.join(PROJECT_DIR, "cnltk", submodule, pyx_file)
+    return pyx_file
 
 # Use the VERSION file to get NLTK version
-version_file = os.path.join(os.path.dirname(__file__), 'nltk', 'VERSION')
+version_file = os.path.join(os.path.dirname(__file__), 'cnltk', 'VERSION')
 with open(version_file) as fh:
     nltk_version = fh.read().strip()
 
 # setuptools
+#from setuptools import setup, find_packages
+#from distutils.extension import Extension
+#from distutils.core import setup
+
+
+# from https://github.com/cvondrick/pyvision/blob/07604f4445683365c5bee57a2276aebe05c244d4/setup.py
+# immediately below is stupid hackery for setuptools to work with Cython
+import distutils.extension
+from distutils.extension import Extension as _Extension
 from setuptools import setup, find_packages
+distutils.extension.Extension = _Extension
+#distutils.command.build_ext.Extension = _Extension
+Extension = _Extension
+from Cython.Distutils import build_ext
+# end stupid hackery
+
+extensions = [ Extension("cnltk.stem.porter",
+                         [ext_file("stem", "porter.pyx") ])
+               ]
 
 setup(
-    name = "nltk",
+    name = "cnltk",
     description = "Natural Language Toolkit",
     version = nltk_version,
     url = "http://nltk.org/",
+    cmdclass = {"build_ext": build_ext},
+    ext_modules=extensions,
     long_description = """\
 The Natural Language Toolkit (NLTK) is a Python package for
-natural language processing.  NLTK requires Python 2.6, 2.7, or 3.2+.""",
+natural language processing.  NLTK requires Python 2.6, 2.7, or 3.2+.
+Package cnltk is a cythonized nltk with performance improvements""",
     license = "Apache License, Version 2.0",
     keywords = ['NLP', 'CL', 'natural language processing',
                 'computational linguistics', 'parsing', 'tagging',
                 'tokenizing', 'syntax', 'linguistics', 'language',
                 'natural language', 'text analytics'],
-    maintainer = "Steven Bird",
-    maintainer_email = "stevenbird1@gmail.com",
+    maintainer = "Gouthaman Balaraman",
+    maintainer_email = "gouthaman.balaraman@gmail.com",
     author = "Steven Bird",
     author_email = "stevenbird1@gmail.com",
     classifiers = [
-    'Development Status :: 5 - Production/Stable',
+    'Development Status :: 3 - Alpha',
     'Intended Audience :: Developers',
     'Intended Audience :: Education',
     'Intended Audience :: Information Technology',
@@ -72,4 +99,5 @@ natural language processing.  NLTK requires Python 2.6, 2.7, or 3.2+.""",
     package_data = {'nltk': ['test/*.doctest', 'VERSION']},
     packages = find_packages(),
     zip_safe=False, # since normal files will be present too?
+
     )
