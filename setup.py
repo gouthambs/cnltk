@@ -20,22 +20,12 @@ except LookupError:
     codecs.register(func)
 
 import os
-from Cython.Build import cythonize
-
-PROJECT_DIR = os.path.dirname(__file__)
-def ext_file(submodule, pyx_file):
-    pyx_file = os.path.join(PROJECT_DIR, "cnltk", submodule, pyx_file)
-    return pyx_file
+import glob
 
 # Use the VERSION file to get NLTK version
 version_file = os.path.join(os.path.dirname(__file__), 'cnltk', 'VERSION')
 with open(version_file) as fh:
     nltk_version = fh.read().strip()
-
-# setuptools
-#from setuptools import setup, find_packages
-#from distutils.extension import Extension
-#from distutils.core import setup
 
 
 # from https://github.com/cvondrick/pyvision/blob/07604f4445683365c5bee57a2276aebe05c244d4/setup.py
@@ -49,10 +39,28 @@ Extension = _Extension
 from Cython.Distutils import build_ext
 # end stupid hackery
 
-extensions = [Extension("cnltk.stem.porter",[ext_file("stem", "porter.pyx")]),
-              Extension("cnltk.stem.lancaster",[ext_file("stem", "lancaster.pyx")]),
-              Extension("cnltk.tokenize.punkt", [ext_file("tokenize", "punkt.pyx")]),
-               ]
+PROJECT_DIR = os.path.dirname(__file__)
+def ext_file(submodule, pyx_file):
+    pyx_file = os.path.join(PROJECT_DIR, "cnltk", submodule, pyx_file)
+    return pyx_file
+
+def create_extension(submodule, filename):
+    return Extension("cnltk.%s.%s" % (submodule, filename),
+                     [ext_file(submodule,"%s.pyx" % filename)])
+
+submodules = ["stem", "tokenize"]
+extension_files = {}
+for s in submodules:
+    extension_files[s] = [os.path.basename(p).split(".")[0] for p in
+                          glob.glob(os.path.join("cnltk", s, "*.pyx"))]
+
+extensions = [create_extension(module, pyxfile)
+               for module, pyxfiles in extension_files.iteritems()
+               for pyxfile in pyxfiles]
+
+#extensions = [create_extension("stem", "porter"),
+#              create_extension("stem", "lancaster"),
+#              create_extension("tokenize", "punkt")]
 
 setup(
     name = "cnltk",
