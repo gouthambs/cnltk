@@ -50,6 +50,7 @@ from Cython.Distutils import build_ext
 # end stupid hackery
 
 extensions = [Extension("cnltk.stem.porter",[ext_file("stem", "porter.pyx")]),
+              Extension("cnltk.stem.lancaster",[ext_file("stem", "lancaster.pyx")]),
               Extension("cnltk.tokenize.punkt", [ext_file("tokenize", "punkt.pyx")]),
                ]
 

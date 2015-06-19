@@ -177,7 +177,7 @@ REASON_INITIAL_WITH_SPECIAL_ORTHOGRAPHIC_HEURISTIC = 'initial + special orthogra
 #{ Language-dependent variables
 ######################################################################
 
-cdef class PunktLanguageVars(object):
+class PunktLanguageVars(object):
     """
     Stores variables, mostly regular expressions, which may be
     language-dependent for correct application of the algorithm.
@@ -317,9 +317,8 @@ def _pair_iter(it):
 #{ Punkt Parameters
 ######################################################################
 
-cdef class PunktParameters(object):
+class PunktParameters(object):
     """Stores data used to perform sentence boundary detection with Punkt."""
-    cdef set abbrev_types
     def __init__(self):
         self.abbrev_types = set()
         """A set of word types for known abbreviations."""
@@ -513,7 +512,7 @@ class PunktToken(object):
 #{ Punkt base class
 ######################################################################
 
-cdef class PunktBaseClass(object):
+class PunktBaseClass(object):
     """
     Includes common components of PunktTrainer and PunktSentenceTokenizer.
     """

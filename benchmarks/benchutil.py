@@ -18,7 +18,7 @@ class RelativeBenchmark(object):
         self.results["relative"] = {}
         self.results["relative"] = dict(
             runtime=brr["runtime"]["timing"]/br["runtime"]["timing"],
-            memory=brr["memory"]["usage"]/br["memory"]["usage"]
+            memory=brr["memory"]["usage"]-br["memory"]["usage"]
         )
         return self.results
 
@@ -30,4 +30,8 @@ class BenchmarkRunner(object):
 
     def run(self):
         for b in self.benchmarks:
-            self.results[b.name] = b.run()
+            try:
+                self.results[b.name] = b.run()
+            except Exception as e:
+                print str(e)
+

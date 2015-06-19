@@ -1,3 +1,4 @@
+# cython: profile=False
 # Natural Language Toolkit: Stemmers
 #
 # Copyright (C) 2001-2015 NLTK Project
@@ -12,15 +13,26 @@ Paice, Chris D. "Another Stemmer." ACM SIGIR Forum 24.3 (1990): 56-61.
 from __future__ import unicode_literals
 import re
 
-from cnltk.stem.api import StemmerI
-from cnltk.compat import python_2_unicode_compatible
+from nltk.stem.api import StemmerI
+from nltk.compat import python_2_unicode_compatible
+
+cdef inline int _getLastLetter(word):
+    """Get the zero-based index of the last alphabetic character in this string
+    """
+    cdef int last_letter = -1
+    for position in xrange(len(word)):
+        if word[position].isalpha():
+            last_letter = position
+        else:
+            break
+    return last_letter
+
 
 @python_2_unicode_compatible
-class LancasterStemmer(StemmerI):
+class LancasterStemmer(object):
     """
     Lancaster Stemmer
-
-        >>> from cnltk.stem.lancaster import LancasterStemmer
+        >>> from nltk.stem.lancaster import LancasterStemmer
         >>> st = LancasterStemmer()
         >>> st.stem('maximum')     # Remove "-um" when word is intact
         'maxim'
@@ -171,16 +183,18 @@ class LancasterStemmer(StemmerI):
         """
         # Setup an empty rule dictionary - this will be filled in later
         self.rule_dictionary = {}
+        self._stem_valid_rule = re.compile("^([a-z]+)(\*?)(\d)([a-z]*)([>\.]?)$")
+        self._parse_valid_rule = re.compile("^[a-z]+\*?\d[a-z]*[>\.]?$")
 
     def parseRules(self, rule_tuple):
         """Validate the set of rules used in this stemmer.
         """
-        valid_rule = re.compile("^[a-z]+\*?\d[a-z]*[>\.]?$")
+        #valid_rule = re.compile("^[a-z]+\*?\d[a-z]*[>\.]?$")
         # Empty any old rules from the rule set before adding new ones
         self.rule_dictionary = {}
 
         for rule in rule_tuple:
-            if not valid_rule.match(rule):
+            if not self._parse_valid_rule.match(rule):
                 raise ValueError("The rule %s is invalid" % rule)
             first_letter = rule[0:1]
             if first_letter in self.rule_dictionary:
@@ -207,14 +221,15 @@ class LancasterStemmer(StemmerI):
         """Perform the actual word stemming
         """
 
-        valid_rule = re.compile("^([a-z]+)(\*?)(\d)([a-z]*)([>\.]?)$")
+        #valid_rule = re.compile("^([a-z]+)(\*?)(\d)([a-z]*)([>\.]?)$")
 
-        proceed = True
+
+        cdef bint proceed = True
 
         while proceed:
 
             # Find the position of the last letter of the word to be stemmed
-            last_letter_position = self.__getLastLetter(word)
+            last_letter_position = _getLastLetter(word)
 
             # Only stem the word if it has a last letter and a rule matching that last letter
             if last_letter_position < 0 or word[last_letter_position] not in self.rule_dictionary:
@@ -225,7 +240,7 @@ class LancasterStemmer(StemmerI):
 
                 # Go through each rule that matches the word's final letter
                 for rule in self.rule_dictionary[word[last_letter_position]]:
-                    rule_match = valid_rule.match(rule)
+                    rule_match = self._stem_valid_rule.match(rule)
                     if rule_match:
                         (ending_string,
                          intact_flag,
@@ -265,7 +280,7 @@ class LancasterStemmer(StemmerI):
     def __getLastLetter(self, word):
         """Get the zero-based index of the last alphabetic character in this string
         """
-        last_letter = -1
+        cdef int last_letter = -1
         for position in range(len(word)):
             if word[position].isalpha():
                 last_letter = position
@@ -306,8 +321,3 @@ class LancasterStemmer(StemmerI):
 
     def __repr__(self):
         return '<LancasterStemmer>'
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE)

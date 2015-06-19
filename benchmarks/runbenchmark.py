@@ -4,7 +4,7 @@ import os
 BASE_PATH= os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(BASE_PATH)
 
-modules=["stem", "tokenize"]
+modules = ["bench_stem", "bench_tokenize"]
 by_module = {}
 benchmarks = []
 
@@ -13,6 +13,7 @@ for modname in modules:
     by_module[modname] = [v for v in ref.__dict__.values()
                           if isinstance(v, RelativeBenchmark)]
     benchmarks.extend(by_module[modname])
+    del sys.modules[modname]
 
 
 benchmark_runner = BenchmarkRunner(benchmarks)
