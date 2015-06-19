@@ -177,7 +177,7 @@ REASON_INITIAL_WITH_SPECIAL_ORTHOGRAPHIC_HEURISTIC = 'initial + special orthogra
 #{ Language-dependent variables
 ######################################################################
 
-class PunktLanguageVars(object):
+cdef class PunktLanguageVars(object):
     """
     Stores variables, mostly regular expressions, which may be
     language-dependent for correct application of the algorithm.
@@ -317,9 +317,9 @@ def _pair_iter(it):
 #{ Punkt Parameters
 ######################################################################
 
-class PunktParameters(object):
+cdef class PunktParameters(object):
     """Stores data used to perform sentence boundary detection with Punkt."""
-
+    cdef set abbrev_types
     def __init__(self):
         self.abbrev_types = set()
         """A set of word types for known abbreviations."""
@@ -513,7 +513,7 @@ class PunktToken(object):
 #{ Punkt base class
 ######################################################################
 
-class PunktBaseClass(object):
+cdef class PunktBaseClass(object):
     """
     Includes common components of PunktTrainer and PunktSentenceTokenizer.
     """
@@ -607,7 +607,7 @@ class PunktBaseClass(object):
 class PunktTrainer(PunktBaseClass):
     """Learns parameters used in Punkt sentence boundary detection."""
 
-    def __init__(self, train_text=None, verbose=False,
+    def __init__(self, train_text=None, bint verbose=False,
             lang_vars=PunktLanguageVars(), token_cls=PunktToken):
 
         PunktBaseClass.__init__(self, lang_vars=lang_vars,
@@ -1192,7 +1192,7 @@ class PunktSentenceTokenizer(PunktBaseClass,TokenizerI):
     This approach has been shown to work well for many European
     languages.
     """
-    def __init__(self, train_text=None, verbose=False,
+    def __init__(self, train_text=None, bint verbose=False,
             lang_vars=PunktLanguageVars(), token_cls=PunktToken):
         """
         train_text can either be the sole training text for this sentence
@@ -1204,7 +1204,7 @@ class PunktSentenceTokenizer(PunktBaseClass,TokenizerI):
         if train_text:
             self._params = self.train(train_text, verbose)
 
-    def train(self, train_text, verbose=False):
+    def train(self, train_text, bint verbose=False):
         """
         Derives parameters from a given training text, or uses the parameters
         given. Repeated calls to this method destroy previous parameters. For
@@ -1219,7 +1219,7 @@ class PunktSentenceTokenizer(PunktBaseClass,TokenizerI):
     #{ Tokenization
     #////////////////////////////////////////////////////////////
 
-    def tokenize(self, text, realign_boundaries=True):
+    def tokenize(self, text, bint realign_boundaries=True):
         """
         Given a text, returns a list of the sentences in that text.
         """
@@ -1264,7 +1264,7 @@ class PunktSentenceTokenizer(PunktBaseClass,TokenizerI):
             slices = self._realign_boundaries(text, slices)
         return [(sl.start, sl.stop) for sl in slices]
 
-    def sentences_from_text(self, text, realign_boundaries=True):
+    def sentences_from_text(self, text, bint realign_boundaries=True):
         """
         Given a text, generates the sentences in that text by only
         testing candidate sentence breaks. If realign_boundaries is

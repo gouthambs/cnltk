@@ -4,7 +4,7 @@ import os
 BASE_PATH= os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(BASE_PATH)
 
-modules=["stem"]
+modules=["stem", "tokenize"]
 by_module = {}
 benchmarks = []
 

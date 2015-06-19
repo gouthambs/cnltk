@@ -9,12 +9,13 @@ class RelativeBenchmark(object):
         self.results = {}
 
     def run(self):
-        br = self.benchmark.run()
-        br.update(dict(name=self.benchmark.name))
         brr = self.benchmark_ref.run()
         brr.update(dict(name=self.benchmark_ref.name))
+        br = self.benchmark.run()
+        br.update(dict(name=self.benchmark.name))
         self.results["benchmark"] = br
         self.results["reference"] = brr
+        self.results["relative"] = {}
         self.results["relative"] = dict(
             runtime=brr["runtime"]["timing"]/br["runtime"]["timing"],
             memory=brr["memory"]["usage"]/br["memory"]["usage"]
