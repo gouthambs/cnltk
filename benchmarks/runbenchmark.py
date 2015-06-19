@@ -1,10 +1,17 @@
 from benchutil import RelativeBenchmark, BenchmarkRunner
 import sys
 import os
-BASE_PATH= os.path.join(os.path.dirname(__file__), "..")
+import glob
+
+CURR_PATH = os.path.abspath(os.path.dirname(__file__))
+BASE_PATH= os.path.join(CURR_PATH, "..")
 sys.path.append(BASE_PATH)
 
-modules = ["bench_stem", "bench_tokenize"]
+
+benchmark_files = glob.glob(os.path.join(CURR_PATH, "bench_*.py"))
+modules = [os.path.basename(p).split(".")[0] for p in benchmark_files]
+print benchmark_files, modules
+
 by_module = {}
 benchmarks = []
 

@@ -48,7 +48,7 @@ def create_extension(submodule, filename):
     return Extension("cnltk.%s.%s" % (submodule, filename),
                      [ext_file(submodule,"%s.pyx" % filename)])
 
-submodules = ["stem", "tokenize"]
+submodules = ["stem", "tokenize", "tag"]
 extension_files = {}
 for s in submodules:
     extension_files[s] = [os.path.basename(p).split(".")[0] for p in
