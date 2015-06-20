@@ -1,3 +1,4 @@
+# cython : profile=False
 # Natural Language Toolkit: TnT Tagger
 #
 # Copyright (C) 2001-2015 NLTK Project
@@ -19,6 +20,52 @@ from operator import itemgetter
 
 from cnltk.probability import FreqDist, ConditionalFreqDist
 from cnltk.tag.api import TaggerI
+
+
+cdef inline float _safe_div(int v1, int v2):
+        '''
+        Safe floating point division function, does not allow division by 0
+        returns -1 if the denominator is 0
+        '''
+        if v2 == 0:
+            return -1
+        else:
+            return float(v1) / float(v2)
+
+cdef void _tagwords_opt(word,  _wd, _uni, _bi, _tri, _l1, _l2, _l3, C,
+                        known, current_states, new_states):
+    cdef float p_uni
+    cdef float p_bi
+    cdef float p_tri
+    cdef float p_wd
+    cdef float p
+    cdef float p2
+    cdef float curr_sent_logprob
+    cdef float logprob
+    
+    if word in _wd.conditions():
+        known += 1
+
+        for (history, curr_sent_logprob) in current_states:
+            logprobs = []
+
+            for t in _wd[word].keys():
+                p_uni = _uni.freq((t,C))
+                p_bi = _bi[history[-1]].freq((t,C))
+                p_tri = _tri[tuple(history[-2:])].freq((t,C))
+                p_wd = float(_wd[word][t])/float(_uni[(t,C)])
+                p = _l1 *p_uni + _l2 *p_bi + _l3 *p_tri
+                p2 = log(p, 2) + log(p_wd, 2)
+
+                logprobs.append(((t,C), p2))
+
+
+            # compute the result of appending each tag to this history
+            for (tag, logprob) in logprobs:
+                new_states.append((history + [tag],
+                                   curr_sent_logprob + logprob))
+
+
 
 class TnT(TaggerI):
     '''
@@ -81,8 +128,7 @@ class TnT(TaggerI):
     capitalized words. However this does not result in a significant
     gain in the accuracy of the results.
     '''
-
-    def __init__(self, unk=None, Trained=False, N=1000, C=False):
+    def __init__(self, unk=None, bint Trained=False, int N=1000, bint C=False):
         '''
         Construct a TnT statistical tagger. Tagger must be trained
         before being used to tag input.
@@ -141,7 +187,7 @@ class TnT(TaggerI):
         '''
 
         # Ensure that local C flag is initialized before use
-        C = False
+        cdef bint C = False
 
         if self._unk is not None and self._T == False:
             self._unk.train(data)
@@ -218,9 +264,9 @@ class TnT(TaggerI):
 
                 # safe_div provides a safe floating point division
                 # it returns -1 if the denominator is 0
-                c3 = self._safe_div((self._tri[history][tag]-1), (self._tri[history].N()-1))
-                c2 = self._safe_div((self._bi[h2][tag]-1), (self._bi[h2].N()-1))
-                c1 = self._safe_div((self._uni[tag]-1), (self._uni.N()-1))
+                c3 = _safe_div((self._tri[history][tag]-1), (self._tri[history].N()-1))
+                c2 = _safe_div((self._bi[h2][tag]-1), (self._bi[h2].N()-1))
+                c1 = _safe_div((self._uni[tag]-1), (self._uni.N()-1))
 
 
                 # if c1 is the maximum value:
@@ -260,15 +306,7 @@ class TnT(TaggerI):
 
 
 
-    def _safe_div(self, v1, v2):
-        '''
-        Safe floating point division function, does not allow division by 0
-        returns -1 if the denominator is 0
-        '''
-        if v2 == 0:
-            return -1
-        else:
-            return float(v1) / float(v2)
+
 
     def tagdata(self, data):
         '''
@@ -289,7 +327,7 @@ class TnT(TaggerI):
         return res
 
 
-    def tag(self, data):
+    def tag(self, list data):
         '''
         Tags a single sentence
 
@@ -307,13 +345,14 @@ class TnT(TaggerI):
         returns a list of (word, tag) tuples
         '''
 
-        current_state = [(['BOS', 'BOS'], 0.0)]
+        cdef list current_state = [(['BOS', 'BOS'], 0.0)]
 
-        sent = list(data)
+        cdef list sent = list(data)
 
         tags = self._tagword(sent, current_state)
 
-        res = []
+        cdef list res = []
+        cdef int i
         for i in range(len(sent)):
             # unpack and discard the C flags
             (t,C) = tags[i+2]
@@ -322,7 +361,7 @@ class TnT(TaggerI):
         return res
 
 
-    def _tagword(self, sent, current_states):
+    def _tagword(self, sent, list current_states):
         '''
         :param sent : List of words remaining in the sentence
         :type sent  : [word,]
@@ -347,16 +386,27 @@ class TnT(TaggerI):
         # otherwise there are more words to be tagged
         word = sent[0]
         sent = sent[1:]
-        new_states = []
+        cdef list new_states = []
 
         # if the Capitalisation is requested,
         # initalise the flag for this word
-        C = False
+        cdef bint C = False
         if self._C and word[0].isupper(): C=True
 
         # if word is known
         # compute the set of possible tags
         # and their associated log probabilities
+        cdef float p_uni
+        cdef float p_bi
+        cdef float p_tri
+        cdef float p_wd
+        cdef float p
+        cdef float p2
+        cdef float curr_sent_logprob
+        cdef float logprob
+        cdef tuple tag
+        cdef list history
+        cdef list logprobs
         if word in self._wd.conditions():
             self.known += 1
 

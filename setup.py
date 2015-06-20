@@ -41,18 +41,26 @@ from Cython.Distutils import build_ext
 
 PROJECT_DIR = os.path.dirname(__file__)
 def ext_file(submodule, pyx_file):
-    pyx_file = os.path.join(PROJECT_DIR, "cnltk", submodule, pyx_file)
+    if submodule is "":
+        pyx_file = os.path.join(PROJECT_DIR, "cnltk", pyx_file)
+    else:
+        pyx_file = os.path.join(PROJECT_DIR, "cnltk", submodule, pyx_file)
     return pyx_file
 
 def create_extension(submodule, filename):
-    return Extension("cnltk.%s.%s" % (submodule, filename),
+    if submodule is "":
+        return Extension("cnltk.%s" % (filename),
+                     [ext_file(submodule,"%s.pyx" % filename)])
+    else:
+        return Extension("cnltk.%s.%s" % (submodule, filename),
                      [ext_file(submodule,"%s.pyx" % filename)])
 
-submodules = ["stem", "tokenize", "tag"]
+submodules = ["stem", "tokenize", "tag", ""]
 extension_files = {}
 for s in submodules:
     extension_files[s] = [os.path.basename(p).split(".")[0] for p in
                           glob.glob(os.path.join("cnltk", s, "*.pyx"))]
+
 
 extensions = [create_extension(module, pyxfile)
                for module, pyxfiles in extension_files.iteritems()

@@ -1,3 +1,4 @@
+# cython : profile=False
 # -*- coding: utf-8 -*-
 # Natural Language Toolkit: Probability and Statistics
 #
@@ -192,9 +193,10 @@ class FreqDist(Counter):
         :type sample: any
         :rtype: float
         """
-        if self.N() == 0:
+        cdef int val = sum(self.values())#self.N()
+        if val == 0:
             return 0
-        return float(self[sample]) / self.N()
+        return float(self[sample]) / val
 
     def max(self):
         """
@@ -292,10 +294,16 @@ class FreqDist(Counter):
         """
         return self.__class__(self)
 
-    def __le__(self, other):
-        if not isinstance(other, FreqDist):
-            raise_unorderable_types("<=", self, other)
-        return set(self).issubset(other) and all(self[key] <= other[key] for key in self)
+    def __richcmp__(self, operation, other):
+        if operation == 1:
+            if not isinstance(other, FreqDist):
+                raise_unorderable_types("<=", self, other)
+            return set(self).issubset(other) and all(self[key] <= other[key] for key in self)
+        
+    #def __le__(self, other):
+    #    if not isinstance(other, FreqDist):
+    #        raise_unorderable_types("<=", self, other)
+    #    return set(self).issubset(other) and all(self[key] <= other[key] for key in self)
 
     # @total_ordering doesn't work here, since the class inherits from a builtin class
     __ge__ = lambda self, other: not self <= other or self == other
