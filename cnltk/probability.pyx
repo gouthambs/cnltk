@@ -58,6 +58,7 @@ _NINF = float('-1e300')
 ##  Frequency Distributions
 ##//////////////////////////////////////////////////////
 
+
 @compat.python_2_unicode_compatible
 class FreqDist(Counter):
     """
@@ -194,9 +195,10 @@ class FreqDist(Counter):
         :rtype: float
         """
         cdef int val = sum(self.values())#self.N()
-        if val == 0:
-            return 0
-        return float(self[sample]) / val
+        return 0 if val==0 else float(self[sample]) / val
+        #if val == 0:
+        #    return 0
+        #return float(self[sample]) / val
 
     def max(self):
         """

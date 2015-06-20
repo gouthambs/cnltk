@@ -20,6 +20,7 @@ from operator import itemgetter
 
 from cnltk.probability import FreqDist, ConditionalFreqDist
 from cnltk.tag.api import TaggerI
+from libc.math cimport log2
 
 
 cdef inline float _safe_div(int v1, int v2):
@@ -32,8 +33,12 @@ cdef inline float _safe_div(int v1, int v2):
         else:
             return float(v1) / float(v2)
 
-cdef void _tagwords_opt(word,  _wd, _uni, _bi, _tri, _l1, _l2, _l3, C,
-                        known, current_states, new_states):
+cdef inline float _freq(int nr, int dr ):
+    return 0 if dr==0 else float(nr) / dr
+
+
+cdef inline void _tagwords_loop(word, object _wd, _uni, _bi, _tri, _l1, _l2, _l3, C,
+                        list current_states, list new_states):
     cdef float p_uni
     cdef float p_bi
     cdef float p_tri
@@ -42,28 +47,48 @@ cdef void _tagwords_opt(word,  _wd, _uni, _bi, _tri, _l1, _l2, _l3, C,
     cdef float p2
     cdef float curr_sent_logprob
     cdef float logprob
-    
-    if word in _wd.conditions():
-        known += 1
-
-        for (history, curr_sent_logprob) in current_states:
-            logprobs = []
-
-            for t in _wd[word].keys():
-                p_uni = _uni.freq((t,C))
-                p_bi = _bi[history[-1]].freq((t,C))
-                p_tri = _tri[tuple(history[-2:])].freq((t,C))
-                p_wd = float(_wd[word][t])/float(_uni[(t,C)])
-                p = _l1 *p_uni + _l2 *p_bi + _l3 *p_tri
-                p2 = log(p, 2) + log(p_wd, 2)
-
-                logprobs.append(((t,C), p2))
+    cdef tuple tag
+    cdef list logprobs
+    cdef list history
 
 
-            # compute the result of appending each tag to this history
-            for (tag, logprob) in logprobs:
-                new_states.append((history + [tag],
-                                   curr_sent_logprob + logprob))
+    #for (history, curr_sent_logprob) in current_states:
+    cdef int cs_len = len(current_states)
+    cdef int _uni_dr = sum(_uni.values())
+    cdef int _bi_dr
+    cdef int _tri_dr
+    cdef tuple _t_C
+    _wd_word = _wd[word]
+    _wd_word_keys = _wd_word.keys()
+    cdef int _wd_words_keys_len = len(_wd_word_keys)
+    cdef int _uni_t_C
+    for i in range(cs_len):
+        (history, curr_sent_logprob) = current_states[i]
+        logprobs = []
+        _bi_history = _bi[history[-1]]
+        _tri_history = _tri[tuple(history[-2:])]
+        _bi_dr = sum(_bi_history.values())
+        _tri_dr = sum(_tri_history.values())
+
+        #for t in _wd_word_keys: #_wd[word].keys():
+        for j in range(_wd_words_keys_len):
+            t = _wd_word_keys[j]
+            _t_C = (t, C)
+            _uni_t_C = _uni[_t_C]
+            p_uni = _freq(_uni_t_C, _uni_dr)
+            p_bi = _freq(_bi_history[_t_C], _bi_dr)
+            p_tri = _freq(_tri_history[_t_C], _tri_dr)
+            p_wd = float(_wd_word[t])/float(_uni_t_C)
+            p = _l1 *p_uni + _l2 *p_bi + _l3 *p_tri
+            p2 = _log_part(p, p_wd) #log2(p) + log2(p_wd)
+
+            logprobs.append((_t_C, p2))
+
+
+        # compute the result of appending each tag to this history
+        for (tag, logprob) in logprobs:
+            new_states.append((history + [tag],
+                               curr_sent_logprob + logprob))
 
 
 
@@ -396,40 +421,13 @@ class TnT(TaggerI):
         # if word is known
         # compute the set of possible tags
         # and their associated log probabilities
-        cdef float p_uni
-        cdef float p_bi
-        cdef float p_tri
-        cdef float p_wd
-        cdef float p
-        cdef float p2
-        cdef float curr_sent_logprob
-        cdef float logprob
-        cdef tuple tag
-        cdef list history
-        cdef list logprobs
+
+
+
         if word in self._wd.conditions():
             self.known += 1
-
-            for (history, curr_sent_logprob) in current_states:
-                logprobs = []
-
-                for t in self._wd[word].keys():
-                    p_uni = self._uni.freq((t,C))
-                    p_bi = self._bi[history[-1]].freq((t,C))
-                    p_tri = self._tri[tuple(history[-2:])].freq((t,C))
-                    p_wd = float(self._wd[word][t])/float(self._uni[(t,C)])
-                    p = self._l1 *p_uni + self._l2 *p_bi + self._l3 *p_tri
-                    p2 = log(p, 2) + log(p_wd, 2)
-
-                    logprobs.append(((t,C), p2))
-
-
-                # compute the result of appending each tag to this history
-                for (tag, logprob) in logprobs:
-                    new_states.append((history + [tag],
-                                       curr_sent_logprob + logprob))
-
-
+            _tagwords_loop(word,  self._wd, self._uni, self._bi, self._tri, self._l1,
+                      self._l2, self._l3, C, current_states, new_states)
 
 
         # otherwise a new word, set of possible tags is unknown
