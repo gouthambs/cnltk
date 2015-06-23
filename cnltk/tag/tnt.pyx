@@ -20,7 +20,8 @@ from operator import itemgetter
 
 from cnltk.probability import FreqDist, ConditionalFreqDist
 from cnltk.tag.api import TaggerI
-from libc.math cimport log2
+from libc.math cimport log, M_LN2
+import cython
 
 
 cdef inline float _safe_div(int v1, int v2):
@@ -33,9 +34,13 @@ cdef inline float _safe_div(int v1, int v2):
         else:
             return float(v1) / float(v2)
 
+@cython.cdivision(True)
 cdef inline float _freq(int nr, int dr ):
     return 0 if dr==0 else float(nr) / dr
 
+@cython.cdivision(True)
+cdef inline float _log2(float x) nogil:
+    return log(x)/M_LN2
 
 cdef inline void _tagwords_loop(word, object _wd, _uni, _bi, _tri, _l1, _l2, _l3, C,
                         list current_states, list new_states):
@@ -80,7 +85,7 @@ cdef inline void _tagwords_loop(word, object _wd, _uni, _bi, _tri, _l1, _l2, _l3
             p_tri = _freq(_tri_history[_t_C], _tri_dr)
             p_wd = float(_wd_word[t])/float(_uni_t_C)
             p = _l1 *p_uni + _l2 *p_bi + _l3 *p_tri
-            p2 = _log_part(p, p_wd) #log2(p) + log2(p_wd)
+            p2 = _log2(p) + _log2(p_wd)
 
             logprobs.append((_t_C, p2))
 
